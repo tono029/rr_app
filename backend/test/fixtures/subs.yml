@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sub_name: MyText
+  fee: 1
+
+two:
+  sub_name: MyText
+  fee: 1
