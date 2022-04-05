@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_04_071437) do
+ActiveRecord::Schema.define(version: 2022_04_05_095705) do
 
   create_table "subs", force: :cascade do |t|
     t.text "sub_name"
     t.integer "fee"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "period"
   end
 
 end

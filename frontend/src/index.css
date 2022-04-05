@@ -17,3 +17,22 @@ code {
   height: 100%;
   background-color: rgb(232, 255, 255);
 }
+
+hr {
+  border-color: rgb(221, 220, 220);
+  border-width: 0.5px;
+  width: 90%;
+  margin: 10px auto 20px auto;
+}
+
+h2 {
+  margin: 0 30px;
+}
+
+.container {
+  margin-bottom: 30px;
+}
+
+button {
+  background-color: teal !important;
+}
