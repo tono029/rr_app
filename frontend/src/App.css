@@ -1,3 +1,50 @@
+header {
+  position: relative;
+  display: flex;
+  background-color: teal;
+  padding: 5px 20px;
+  color: white;
+  z-index: 2;
+}
+
+header h1 {
+  margin: 0;
+}
+
+.header-left {
+  margin-right: auto;
+}
+
 .main {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  width: 90%;
+  margin: auto;
+  background-color: white;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2) ;
+}
+
+.form-container {
+  padding-top: 40px;
   width: 80%;
+  margin: 0 auto;
+}
+
+.form-container button {
+  width: 100%;
+  background-color: teal;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3) !important ;
+  transition: 0.3s;
+}
+
+.form-container button:focus, .form-container button:hover {
+  width: 100%;
+  background-color: rgb(0, 107, 107) !important;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3) !important ;
+
+}
+
+.period-select {
+  max-height: 1rem;
 }
