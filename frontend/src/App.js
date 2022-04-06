@@ -1,4 +1,6 @@
 import './App.css';
+import Chart from './component/Chart';
+import React from 'react';
 import Subs from './component/Subs';
 import Header from './component/Header';
 import SubForm from './component/SubForm';
@@ -10,12 +12,50 @@ export default function App() {
     baseURL: "http://localhost:3001/"
   })
 
+  const [subs, setSubs] = React.useState([])
+
+  async function getSubs() {
+    const res = await client.get("subs")
+    const subsArray = []
+
+    res.data.map(sub => {
+      subsArray.push({
+        ...sub,
+        // 必要なプロパティがあれば追加
+
+      })
+    })
+
+    setSubs(subsArray)
+  }
+
+  React.useEffect(() => {
+    getSubs()
+  }, [])
+
+  console.log("subs", subs)
+
   return (
     <>
       <Header />
       <div className='main'>
-        <SubForm client={client}/>
-        <Subs client={client} />
+        <SubForm 
+          client={client} 
+          subs={subs} 
+          setSubs={setSubs} 
+          getSubs={getSubs} 
+        />
+
+        <Subs 
+          client={client} 
+          subs={subs} 
+          setSubs={setSubs} 
+          getSubs={getSubs} 
+        />
+
+        <Chart 
+          subs={subs}
+        />
       </div>
     </>
   );

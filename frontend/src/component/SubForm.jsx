@@ -1,7 +1,6 @@
 import React from "react";
 import {Grid, TextField, Box, Button, MenuItem, Select, Paper} from '@mui/material';
 import {useForm} from "react-hook-form"
-import { spacing } from "@mui/system";
 
 export default function SubForm(props) {
   async function createSub(data) {
@@ -14,6 +13,7 @@ export default function SubForm(props) {
 
     // rails側に送信
     createSub(data)
+    props.getSubs()
     reset()
   }
 
@@ -45,7 +45,6 @@ export default function SubForm(props) {
                 })}
               />
               {errors.sub_name && <span>必須項目です</span>}
-              
             </Grid>
             
             <Grid item xs={8}>
@@ -56,8 +55,7 @@ export default function SubForm(props) {
                 size="small"
                 {...register("fee", {
                   required: true,
-                  pattern: "[0-9]*",
-                  message: "必須です。",
+                  pattern: {value: "[0-9]*", message: "数値を入力してください"},
                 })}
   
               />

@@ -9,38 +9,17 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 export default function Subs(props) {
-  const [subs, setSubs] = React.useState([])
-
-  React.useEffect(() => {
-    const subsArray = []
-
-    async function getSubs() {
-      const res = await props.client.get("subs")
-
-      res.data.map(sub => {
-        subsArray.push({
-          ...sub,
-          // 必要なプロパティがあれば追加
-
-        })
-      })
-
-      setSubs(subsArray)
-    }
-    getSubs()
-  }, [])
-
   async function deleteSub(id) {
     await props.client.delete(`subs/${id}`)
+    props.getSubs()
   }
 
-  console.log("subs", subs)
-  
-  const subsIndex = subs.map(sub => {
+  const subsIndex = props.subs.map(sub => {
     return (
       <TableRow key={sub.id}>
+        {/* クリックで編集できるように */}
         <TableCell>{sub.sub_name}</TableCell>
-        <TableCell>{sub.fee}</TableCell>
+        <TableCell>{sub.fee.toLocaleString()}<span>円</span></TableCell>
         <TableCell>{sub.period === 1 ? "/月" : "/年"}</TableCell>
         <TableCell>
           <Button
