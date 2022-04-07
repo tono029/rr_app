@@ -36,26 +36,22 @@ export default function Subs(props) {
   })
 
   return (
-    <div className="container">
-      <h2>一覧</h2>
-      <hr />
-      <TableContainer className="subs-table" component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>サービス名</TableCell>
-              <TableCell>料金</TableCell>
-              <TableCell>期間</TableCell>
-              <TableCell></TableCell>
-            </TableRow>
-          </TableHead>
-  
-          <TableBody>
-            {subsIndex}
-          </TableBody>
-          
-        </Table>
-      </TableContainer>
-    </div>
+    <TableContainer className="subs-table" component={Paper}>
+      <Table size="small">
+        <TableHead>
+          <TableRow>
+            <TableCell>サービス名</TableCell>
+            <TableCell>料金</TableCell>
+            <TableCell>期間</TableCell>
+            <TableCell></TableCell>
+          </TableRow>
+        </TableHead>
+
+        <TableBody>
+          {subsIndex}
+        </TableBody>
+        
+      </Table>
+    </TableContainer>
   )
 }

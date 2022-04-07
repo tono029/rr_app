@@ -55,17 +55,9 @@ export default function App() {
           getSubs={getSubs} 
         />
 
-        <Grid container spacing={2}>
-          <Grid item xs={2}>
-            <TotalFee subs={subs} />
-          </Grid>
-
-          <Grid item xs={10}>
-            <Chart 
-              subs={subs}
-            />
-          </Grid>
-        </Grid>
+        <Chart 
+          subs={subs}
+        />
       </div>
     </>
   );

@@ -18,11 +18,10 @@ export default function Chart(props) {
 
     datasets: [
       {
-        label: "",
         data: data,
         backgroundColor: "rgba(0, 128, 128, 0.5)",
         borderColor: "#008080",
-        borderWidth: 1,
+        borderWidth: 2,
       }
     ]
   }
@@ -31,7 +30,7 @@ export default function Chart(props) {
     responsive: true,
     plugins: {legend: {display: false}},
     scales: {
-      
+
     },
 
   }

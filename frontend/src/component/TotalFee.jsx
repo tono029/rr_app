@@ -13,9 +13,9 @@ export default function TotalFee(props) {
   }
 
   return (
-    <div className="container">
+    <>
       <p>月々の料金</p>
-      <p>{total.toLocaleString()}<span>円</span></p>
-    </div>
+      <h1>{total.toLocaleString()}<span>円</span></h1>
+    </>
   )
 }

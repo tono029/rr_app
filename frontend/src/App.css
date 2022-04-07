@@ -20,7 +20,7 @@ header h1 {
   z-index: 1;
   height: 100%;
   width: 90%;
-  margin: 0 auto 30px auto;
+  margin: 0 auto;
   padding: 20px 0 ;
   background-color: rgb(244, 255, 255);
 }
@@ -30,8 +30,23 @@ header h1 {
 }
 
 .form-body {
-  width: 80%;
-  margin: 0 auto;
+  width: 90%;
+  margin: 20px;
+  display: flex;
+}
+
+.body-left {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+}
+
+.body-left span {
+  color: black !important;
+}
+
+.body-right {
+  margin-left: 20px;
 }
 
 .form-body span {
@@ -64,8 +79,11 @@ header h1 {
 }
 
 .subs-table {
-  width: 80% !important;
-  margin: 0 auto;;
+  max-width: 600px;
+  width: 100% !important;
+  margin: 0 auto 20px auto;
+  border-radius: 10px !important;
+  box-shadow: 0px 0px 5px rgb(0, 0, 0, 0.2) !important;
 }
 
 .subs-table button {
@@ -79,4 +97,8 @@ header h1 {
 .bar-chart {
   width: 80% !important;
   margin: 0 auto;
+}
+
+th {
+  background-color: rgb(231, 231, 231) !important;
 }
