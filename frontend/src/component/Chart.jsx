@@ -5,40 +5,42 @@ import {Bar as BarJS} from "chart.js/auto"
  
 
 export default function Chart(props) {
-  const datasets = props.subs.map(sub => {
-    const dataArray = []
-    dataArray.push({
-      label: sub.sub_name,
-      data: sub.fee,
-      backgroundColor: "#008080",
 
-    })
-
-    return dataArray
+  const labels = []
+  const data = []
+  props.subs.map(sub => {
+    labels.push(sub.sub_name)
+    data.push(sub.fee)
   })
 
-  const labels = props.subs.map(sub => {
-    const labelArray = []
-    labelArray.push(sub.sub_name)
-
-    return labelArray
-  })
-
-  const data = {
+  const graphData = {
     labels: labels,
-    datasets: datasets
+
+    datasets: [
+      {
+        label: "",
+        data: data,
+        backgroundColor: "rgba(0, 128, 128, 0.5)",
+        borderColor: "#008080",
+        borderWidth: 1,
+      }
+    ]
   }
 
   const options = {
     responsive: true,
-    height: "30%"
+    plugins: {legend: {display: false}},
+    scales: {
+      
+    },
+
   }
 
   return (
     <div className="container">
       <Bar
         className="bar-chart"
-        data={data}
+        data={graphData}
         options={options}
       />
     </div>

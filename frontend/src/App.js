@@ -1,10 +1,12 @@
 import './App.css';
+import {Grid} from "@mui/material"
 import Chart from './component/Chart';
 import React from 'react';
 import Subs from './component/Subs';
 import Header from './component/Header';
 import SubForm from './component/SubForm';
 import axios from "axios"
+import TotalFee from "./component/TotalFee"
 
 export default function App() {
   const client = axios.create({
@@ -53,9 +55,17 @@ export default function App() {
           getSubs={getSubs} 
         />
 
-        <Chart 
-          subs={subs}
-        />
+        <Grid container spacing={2}>
+          <Grid item xs={2}>
+            <TotalFee subs={subs} />
+          </Grid>
+
+          <Grid item xs={10}>
+            <Chart 
+              subs={subs}
+            />
+          </Grid>
+        </Grid>
       </div>
     </>
   );
