@@ -4,7 +4,7 @@ export default function Header() {
   return (
     <header>
       <div className="header-left">
-        <h1>logo</h1>
+        <h2>SubscManager</h2>
       </div>
 
       <div className="header-right">

@@ -27,11 +27,11 @@ export default function SubForm(props) {
   return (
     <div className="container">
       <div className="form-body">
-        <div className="body-left">
+        <div className="form-body-left">
           <TotalFee subs={props.subs} />
         </div>
 
-        <div className="body-right">
+        <div className="form-body-right">
           <Grid container spacing={1}>
             <Grid item xs={12}>
               <TextField

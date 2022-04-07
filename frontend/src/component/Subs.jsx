@@ -27,7 +27,7 @@ export default function Subs(props) {
             variant="contained"
             size="small"
           >
-            delete
+            ×
           </Button>
         </TableCell>
       </TableRow>

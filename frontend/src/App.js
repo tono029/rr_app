@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import {Grid} from "@mui/material"
 import Chart from './component/Chart';
 import React from 'react';

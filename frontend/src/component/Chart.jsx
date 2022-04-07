@@ -30,7 +30,10 @@ export default function Chart(props) {
     responsive: true,
     plugins: {legend: {display: false}},
     scales: {
-
+      xAxis: {
+        display: true,
+        
+      }
     },
 
   }
