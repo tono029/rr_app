@@ -20,7 +20,7 @@ export default function SubForm(props) {
 
   const {register, handleSubmit, reset, formState: {errors},} = useForm({
     mode: onSubmit,
-    defaultValues: {sub_name: "", fee: ""},
+    defaultValues: {sub_name: "", fee: "", link: ""},
 
   })
 
@@ -45,10 +45,11 @@ export default function SubForm(props) {
                   message: "必須です。",
                 })}
               />
+
               {errors.sub_name && <span>必須項目です</span>}
             </Grid>
             
-            <Grid item xs={8}>
+            <Grid item xs={9}>
               <TextField
                 fullWidth
                 label="料金"
@@ -58,27 +59,38 @@ export default function SubForm(props) {
                   required: true,
                   pattern: {value: "[0-9]*", message: "数値を入力してください"},
                 })}
-  
               />
+
               {errors.fee && errors.fee.type === "required" && <span>必須項目です</span>}
               {errors.fee && errors.fee.type === "pattern" && <span>数値を入力してください</span>}
             </Grid>
       
-            <Grid item xs={4} className="period-select">
+            <Grid item xs={3} className="period-select">
               <Select
                 fullWidth
+                label="期間"
                 size="small"
                 defaultValue="1"
                 {...register("period")}
-  
               >
                 <MenuItem value={1}>/月</MenuItem>
                 <MenuItem value={2}>/年</MenuItem>
               </Select>
             </Grid>
+
+            <Grid item xs={9}>
+              <TextField
+                fullWidth
+                label="リンク先（任意）"
+                variant="outlined" 
+                size="small"
+                {...register("link")}
+              />
+            </Grid>
       
-            <Grid item xs={12}>
-              <Button 
+            <Grid item xs={3}>
+              <Button
+                fullWidth
                 variant="contained"
                 onClick={handleSubmit(onSubmit)}  
               >

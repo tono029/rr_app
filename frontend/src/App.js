@@ -14,6 +14,8 @@ export default function App() {
     baseURL: "http://localhost:3001/"
   })
 
+  const [user, setUser] = React.useState("user")
+
   const [subs, setSubs] = React.useState([])
 
   async function getSubs() {
@@ -39,7 +41,7 @@ export default function App() {
 
   return (
     <>
-      <Header />
+      <Header user={user} />
       <div className='main'>
         <SubForm 
           client={client} 

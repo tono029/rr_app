@@ -28,14 +28,9 @@ export default function Chart(props) {
 
   const options = {
     responsive: true,
-    plugins: {legend: {display: false}},
-    scales: {
-      xAxis: {
-        display: true,
-        
-      }
-    },
-
+    plugins: {
+      legend: {display: false}
+    }
   }
 
   return (
