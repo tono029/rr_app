@@ -12,8 +12,10 @@ class SubsController < ApplicationController
     @sub = Sub.new(
       sub_name: params[:sub_name],
       fee: params[:fee],
-      period: params[:period]
+      period: params[:period],
+      link: params[:link],
     )
+
     @sub.save
   end
 

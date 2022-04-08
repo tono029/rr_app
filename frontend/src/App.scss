@@ -51,7 +51,7 @@ header {
 }
 
 .form-body-left {
-  width: 50%;
+  width: 40%;
   margin: auto;
   text-align: center;
   h1 {
@@ -64,6 +64,7 @@ header {
 }
 
 .form-body-right {
+  width: 60%;
   margin-left: 20px;
 }
 
@@ -106,4 +107,19 @@ header {
 
 th {
   background-color: rgb(240, 240, 240) !important;
+}
+
+.css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop {
+  background-color: rgba(0,0,0,0.1) !important;
+}
+
+.modal-form {
+  display: flex;
+  justify-content: space-between;
+  button {
+    background-color: teal;
+  }
+  button:hover, button:focus {
+    background-color: teal;
+  }
 }
