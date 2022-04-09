@@ -33,15 +33,15 @@ header {
 
 .form-body {
   display: flex;
-  button {
-    background-color: teal;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3) !important ;
-    transition: 0.3s;
-  }
-   button:focus, button:hover {
-    background-color: rgb(0, 107, 107) !important;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3) !important ;
-  }
+  // button {
+  //   background-color: teal;
+  //   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3) !important ;
+  //   transition: 0.3s;
+  // }
+  //  button:focus, button:hover {
+  //   background-color: rgb(0, 107, 107) !important;
+  //   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3) !important ;
+  // }
 }
 
 .form-body-left {
@@ -107,16 +107,10 @@ th {
 }
 
 .css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop {
-  background-color: rgba(0,0,0,0.1) !important;
+  background-color: rgba(0,0,0,0.3) !important;
 }
 
 .modal-form {
   display: flex;
   justify-content: space-between;
-  button {
-    background-color: teal;
-  }
-  button:hover, button:focus {
-    background-color: teal;
-  }
 }
