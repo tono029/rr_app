@@ -5,6 +5,8 @@ import Paper from '@mui/material/Paper';
 import AddLinkIcon from '@mui/icons-material/AddLink';
 import LinkIcon from '@mui/icons-material/Link';
 import IconButton from '@mui/material/IconButton';
+import EditIcon from '@mui/icons-material/Edit';
+import ClearIcon from '@mui/icons-material/Clear';
 import { useForm } from "react-hook-form";
 
 export default function Subs(props) {
@@ -56,15 +58,16 @@ export default function Subs(props) {
     return (
       <TableRow key={sub.id}>
         {/* クリックで編集できるように */}
-        <TableCell>{sub.sub_name}</TableCell>
+        <TableCell colSpan={1}>{sub.sub_name}</TableCell>
 
-        <TableCell>{sub.fee.toLocaleString()}<span>円</span></TableCell>
+        <TableCell colSpan={1}>{sub.fee.toLocaleString()}<span>円</span></TableCell>
 
-        <TableCell>{sub.period === 1 ? "/月" : "/年"}</TableCell>
+        <TableCell padding="none">{sub.period === 1 ? "/月" : "/年"}</TableCell>
 
+        {/* リンク */}
         {
           sub.link !== "" ?
-          <TableCell>
+          <TableCell padding="none">
             <IconButton 
               className="link-btn"
               onClick={() => window.open(sub.link)}  
@@ -73,7 +76,7 @@ export default function Subs(props) {
             </IconButton>
           </TableCell>
         :
-          <TableCell>
+          <TableCell padding="none">
             <IconButton 
               className="link-btn"
               onClick={() => setOpen([true, sub.id])}
@@ -83,15 +86,25 @@ export default function Subs(props) {
           </TableCell>
         }
 
-        <TableCell>
-          <Button
+        {/* editボタン */}
+        <TableCell padding="none">
+          <IconButton
+            className="edit-btn"
+
+          >
+            <EditIcon />
+          </IconButton>
+        </TableCell>
+
+        {/* deleteボタン */}
+        <TableCell padding="none">
+          <IconButton
             className="delete-btn"
             onClick={() => deleteSub(sub.id)}
-            variant="contained"
             size="small"
           >
-            ×
-          </Button>
+            <ClearIcon />
+          </IconButton>
         </TableCell>
 
         <Modal
@@ -123,14 +136,15 @@ export default function Subs(props) {
 
   return (
     <TableContainer className="subs-table" component={Paper}>
-      <Table size="small">
+      <Table size="small" stickyHeader>
         <TableHead>
           <TableRow>
-            <TableCell>サービス名</TableCell>
-            <TableCell>料金</TableCell>
-            <TableCell>期間</TableCell>
-            <TableCell>リンク</TableCell>
-            <TableCell></TableCell>
+            <TableCell colSpan={1}>サービス名</TableCell>
+            <TableCell colSpan={1}>料金</TableCell>
+            <TableCell padding="none">期間</TableCell>
+            <TableCell padding="none">リンク</TableCell>
+            <TableCell padding="none"></TableCell>
+            <TableCell padding="none"></TableCell>
           </TableRow>
         </TableHead>
 

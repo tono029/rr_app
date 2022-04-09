@@ -21,7 +21,7 @@ export default function App() {
     const res = await client.get("subs")
     const subsArray = []
 
-    res.data.map(sub => {
+    res.data.forEach(sub => {
       subsArray.push({
         ...sub,
         // 必要なプロパティがあれば追加
@@ -34,6 +34,7 @@ export default function App() {
 
   React.useEffect(() => {
     getSubs()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   console.log("subs", subs)

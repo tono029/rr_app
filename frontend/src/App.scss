@@ -33,15 +33,6 @@ header {
 
 .form-body {
   display: flex;
-  // button {
-  //   background-color: teal;
-  //   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3) !important ;
-  //   transition: 0.3s;
-  // }
-  //  button:focus, button:hover {
-  //   background-color: rgb(0, 107, 107) !important;
-  //   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3) !important ;
-  // }
 }
 
 .form-body-left {
@@ -76,7 +67,7 @@ header {
 
 .subs-table {
   max-width: 500px;
-  width: 100% !important;
+  max-height: 200px;
   margin: 0 auto 20px auto;
   border-radius: 10px !important;
   box-shadow: 0px 0px 5px rgb(0, 0, 0, 0.2) !important;
@@ -89,13 +80,16 @@ header {
   }
 }
 
-.link-btn {
+.link-btn, .edit-btn, .delete-btn {
   border-radius: 10px !important;
-  background-color: none !important;
+}
+
+.edit-btn {
+  opacity: 0.7;
 }
 
 .delete-btn {
-  background-color: teal !important;
+  opacity: 0.7;
 }
 
 .bar-chart {
