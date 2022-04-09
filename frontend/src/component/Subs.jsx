@@ -5,13 +5,36 @@ import Paper from '@mui/material/Paper';
 import AddLinkIcon from '@mui/icons-material/AddLink';
 import LinkIcon from '@mui/icons-material/Link';
 import IconButton from '@mui/material/IconButton';
-import { registeralbes } from "chart.js";
+import { useForm } from "react-hook-form";
 
 export default function Subs(props) {
+  const [showModal, setShowModal] = React.useState(false)
+
   async function deleteSub(id) {
     await props.client.delete(`subs/${id}`)
     props.getSubs()
   }
+
+  async function updateSub(data, id) {
+    await props.client.patch(`subs/${id}`, data)
+    props.getSubs()
+  }
+
+  // フォーム送信時の処理
+  const onSubmit = (data) => {
+    console.log("data", data)
+
+    // rails側に送信
+    // updateSub(data, id)
+    // props.getSubs()
+    setShowModal(false)
+  }
+
+  const {register, handleSubmit} = useForm({
+    mode: onSubmit,
+    defaultValues: {link: ""},
+
+  })
 
   const modalStyle = {
     position: "absolute",
@@ -20,6 +43,7 @@ export default function Subs(props) {
     transform: 'translate(-50%, -50%)',
     width: 300,
     bgcolor: 'white',
+    border: "none",
     borderRadius: "10px",
     boxShadow: "0px 5px 15px rgba(0,0,0,0.1)",
     p: 4,
@@ -30,13 +54,11 @@ export default function Subs(props) {
     window.open(url)
   }
 
-  const [showModal, setShowModal] = React.useState(false)
-
   const subsIndex = props.subs.map(sub => {
     return (
       <TableRow key={sub.id}>
         {/* クリックで編集できるように */}
-        <TableCell>{sub.sub_name}</TableCell>
+        <TableCell>{sub.sub_name}, {sub.id}</TableCell>
 
         <TableCell>{sub.fee.toLocaleString()}<span>円</span></TableCell>
 
@@ -44,47 +66,21 @@ export default function Subs(props) {
 
         {/* リンクが設定されているかで分岐、なければonClickでmodal表示。 */}
         {
-          sub.link === "" && 
-          <TableCell>
-            <IconButton
-              className= "link-btn"
-              onClick={() => setShowModal(true)}  
-            >
-              <AddLinkIcon />
-            </IconButton>
-
-            <Modal
-              open={showModal}
-              onClose={() => setShowModal(false)} 
-            >
-              <Box sx={modalStyle}>
-                <p>リンク先追加</p>
-                <div className="modal-form">
-                  <TextField 
-                    size="small"
-                    label="リンク"
-                  />
-                  <Button
-                    variant="contained"
-                    size="small"
-                  >
-                    追加
-                  </Button>
-                </div>
-              </Box>
-            </Modal>
-          </TableCell>
-        }
-        
-        {/* linkが設定されているとき */}
-        {
-          sub.link !== "" && 
+          sub.link !== "" ?
           <TableCell>
             <IconButton 
               className="link-btn"
               onClick={() => openLink(sub.link)}  
             >
               <LinkIcon />
+            </IconButton>
+          </TableCell>
+        :
+          <TableCell>
+            <IconButton 
+              className="link-btn"
+            >
+              <AddLinkIcon />
             </IconButton>
           </TableCell>
         }
@@ -100,7 +96,6 @@ export default function Subs(props) {
           </Button>
         </TableCell>
       </TableRow>
-    
     )
   })
 
