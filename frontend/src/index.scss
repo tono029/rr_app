@@ -3,7 +3,7 @@
 body {
   height: auto;
   margin: 0;
-  background-color: rgb(244, 255, 255);
+  background-color: #e0f2f1;
   font-family: 'Noto Sans JP', sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -44,6 +44,7 @@ h2 {
 
 th, td {
   text-align: center !important;
+  font-family: 'Noto Sans JP', sans-serif !important;
 }
 
 button {

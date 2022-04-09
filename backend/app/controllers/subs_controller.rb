@@ -20,7 +20,7 @@ class SubsController < ApplicationController
   end
 
   def update
-    
+    @sub.update(sub_params)
   end
 
   def destroy
@@ -32,6 +32,10 @@ class SubsController < ApplicationController
 
     def set_sub
       @sub = Sub.find(params[:id])
+    end
+
+    def sub_params
+      params.require(:sub).permit(:sub_name, :fee, :link, :user_id, :period)
     end
   
 end

@@ -1,12 +1,11 @@
 import './App.scss';
-import {Grid} from "@mui/material"
 import Chart from './component/Chart';
 import React from 'react';
 import Subs from './component/Subs';
 import Header from './component/Header';
 import SubForm from './component/SubForm';
 import axios from "axios"
-import TotalFee from "./component/TotalFee"
+import {createTheme, ThemeProvider} from "@mui/material"
 
 export default function App() {
   const client = axios.create({
@@ -39,8 +38,26 @@ export default function App() {
 
   console.log("subs", subs)
 
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: "#008080",
+      },
+    },
+
+    typography: {
+      fontFamily: [
+        "sans-serif"
+      ].join(","),
+      fontSize: 12,
+    },
+
+
+
+  })
+
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <Header user={user} />
       <div className='main'>
         <SubForm 
@@ -61,7 +78,7 @@ export default function App() {
           subs={subs}
         />
       </div>
-    </>
+    </ThemeProvider>
   );
 }
 

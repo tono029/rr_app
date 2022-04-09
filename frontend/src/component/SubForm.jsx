@@ -33,12 +33,11 @@ export default function SubForm(props) {
 
         <div className="form-body-right">
           <Grid container spacing={1}>
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={12}>
               <TextField
                 autoFocus
                 fullWidth
                 label="サービス名"
-                variant="outlined" 
                 size="small"
                 {...register("sub_name", {
                   required: {value: true, message: "必須項目です"},
@@ -46,29 +45,30 @@ export default function SubForm(props) {
                 })}
               />
 
-              {errors.sub_name && errors.sub_name.type === "required" && <span>・{errors.sub_name.message}</span>}
-              {errors.sub_name && errors.sub_name.type === "maxLength" && <span>・{errors.sub_name.message}</span>}
+              <div className="error-mess">
+                {errors.sub_name && errors.sub_name.type === "required" && <span>・{errors.sub_name.message}</span>}
+                {errors.sub_name && errors.sub_name.type === "maxLength" && <span>・{errors.sub_name.message}</span>}
+              </div>
 
             </Grid>
             
-            <Grid item xs={9}>
+            <Grid item xs={6} sm={8}>
               <TextField
                 fullWidth
                 label="料金"
-                variant="outlined" 
+                type="number"
                 size="small"
                 {...register("fee", {
                   required: {value: true, message: "必須項目です"},
-                  // 機能してない
-                  pattern: {value: "[0-9]*", message: "数値を入力してください"},
                 })}
               />
 
-              {errors.fee && errors.fee.type === "required" && <span>{errors.fee.message}</span>}
-              {errors.fee && errors.fee.type === "pattern" && <span>{errors.fee.message}</span>}
+              <div className="error-mess">
+                {errors.fee && errors.fee.type === "required" && <span>・{errors.fee.message}</span>}
+              </div>
             </Grid>
       
-            <Grid item xs={3} className="period-select">
+            <Grid item xs={6} sm={4} className="period-select">
               <Select
                 fullWidth
                 label="期間"
@@ -81,17 +81,17 @@ export default function SubForm(props) {
               </Select>
             </Grid>
 
-            <Grid item xs={9}>
+            <Grid item xs={6} sm={8}>
               <TextField
                 fullWidth
-                label="リンク先（任意）"
-                variant="outlined" 
+                label="リンク（任意）"
+                type="url" 
                 size="small"
                 {...register("link")}
               />
             </Grid>
       
-            <Grid item xs={3}>
+            <Grid item xs={6} sm={4}>
               <Button
                 fullWidth
                 variant="contained"

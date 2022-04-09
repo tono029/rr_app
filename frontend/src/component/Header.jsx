@@ -5,7 +5,7 @@ export default function Header(props) {
     const now = new Date().getHours()
     if (now >= 6 && now < 12) {
       return "おはようございます"
-    } else if (now => 12 && now <= 18) {
+    } else if (now >= 12 && now < 18) {
       return "こんにちは"
     } else {
       return "こんばんは"
