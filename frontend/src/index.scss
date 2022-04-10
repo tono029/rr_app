@@ -50,3 +50,30 @@ th, td {
 button {
   font-family: 'Noto Sans JP', sans-serif !important;
 }
+
+.main {
+  position: relative;
+  z-index: 1;
+  padding: 20px 20px;
+  width: calc(100% - 330px);
+}
+
+// 小さい時
+@media screen and(max-width: 600px) {
+  .main {
+    padding: 20px 10px;
+  }
+
+  .greeting {
+    display: none;
+  }
+}
+
+
+
+// 大きい時
+@media screen and (max-width: 950px) {
+  .main {
+    width: auto;
+  }
+}

@@ -1,8 +1,10 @@
+// Header.jsx------------------------------------
 header {
   position: relative;
   display: flex;
+  height: 60px;
   background-color: teal;
-  padding: 5px 20px;
+  padding: 0px 25px;
   color: white;
   z-index: 2;
   align-items: center;
@@ -18,19 +20,14 @@ header {
 .header-right {
   display: flex;
   .greeting {
-    margin-right: 20px;
+    margin-right: 10px;
+  }
+  p {
+    font-size: 12px;
   }
 }
 
-.main {
-  position: relative;
-  z-index: 1;
-  height: 100%;
-  width: 90%;
-  margin: 0 auto;
-  padding: 20px 0 ;
-}
-
+// SubForm.jsx--------------------------------
 .form-body {
   display: flex;
 }
@@ -60,14 +57,10 @@ header {
   margin-left: 10px;
 }
 
-.sub {
-  display: flex;
-  justify-content: space-evenly;
-}
-
+// Subs.jsx------------------------------------------
 .subs-table {
-  max-width: 500px;
-  max-height: 200px;
+  max-width: 531px;
+  max-height: 230px;
   margin: 0 auto 20px auto;
   border-radius: 10px !important;
   box-shadow: 0px 0px 5px rgb(0, 0, 0, 0.2) !important;
@@ -84,16 +77,8 @@ header {
   border-radius: 10px !important;
 }
 
-.edit-btn {
+.edit-btn, .delete-btn {
   opacity: 0.7;
-}
-
-.delete-btn {
-  opacity: 0.7;
-}
-
-.bar-chart {
-  text-align: center;
 }
 
 th {
@@ -108,3 +93,10 @@ th {
   display: flex;
   justify-content: space-between;
 }
+
+// Chart.jsx-------------------------------------------
+.chart-header {
+  display: flex;
+  justify-content: end;
+}
+

@@ -22,6 +22,10 @@ export default function Subs(props) {
     props.getSubs()
   }
 
+  function handleDelete(id) {
+    deleteSub(id)
+  }
+
   // フォーム送信時の処理
   const onSubmit = (data) => {
     console.log("data", data)
@@ -62,7 +66,7 @@ export default function Subs(props) {
 
         <TableCell colSpan={1}>{sub.fee.toLocaleString()}<span>円</span></TableCell>
 
-        <TableCell padding="none">{sub.period === 1 ? "/月" : "/年"}</TableCell>
+        <TableCell>{sub.period === 1 ? "/月" : "/年"}</TableCell>
 
         {/* リンク */}
         {
@@ -100,7 +104,7 @@ export default function Subs(props) {
         <TableCell padding="none">
           <IconButton
             className="delete-btn"
-            onClick={() => deleteSub(sub.id)}
+            onClick={() => handleDelete(sub.id)}
             size="small"
           >
             <ClearIcon />
@@ -136,7 +140,7 @@ export default function Subs(props) {
 
   return (
     <TableContainer className="subs-table" component={Paper}>
-      <Table size="small" stickyHeader>
+      <Table stickyHeader>
         <TableHead>
           <TableRow>
             <TableCell colSpan={1}>サービス名</TableCell>

@@ -1,5 +1,5 @@
 import React from "react";
-import {Grid, TextField, Button, MenuItem, Select,} from '@mui/material';
+import {Grid, TextField, Button, MenuItem, Select, FormControl, InputLabel} from '@mui/material';
 import {useForm} from "react-hook-form"
 import TotalFee from "./TotalFee";
 
@@ -69,16 +69,17 @@ export default function SubForm(props) {
             </Grid>
       
             <Grid item xs={6} sm={4} className="period-select">
-              <Select
-                fullWidth
-                label="期間"
-                size="small"
-                defaultValue="1"
-                {...register("period")}
-              >
-                <MenuItem value={1}>/月</MenuItem>
-                <MenuItem value={2}>/年</MenuItem>
-              </Select>
+              <FormControl size="small" fullWidth>
+                <InputLabel>期間</InputLabel>
+                <Select
+                  label="期間"
+                  defaultValue={1}
+                  {...register("period")}
+                >
+                  <MenuItem value={1}>/月</MenuItem>
+                  <MenuItem value={2}>/年</MenuItem>
+                </Select>
+              </FormControl>
             </Grid>
 
             <Grid item xs={6} sm={8}>
