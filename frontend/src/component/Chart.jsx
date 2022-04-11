@@ -56,7 +56,7 @@ export default function Chart(props) {
     responsive: true,
     plugins: {
       legend: {display: false},
-      
+      // title: {display: true, text: "グラフ"},
       // hover時の吹き出し
       tooltip: {
         displayColors: false,
@@ -70,7 +70,13 @@ export default function Chart(props) {
   return (
     <div className="container">
       <div className="chart-header">
-        <FormControl size="small" sx={{ m: 1, minWidth: 80 }}>
+        <div className="chart-header-l"><p>グラフ</p></div>
+
+        <FormControl
+          size="small" 
+          sx={{ m: 1, minWidth: 80 }}
+          className="chart-header-r"
+        >
           <InputLabel id="sort-select-label">ソート</InputLabel>
           <Select
             labelId="sort-select-label"

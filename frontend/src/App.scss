@@ -58,8 +58,14 @@ header {
 }
 
 // Subs.jsx------------------------------------------
+.table-container {
+  padding: 0;
+  margin: auto;
+  max-width: 540px;
+
+}
+
 .subs-table {
-  max-width: 531px;
   max-height: 230px;
   margin: 0 auto 20px auto;
   border-radius: 10px !important;
@@ -71,6 +77,10 @@ header {
   span {
     font-size: 0.5rem;
   }
+}
+
+.subs-table::-webkit-scrollbar {
+  display: none;
 }
 
 .link-btn, .edit-btn, .delete-btn {
@@ -97,6 +107,14 @@ th {
 // Chart.jsx-------------------------------------------
 .chart-header {
   display: flex;
-  justify-content: end;
+  align-items: center;
+  h3 {
+    font-weight: 400;
+    margin: 0;
+  }
+}
+
+.chart-header-l {
+  margin: 0 auto 0 30px;
 }
 

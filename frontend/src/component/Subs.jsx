@@ -8,9 +8,11 @@ import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
 import ClearIcon from '@mui/icons-material/Clear';
 import { useForm } from "react-hook-form";
+import EditModal from "./EditModal";
 
 export default function Subs(props) {
   const [open, setOpen] = React.useState([false, ""])
+  const [editOpen, setEditOpen] = React.useState([false, ""])
 
   async function deleteSub(id) {
     await props.client.delete(`subs/${id}`)
@@ -40,7 +42,6 @@ export default function Subs(props) {
   const {register, handleSubmit, reset} = useForm({
     mode: onSubmit,
     defaultValues: {link: ""},
-
   })
 
   const modalStyle = {
@@ -56,7 +57,6 @@ export default function Subs(props) {
     p: 4,
     padding: "0px 30px 20px 30px",
   }
-  
 
   const subsIndex = props.subs.map(sub => {
     return (
@@ -94,7 +94,7 @@ export default function Subs(props) {
         <TableCell padding="none">
           <IconButton
             className="edit-btn"
-
+            onClick={() => setEditOpen([true, sub.id])}
           >
             <EditIcon />
           </IconButton>
@@ -110,14 +110,15 @@ export default function Subs(props) {
             <ClearIcon />
           </IconButton>
         </TableCell>
-
+        
+        {/* link追加用のModal */}
         <Modal
           // openがtrueかつ、idが一致するモーダルを開く。
           open={open[0] && open[1] === sub.id}
           onClose={() => setOpen([false, ""])}
         >
-          <Box sx={modalStyle}>
-            <p>リンク先を追加</p>
+          <Box className="link-modal" sx={modalStyle}>
+            <p>「{sub.sub_name}」にリンク先を追加</p>
             <div className="modal-form">
               <TextField
                 label="リンク"
@@ -134,29 +135,39 @@ export default function Subs(props) {
             </div>
           </Box>
         </Modal>
+
+        <EditModal 
+          editOpen={editOpen}
+          setEditOpen={setEditOpen}
+          client={props.client}
+          sub={sub}
+          getSubs={props.getSubs}
+        />
       </TableRow>
     )
   })
 
   return (
-    <TableContainer className="subs-table" component={Paper}>
-      <Table stickyHeader>
-        <TableHead>
-          <TableRow>
-            <TableCell colSpan={1}>サービス名</TableCell>
-            <TableCell colSpan={1}>料金</TableCell>
-            <TableCell padding="none">期間</TableCell>
-            <TableCell padding="none">リンク</TableCell>
-            <TableCell padding="none"></TableCell>
-            <TableCell padding="none"></TableCell>
-          </TableRow>
-        </TableHead>
-
-        <TableBody>
-          {subsIndex}
-        </TableBody>
-        
-      </Table>
-    </TableContainer>
+    <div className="table-container">
+      <TableContainer className="subs-table" component={Paper}>
+        <Table stickyHeader>
+          <TableHead>
+            <TableRow>
+              <TableCell colSpan={1}>サービス名</TableCell>
+              <TableCell colSpan={1}>料金</TableCell>
+              <TableCell padding="none">期間</TableCell>
+              <TableCell padding="none">リンク</TableCell>
+              <TableCell padding="none"></TableCell>
+              <TableCell padding="none"></TableCell>
+            </TableRow>
+          </TableHead>
+  
+          <TableBody>
+            {subsIndex}
+          </TableBody>
+          
+        </Table>
+      </TableContainer>
+    </div>
   )
 }

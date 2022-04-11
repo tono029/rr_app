@@ -51,6 +51,7 @@ button {
   font-family: 'Noto Sans JP', sans-serif !important;
 }
 
+
 .main {
   position: relative;
   z-index: 1;
@@ -75,5 +76,9 @@ button {
 @media screen and (max-width: 950px) {
   .main {
     width: auto;
+  }
+
+  .link-modal {
+    left: 50% !important;
   }
 }
