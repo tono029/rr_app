@@ -123,6 +123,7 @@ export default function Subs(props) {
               <TextField
                 label="リンク"
                 size="small"
+                autoComplete="off"
                 {...register("link")}
               />
               
@@ -142,6 +143,7 @@ export default function Subs(props) {
           client={props.client}
           sub={sub}
           getSubs={props.getSubs}
+          updateSub={updateSub}
         />
       </TableRow>
     )

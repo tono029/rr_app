@@ -17,17 +17,12 @@ export default function EditModal(props) {
     padding: "0px 30px 20px 30px",
   }
 
-  async function updateSub(data, id) {
-    await props.client.patch(`subs/${id}`, data)
-    props.getSubs()
-  }
-
   const onSubmit = (data) => {
     console.log("data", data)
     console.log("id", props.sub.id)
 
     // rails側に更新情報を送信
-    updateSub(data, props.sub.id)
+    props.updateSub(data, props.sub.id)
     props.getSubs()
     props.setEditOpen([false, ""])
     reset()
@@ -35,10 +30,7 @@ export default function EditModal(props) {
 
   const {register, handleSubmit, reset, formState: {errors},} = useForm({
     mode: onSubmit,
-    defaultValues: {sub_name: "", fee: "", link: ""},
-
   })
-
 
   return (
     <Modal
@@ -52,7 +44,9 @@ export default function EditModal(props) {
         <Grid container spacing={2}>
             <Grid item xs={12} sm={12}>
               <TextField
+                autoComplete="off"
                 fullWidth
+                required
                 label="サービス名"
                 size="small"
                 defaultValue={props.sub.sub_name}
@@ -72,6 +66,8 @@ export default function EditModal(props) {
             <Grid item xs={6} sm={8}>
               <TextField
                 fullWidth
+                autoComplete="off"
+                required
                 label="料金"
                 type="number"
                 size="small"
@@ -103,6 +99,7 @@ export default function EditModal(props) {
             <Grid item xs={6} sm={8}>
               <TextField
                 fullWidth
+                autoComplete="off"
                 label="リンク（任意）"
                 type="url" 
                 size="small"

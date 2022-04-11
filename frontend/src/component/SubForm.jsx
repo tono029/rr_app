@@ -36,7 +36,9 @@ export default function SubForm(props) {
             <Grid item xs={12} sm={12}>
               <TextField
                 autoFocus
+                required
                 fullWidth
+                autoComplete="off"
                 label="サービス名"
                 size="small"
                 {...register("sub_name", {
@@ -55,6 +57,8 @@ export default function SubForm(props) {
             <Grid item xs={6} sm={8}>
               <TextField
                 fullWidth
+                required
+                autoComplete="off"
                 label="料金"
                 type="number"
                 size="small"
@@ -85,6 +89,7 @@ export default function SubForm(props) {
             <Grid item xs={6} sm={8}>
               <TextField
                 fullWidth
+                autoComplete="off"
                 label="リンク（任意）"
                 type="url" 
                 size="small"
