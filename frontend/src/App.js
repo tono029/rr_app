@@ -60,6 +60,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <Header user={user} />
+      <div className='spacer'></div>
       <div className='main'>
         <SubForm 
           client={client} 

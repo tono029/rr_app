@@ -43,7 +43,8 @@ export default function Chart(props) {
     labels: labels,
 
     datasets: [
-      {
+      { 
+        label: "料金",
         data: data,
         backgroundColor: "rgba(0, 128, 128, 0.5)",
         borderColor: "#008080",
@@ -60,7 +61,7 @@ export default function Chart(props) {
       // hover時の吹き出し
       tooltip: {
         displayColors: false,
-
+        bodyText: "sdfsdf"
       },
 
 
