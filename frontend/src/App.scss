@@ -2,9 +2,9 @@
 header {
   position: relative;
   display: flex;
-  height: 50px;
+  height: 45px;
   background-color: teal;
-  padding: 10px 25px 0 25px;
+  padding: 5px 25px 0 25px;
   color: white;
   z-index: 2;
   align-items: center;
@@ -119,3 +119,8 @@ th {
   margin: 0 auto 0 30px;
 }
 
+.edit-modal {
+  p {
+    margin-bottom: 30px;
+  }
+}
