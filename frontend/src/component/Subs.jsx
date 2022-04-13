@@ -101,6 +101,7 @@ export default function Subs(props) {
         </TableCell>
 
         {/* deleteボタン */}
+        {/* hover時にのみ表示 */}
         <TableCell padding="none">
           <IconButton
             className="delete-btn"

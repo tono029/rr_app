@@ -1,5 +1,6 @@
 import client from "./client";
 import Cookies from "js-cookie";
+import { Redirect } from "react-router-dom";
 
 // サインアップ
 export const signUp = (params) => {
@@ -20,6 +21,7 @@ export const signOut = () => {
       uid: Cookies.get("_uid"),
     },
   });
+  <Redirect to="signin" />
 };
 
 // ログインユーザーの取得

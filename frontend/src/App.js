@@ -29,7 +29,7 @@ export default function App() {
       if (res?.data.isLogin === true) {
         setIsSignedIn(true)
         setCurrentUser(res?.data.data);
-        console.log(res?.data.data);
+        console.log(res?.data);
       } else {
         console.log("no current user")
       }
@@ -107,8 +107,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Header user={user} />
-      <div className='spacer'></div>
+      
 
       <AuthContext.Provider
         value={{
@@ -121,6 +120,12 @@ export default function App() {
         }}
       >
         <BrowserRouter>
+          <Header 
+            user={user} 
+            isSignedIn={isSignedIn}
+          />
+          <div className='spacer'></div>
+          
           <Switch>
             <Route exact path="/signup">
               <SignUp />

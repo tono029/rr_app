@@ -58,14 +58,17 @@ body::-webkit-scrollbar {
 .main {
   position: relative;
   z-index: 1;
-  padding: 0 20px 20px 20px;
+  padding: 0px 20px 20px 20px;
   width: calc(100% - 330px);
 }
 
 .spacer {
+  position: sticky;
+  top: 50px;
   background-image: url("../public/spacer.svg");
   width: 100%;
   aspect-ratio: 900/50;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1));
   z-index: 2;
   background-position: center;
   background-repeat: no-repeat;
@@ -75,7 +78,7 @@ body::-webkit-scrollbar {
 // 小さい時
 @media screen and(max-width: 600px) {
   .main {
-    padding: 20px 10px;
+    padding: 0px 10px 20px 10px;
   }
 
   .greeting {

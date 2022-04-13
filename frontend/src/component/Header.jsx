@@ -1,5 +1,10 @@
 import React from "react";
+import {Button } from "@mui/material"
+import {signOut} from "../api/auth"
+import { Link } from "react-router-dom";
+import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 
+ 
 export default function Header(props) {
   function greeting() {
     const now = new Date().getHours()
@@ -23,7 +28,36 @@ export default function Header(props) {
           <p>{greeting()}, {props.user}さん</p>
         </div>
 
-        <p>navItems</p>
+        <div className="nav-items">
+          {props.isSignedIn ?
+            <Button
+              onClick={signOut}
+              component={Link}
+              to="/signin"
+            >
+              ログアウト
+            </Button>
+
+          :
+
+          <>
+            <Button
+              component={Link}
+              to="/signin"
+            >
+              Login
+            </Button>
+            
+            <Button
+              component={Link}
+              to="/signup"
+            >
+              新規登録
+            </Button>
+          </>
+          }
+          
+        </div>
       </div>
     </header>
   )

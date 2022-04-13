@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { signIn } from "../api/auth";
 import { AuthContext } from "../App";
+import {Button} from "@mui/material"
 
 export const SignIn = () => {
   const { setIsSignedIn, setCurrentUser } = useContext(AuthContext);
@@ -40,9 +41,11 @@ export const SignIn = () => {
       console.log(e);
     }
   };
+
+  // 整える
   return (
-    <>
-      <p>サインインページです</p>
+    <div className="container">
+      <p>ログイン</p>
       <form>
         <div>
           <label htmlFor="email">メールアドレス</label>
@@ -64,11 +67,11 @@ export const SignIn = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button type="submit" onClick={(e) => handleSignInSubmit(e)}>
+        <Button variant="contained" type="submit" onClick={(e) => handleSignInSubmit(e)}>
           Submit
-        </button>
+        </Button>
       </form>
-      <Link to="/signup">サインアップへ</Link>
-    </>
+      <Link to="/signup">新規登録</Link>
+    </div>
   );
 };

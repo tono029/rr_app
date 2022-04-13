@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { signUp } from "../api/auth";
 import { AuthContext } from "../App";
+import {Button, TextField, FormControl, } from "@mui/material"
 
 export const SignUp = () => {
   const { setIsSignedIn, setCurrentUser } = useContext(AuthContext);
@@ -33,9 +34,11 @@ export const SignUp = () => {
       console.log(e);
     }
   };
+
+  // 整える
   return (
-    <>
-      <h1>サインアップページです</h1>
+    <div className="container">
+      <p>新規登録</p>
       <form>
         <div>
           <label htmlFor="email">メールアドレス</label>
@@ -75,11 +78,11 @@ export const SignUp = () => {
             value={confirmSuccessUrl}
           />
         </div>
-        <button type="submit" onClick={(e) => handleSignUpSubmit(e)}>
+        <Button variant="contained" type="submit" onClick={(e) => handleSignUpSubmit(e)}>
           Submit
-        </button>
+        </Button>
       </form>
-      <Link to="/signin">サインインへ</Link>
-    </>
+      <Link to="/signin">サインイン</Link>
+    </div>
   );
 };

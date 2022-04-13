@@ -8,6 +8,8 @@ header {
   color: white;
   z-index: 2;
   align-items: center;
+  position: sticky;
+  top: 0;
 }
 
 .header-left {
@@ -19,11 +21,20 @@ header {
 
 .header-right {
   display: flex;
+  align-items: center;
+  justify-content: end;
   .greeting {
     margin-right: 10px;
   }
   p {
     font-size: 12px;
+  }
+}
+
+.nav-items {
+  a {
+    text-decoration: none;
+    color: white;
   }
 }
 
