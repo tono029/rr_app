@@ -1,9 +1,9 @@
-import Cookies from "js-cookie";
+import h3 from "js-cookie";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { signUp } from "../api/auth";
 import { AuthContext } from "../App";
-import {Button, TextField, FormControl, } from "@mui/material"
+import {Button, TextField, Stack} from "@mui/material"
 
 export const SignUp = () => {
   const { setIsSignedIn, setCurrentUser } = useContext(AuthContext);
@@ -29,6 +29,7 @@ export const SignUp = () => {
     try {
       const res = await signUp(params);
       console.log(res);
+      
       alert("confirm email");
     } catch (e) {
       console.log(e);
@@ -37,52 +38,68 @@ export const SignUp = () => {
 
   // 整える
   return (
-    <div className="container">
-      <p>新規登録</p>
-      <form>
-        <div>
-          <label htmlFor="email">メールアドレス</label>
-          <input
+    <div className="container sign-form">
+      <Stack
+        alignItems="center"
+      >
+        <h3>新規登録</h3>
+
+        <form>
+          <TextField
+            required
+            label="メールアドレス"
+            fullWidth
+            size="small"
             type="email"
             id="email"
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-        </div>
-        <div>
-          <label htmlFor="password">パスワード</label>
-          <input
+
+          <TextField
+            required
+            label="パスワード"
+            fullWidth
+            size="small"
             type="password"
             id="password"
             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-        </div>
-        <div>
-          <label htmlFor="password_confirmation">パスワード確認</label>
-          <input
+
+          <TextField
+            required
+            label="パスワード確認"
+            fullWidth
+            size="small"
             type="password"
             id="password_confirmation"
             name="password_confirmation"
             value={passwordConfirmation}
             onChange={(e) => setPasswordConfirmation(e.target.value)}
           />
-        </div>
-        <div>
+
           <input
             type="hidden"
             id="confirm_success_url"
             name="confirm_success_url"
             value={confirmSuccessUrl}
           />
-        </div>
-        <Button variant="contained" type="submit" onClick={(e) => handleSignUpSubmit(e)}>
-          Submit
-        </Button>
-      </form>
-      <Link to="/signin">サインイン</Link>
+
+          <Button 
+            fullWidth
+            variant="contained" 
+            type="submit" 
+            onClick={(e) => handleSignUpSubmit(e)}
+          >
+            新規登録
+          </Button>
+        </form>
+      </Stack>
+
+      <Link to="/signin">ログインページへ</Link>
     </div>
   );
 };

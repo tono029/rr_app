@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { signIn } from "../api/auth";
 import { AuthContext } from "../App";
-import {Button} from "@mui/material"
+import {Button, Stack, TextField} from "@mui/material"
 
 export const SignIn = () => {
   const { setIsSignedIn, setCurrentUser } = useContext(AuthContext);
@@ -44,34 +44,50 @@ export const SignIn = () => {
 
   // 整える
   return (
-    <div className="container">
-      <p>ログイン</p>
-      <form>
-        <div>
-          <label htmlFor="email">メールアドレス</label>
-          <input
+    <div className="container sign-form">
+      <Stack
+        alignItems="center"
+      >
+        <h3>LOG IN</h3>
+
+        <form>
+          <TextField
+            required
+            fullWidth
+            label="メールアドレス"
+            size="small"
             type="email"
             id="email"
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-        </div>
-        <div>
-          <label htmlFor="password">パスワード</label>
-          <input
+
+          <TextField
+            fullWidth
+            required
+            label="パスワード"
+            size="small"
             type="password"
             id="password"
             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-        </div>
-        <Button variant="contained" type="submit" onClick={(e) => handleSignInSubmit(e)}>
-          Submit
-        </Button>
-      </form>
-      <Link to="/signup">新規登録</Link>
+
+          <Button
+            fullWidth 
+            variant="contained" 
+            type="submit" 
+            onClick={(e) => handleSignInSubmit(e)}
+          >
+            log in
+          </Button>
+        </form>
+
+      </Stack>
+      <Link to="/signup">新規登録ページへ</Link>
+
     </div>
   );
 };

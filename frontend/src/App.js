@@ -107,7 +107,6 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      
 
       <AuthContext.Provider
         value={{
@@ -120,12 +119,13 @@ export default function App() {
         }}
       >
         <BrowserRouter>
+          {/* header, spacerは常に表示 */}
           <Header 
             user={user} 
             isSignedIn={isSignedIn}
           />
           <div className='spacer'></div>
-          
+
           <Switch>
             <Route exact path="/signup">
               <SignUp />

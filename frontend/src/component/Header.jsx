@@ -2,8 +2,6 @@ import React from "react";
 import {Button } from "@mui/material"
 import {signOut} from "../api/auth"
 import { Link } from "react-router-dom";
-import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
-
  
 export default function Header(props) {
   function greeting() {
@@ -42,13 +40,15 @@ export default function Header(props) {
 
           <>
             <Button
+              size="small"
               component={Link}
               to="/signin"
             >
-              Login
+              Log in
             </Button>
             
             <Button
+              size="small"
               component={Link}
               to="/signup"
             >

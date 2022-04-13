@@ -24,14 +24,21 @@ header {
   align-items: center;
   justify-content: end;
   .greeting {
-    margin-right: 10px;
+    margin-right: 30px;
   }
   p {
     font-size: 12px;
   }
+  a {
+    background-color: white !important;
+    color: teal !important;
+    font-weight: bold;
+    margin-left: 10px;
+  }
 }
 
 .nav-items {
+  display: flex;
   a {
     text-decoration: none;
     color: white;
@@ -133,5 +140,23 @@ th {
 .edit-modal {
   p {
     margin-bottom: 30px;
+  }
+}
+
+// SignIn.jsx----------------------------------------------
+.sign-form {
+  padding: 30px 60px;
+  h3 {
+    margin: 0;
+  }
+  form {
+    margin: 20px 0 !important;
+  }
+  a {
+    display: block;
+    text-align: end;
+  }
+  .MuiFormControl-root {
+    margin-bottom: 20px;
   }
 }
