@@ -17,6 +17,7 @@ import { SignIn } from './component/SignIn';
 import { SignUp } from './component/SignUp';
 
 export const AuthContext = createContext();
+export const SubsControl = createContext();
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -80,7 +81,6 @@ export default function App() {
   React.useEffect(() => {
     // 先にgetSubが実行されてデータを取得できていない
 
-    getCurrentUser()
     getSubs()
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -130,47 +130,55 @@ export default function App() {
       >
         <BrowserRouter>
           {/* header, spacerは常に表示 */}
-          <Header 
-            user={user} 
-            currentUser={currentUser}
-          />
-          <div className='spacer'></div>
-
-          <Switch>
-            <Route exact path="/signup">
-              <SignUp />
-            </Route>
-
-            <Route exact path="/signin">
-              <SignIn />
-            </Route>
-
-            <Private>
-              <Route exact path="/">
-                <div className='main'>
-                  {console.log("subs", subs)}
-                  <SubForm 
-                    client={client} 
-                    subs={subs} 
-                    setSubs={setSubs} 
-                    getSubs={getSubs} 
-                  />
-
-                  <Subs 
-                    client={client} 
-                    subs={subs} 
-                    setSubs={setSubs} 
-                    getSubs={getSubs} 
-                  />
-
-                  <Chart 
-                    subs={subs}
-                  />
-                </div>
+          <SubsControl.Provider
+            value={{
+              setSubs,
+              setUser,
+              
+            }}
+          >
+            <Header 
+              user={user} 
+              currentUser={currentUser}
+            />
+            <div className='spacer'></div>
+  
+            <Switch>
+              <Route exact path="/signup">
+                <SignUp />
               </Route>
-            </Private>
-            
-          </Switch>
+  
+              <Route exact path="/signin">
+                <SignIn />
+              </Route>
+  
+              <Private>
+                <Route exact path="/">
+                  <div className='main'>
+                    {console.log("subs", subs)}
+                    <SubForm 
+                      client={client} 
+                      subs={subs} 
+                      setSubs={setSubs} 
+                      getSubs={getSubs} 
+                    />
+  
+                    <Subs 
+                      client={client} 
+                      subs={subs} 
+                      setSubs={setSubs} 
+                      getSubs={getSubs} 
+                    />
+  
+                    <Chart 
+                      subs={subs}
+                    />
+                  </div>
+                </Route>
+              </Private>
+              
+            </Switch>
+          </SubsControl.Provider>
         </BrowserRouter>
       </AuthContext.Provider>
       

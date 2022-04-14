@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import {Button } from "@mui/material"
 import {signOut} from "../api/auth"
 import { Link } from "react-router-dom";
+import { AuthContext } from "../App";
  
 export default function Header(props) {
+  const {currentUser, isSignedIn, setIsSignedIn} = useContext(AuthContext)
+
   function greeting() {
     const now = new Date().getHours()
     if (now >= 6 && now < 12) {
@@ -15,21 +18,30 @@ export default function Header(props) {
     }
   }
 
+  function handleSignOut() {
+    setIsSignedIn(false)
+    signOut()
+  }
+
   return (
     <header>
       <div className="header-left">
         <h2>SubscManager</h2>
       </div>
 
+      {console.log("currentUser", currentUser)}
+
       <div className="header-right">
-        <div className="greeting">
-          <p>{greeting()}, {props.user}さん</p>
-        </div>
+        {isSignedIn && 
+          <div className="greeting">
+            <p>{greeting()}, {props.user}さん</p>
+          </div>
+        }
 
         <div className="nav-items">
-          {props.currentUser ?
+          {isSignedIn ?
             <Button
-              onClick={signOut}
+              onClick={handleSignOut}
               size="small"
               component={Link}
               to="/signin"

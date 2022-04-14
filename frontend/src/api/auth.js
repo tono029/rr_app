@@ -13,6 +13,7 @@ export const signIn = (params) => {
 };
 
 // サインアウト
+// subsを空の配列にし、currentUserをset
 export const signOut = () => {
   return client.delete("/auth/sign_out", {
     headers: {
@@ -21,6 +22,8 @@ export const signOut = () => {
       uid: Cookies.get("_uid"),
     },
   });
+
+
   <Redirect to="signin" />
 };
 

@@ -3,11 +3,12 @@ import Cookies from "js-cookie";
 import { useContext, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { signIn } from "../api/auth";
-import { AuthContext } from "../App";
+import { AuthContext, SubsControl } from "../App";
 import {Button, Stack, TextField} from "@mui/material"
 
 export const SignIn = () => {
   const { setIsSignedIn, setCurrentUser, currentUser } = useContext(AuthContext);
+  const {setUser} = useContext(SubsControl)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -32,8 +33,11 @@ export const SignIn = () => {
         Cookies.set("_client", res.headers["client"]);
         Cookies.set("_uid", res.headers["uid"]);
 
+        const user_name = res.data.data.uid.split("@")
+
         setIsSignedIn(true);
         setCurrentUser(res.data.data);
+        setUser(user_name[0])
 
         history.push("/");
       }
