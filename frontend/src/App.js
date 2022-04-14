@@ -23,6 +23,8 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState();
+  const [user, setUser] = React.useState("")
+  const [subs, setSubs] = React.useState([])
 
   async function handleGetCurrentUser() {
     try {
@@ -31,6 +33,7 @@ export default function App() {
       if (res?.data.isLogin === true) {
         setIsSignedIn(true)
         setCurrentUser(res?.data.data);
+        setUser(res.data.data.uid.split("@")[0])
         console.log(res?.data);
       } else {
         console.log("no current user")
@@ -54,9 +57,6 @@ export default function App() {
     baseURL: "http://localhost:3001/"
   })
 
-  const [user, setUser] = React.useState("user")
-
-  const [subs, setSubs] = React.useState([])
 
   async function getSubs() {
     // cookiesのuidを情報として渡す。
@@ -78,11 +78,9 @@ export default function App() {
     setSubs(subsArray)
   }
 
-  React.useEffect(() => {
-    // 先にgetSubが実行されてデータを取得できていない
 
+  React.useEffect(() => {
     getSubs()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const theme = createTheme({
@@ -115,6 +113,8 @@ export default function App() {
     }
   };
 
+  console.log("user", user)
+
   return (
     <ThemeProvider theme={theme}>
 
@@ -129,12 +129,11 @@ export default function App() {
         }}
       >
         <BrowserRouter>
-          {/* header, spacerは常に表示 */}
           <SubsControl.Provider
             value={{
               setSubs,
               setUser,
-              
+              getSubs,
             }}
           >
             <Header 

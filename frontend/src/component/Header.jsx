@@ -2,10 +2,11 @@ import React, { useContext } from "react";
 import {Button } from "@mui/material"
 import {signOut} from "../api/auth"
 import { Link } from "react-router-dom";
-import { AuthContext } from "../App";
+import { AuthContext, SubsControl } from "../App";
  
 export default function Header(props) {
   const {currentUser, isSignedIn, setIsSignedIn} = useContext(AuthContext)
+  const {setSubs, setUser} = useContext(SubsControl)
 
   function greeting() {
     const now = new Date().getHours()
@@ -20,6 +21,8 @@ export default function Header(props) {
 
   function handleSignOut() {
     setIsSignedIn(false)
+    setSubs([])
+    setUser("")
     signOut()
   }
 
@@ -28,8 +31,6 @@ export default function Header(props) {
       <div className="header-left">
         <h2>SubscManager</h2>
       </div>
-
-      {console.log("currentUser", currentUser)}
 
       <div className="header-right">
         {isSignedIn && 
