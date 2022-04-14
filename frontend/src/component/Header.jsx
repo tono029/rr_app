@@ -27,9 +27,10 @@ export default function Header(props) {
         </div>
 
         <div className="nav-items">
-          {props.isSignedIn ?
+          {props.currentUser ?
             <Button
               onClick={signOut}
+              size="small"
               component={Link}
               to="/signin"
             >

@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import {Grid, TextField, Button, MenuItem, Select, FormControl, InputLabel} from '@mui/material';
 import {useForm} from "react-hook-form"
 import TotalFee from "./TotalFee";
+import { AuthContext } from "../App";
+import Cookies from "js-cookie";
+import { getCurrentUser } from "../api/auth";
 
 export default function SubForm(props) {
+  const {currentUser} = useContext(AuthContext)
+
   async function createSub(data) {
     await props.client.post("subs", data)
   }
 
   // フォーム送信時の処理
   const onSubmit = (data) => {
-    console.log(data)
+    console.log("formData", data)
 
     // rails側に送信
     createSub(data)
@@ -96,6 +101,14 @@ export default function SubForm(props) {
                 {...register("link")}
               />
             </Grid>
+            
+            {/* 新しくサービスを登録する際には
+            現在のゆーざーのIDを情報に含める。 */}
+            <input 
+              type="hidden" 
+              value={Cookies.get("_uid")}
+              {...register("uid")}
+            />
       
             <Grid item xs={6} sm={4}>
               <Button
@@ -108,6 +121,8 @@ export default function SubForm(props) {
             </Grid>
       
           </Grid>
+
+          
         </div>
       </div>
     </div>

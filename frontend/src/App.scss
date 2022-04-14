@@ -22,7 +22,7 @@ header {
 .header-right {
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
   .greeting {
     margin-right: 30px;
   }
@@ -105,13 +105,24 @@ header {
   border-radius: 10px !important;
 }
 
-.edit-btn, .delete-btn {
+.edit-btn {
   opacity: 0.7;
 }
+
+.delete-btn {
+  opacity: 0 !important;
+}
+
 
 th {
   background-color: rgb(240, 240, 240) !important;
   border: none !important;
+}
+
+tr:hover {
+  .delete-btn {
+    opacity: 0.7 !important;
+  }
 }
 
 .css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop {
@@ -154,7 +165,7 @@ th {
   }
   a {
     display: block;
-    text-align: end;
+    text-align: flex-end;
   }
   .MuiFormControl-root {
     margin-bottom: 20px;

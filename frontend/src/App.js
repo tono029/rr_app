@@ -6,6 +6,7 @@ import Header from './component/Header';
 import SubForm from './component/SubForm';
 import axios from "axios"
 import client from './api/client';
+import Cookies from "js-cookie";
 import {createTheme, ThemeProvider} from "@mui/material"
 
 import { createContext, useEffect, useState } from "react";
@@ -40,7 +41,8 @@ export default function App() {
     setLoading(false)
   }
 
-  console.log("currentUser", currentUser)
+  // console.log("currentUser", currentUser)
+  // console.log("uid", Cookies.get("_uid"))
 
   useEffect(() => {
     handleGetCurrentUser();
@@ -56,7 +58,12 @@ export default function App() {
   const [subs, setSubs] = React.useState([])
 
   async function getSubs() {
-    const res = await client.get("subs")
+    // cookiesのuidを情報として渡す。
+    const res = await client.get("subs", {
+      params: {
+        currentUid: Cookies.get("_uid")
+      }
+    })
     const subsArray = []
 
     res.data.forEach(sub => {
@@ -71,11 +78,12 @@ export default function App() {
   }
 
   React.useEffect(() => {
+    // 先にgetSubが実行されてデータを取得できていない
+
+    getCurrentUser()
     getSubs()
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-  console.log("subs", subs)
 
   const theme = createTheme({
     palette: {
@@ -124,7 +132,7 @@ export default function App() {
           {/* header, spacerは常に表示 */}
           <Header 
             user={user} 
-            isSignedIn={isSignedIn}
+            currentUser={currentUser}
           />
           <div className='spacer'></div>
 
@@ -140,6 +148,7 @@ export default function App() {
             <Private>
               <Route exact path="/">
                 <div className='main'>
+                  {console.log("subs", subs)}
                   <SubForm 
                     client={client} 
                     subs={subs} 
