@@ -30,7 +30,7 @@ export const SignUp = () => {
       const res = await signUp(params);
       console.log(res);
       
-      alert("confirm email");
+      alert("確認メールが送信されました。");
     } catch (e) {
       console.log(e);
     }
@@ -94,7 +94,7 @@ export const SignUp = () => {
             type="submit" 
             onClick={(e) => handleSignUpSubmit(e)}
           >
-            新規登録
+            アカウント登録
           </Button>
         </form>
       </Stack>

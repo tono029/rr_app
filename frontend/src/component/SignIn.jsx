@@ -7,7 +7,7 @@ import { AuthContext } from "../App";
 import {Button, Stack, TextField} from "@mui/material"
 
 export const SignIn = () => {
-  const { setIsSignedIn, setCurrentUser } = useContext(AuthContext);
+  const { setIsSignedIn, setCurrentUser, currentUser } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -86,7 +86,7 @@ export const SignIn = () => {
         </form>
 
       </Stack>
-      <Link to="/signup">新規登録ページへ</Link>
+      <Link to="/signup">アカウント登録ページへ</Link>
 
     </div>
   );

@@ -40,6 +40,8 @@ export default function App() {
     setLoading(false)
   }
 
+  console.log("currentUser", currentUser)
+
   useEffect(() => {
     handleGetCurrentUser();
   }, [setCurrentUser]);
