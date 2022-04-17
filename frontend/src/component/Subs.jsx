@@ -49,7 +49,7 @@ export default function Subs(props) {
     top: "50%",
     left: "50%",
     transform: 'translate(-50%, -50%)',
-    width: 300,
+    width: 400,
     bgcolor: 'white',
     border: "none",
     borderRadius: "10px",
@@ -61,7 +61,6 @@ export default function Subs(props) {
   const subsIndex = props.subs.map(sub => {
     return (
       <TableRow key={sub.id}>
-        {/* クリックで編集できるように */}
         <TableCell colSpan={1}>{sub.sub_name}</TableCell>
 
         <TableCell colSpan={1}>{sub.fee.toLocaleString()}<span>円</span></TableCell>

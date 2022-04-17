@@ -37,6 +37,7 @@ export default function SubForm(props) {
         </div>
 
         <div className="form-body-right">
+          <h3>登録</h3>
           <Grid container spacing={1}>
             <Grid item xs={12} sm={12}>
               <TextField

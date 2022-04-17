@@ -33,6 +33,10 @@ h2 {
   margin: 0 30px;
 }
 
+h3 {
+  margin-top: 0;
+}
+
 th, td {
   text-align: center !important;
   font-family: 'Noto Sans JP', sans-serif !important;
@@ -47,7 +51,7 @@ body::-webkit-scrollbar {
 }
 
 .container {
-  max-width: 500px !important;
+  max-width: 600px !important;
   margin: 0 auto 20px auto;
   background-color: white;
   padding: 20px;
@@ -75,7 +79,7 @@ body::-webkit-scrollbar {
   background-size: cover;
 }
 
-// 小さい時
+// 600以下
 @media screen and(max-width: 600px) {
   .main {
     padding: 0px 10px 20px 10px;
@@ -88,7 +92,7 @@ body::-webkit-scrollbar {
 
 
 
-// 大きい時
+// 950以下
 @media screen and (max-width: 950px) {
   .main {
     width: auto;

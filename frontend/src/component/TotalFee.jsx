@@ -4,7 +4,11 @@ export default function TotalFee(props) {
 
   const feeArray = []
   props.subs.forEach(sub => {
-    feeArray.push(sub.fee)
+    if (sub.period === 1) {
+      feeArray.push(sub.fee)
+    } else {
+      feeArray.push(Math.ceil(sub.fee / 12))
+    }
   })
 
   let total = 0

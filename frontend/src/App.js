@@ -34,7 +34,7 @@ export default function App() {
         setIsSignedIn(true)
         setCurrentUser(res?.data.data);
         setUser(res.data.data.uid.split("@")[0])
-        console.log(res?.data);
+        console.log("currentUserData", res?.data);
       } else {
         console.log("no current user")
       }
@@ -70,7 +70,7 @@ export default function App() {
     res.data.forEach(sub => {
       subsArray.push({
         ...sub,
-        // 必要なプロパティがあれば追加
+        // !! 必要なプロパティがあれば追加
 
       })
     })
@@ -112,8 +112,6 @@ export default function App() {
       return <></>;
     }
   };
-
-  console.log("user", user)
 
   return (
     <ThemeProvider theme={theme}>

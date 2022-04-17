@@ -45,6 +45,7 @@ export const SignUp = () => {
         <h3>新規登録</h3>
 
         <form>
+          {/* !! error-message出す */}
           <TextField
             required
             label="メールアドレス"
@@ -88,6 +89,7 @@ export const SignUp = () => {
             value={confirmSuccessUrl}
           />
 
+          {/* !! 確認メールが送られたことを知らせるダイアログを出す */}
           <Button 
             fullWidth
             variant="contained" 
