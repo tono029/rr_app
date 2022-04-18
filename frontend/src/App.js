@@ -4,6 +4,7 @@ import React from 'react';
 import Subs from './component/Subs';
 import Header from './component/Header';
 import SubForm from './component/SubForm';
+import Flash from './component/Flash';
 import axios from "axios"
 import client from './api/client';
 import Cookies from "js-cookie";
@@ -25,6 +26,7 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState();
   const [user, setUser] = React.useState("")
   const [subs, setSubs] = React.useState([])
+  const [flash, setFlash] = React.useState("")
 
   async function handleGetCurrentUser() {
     try {
@@ -44,9 +46,6 @@ export default function App() {
 
     setLoading(false)
   }
-
-  // console.log("currentUser", currentUser)
-  // console.log("uid", Cookies.get("_uid"))
 
   useEffect(() => {
     handleGetCurrentUser();
@@ -81,6 +80,7 @@ export default function App() {
 
   React.useEffect(() => {
     getSubs()
+    setFlash("")
   }, [])
 
   const theme = createTheme({
@@ -124,6 +124,8 @@ export default function App() {
           setIsSignedIn,
           currentUser,
           setCurrentUser,
+          flash,
+          setFlash,
         }}
       >
         <BrowserRouter>
@@ -139,6 +141,7 @@ export default function App() {
               currentUser={currentUser}
             />
             <div className='spacer'></div>
+            {flash !== "" && <Flash flash={flash} />}
   
             <Switch>
               <Route exact path="/signup">

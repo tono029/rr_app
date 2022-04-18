@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import {Button } from "@mui/material"
 import {signOut} from "../api/auth"
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { AuthContext, SubsControl } from "../App";
  
 export default function Header(props) {
-  const {currentUser, isSignedIn, setIsSignedIn} = useContext(AuthContext)
+  const {isSignedIn, setIsSignedIn, setFlash} = useContext(AuthContext)
   const {setSubs, setUser} = useContext(SubsControl)
+  const history = useHistory()
 
   function greeting() {
     const now = new Date().getHours()
@@ -20,10 +21,16 @@ export default function Header(props) {
   }
 
   function handleSignOut() {
-    setIsSignedIn(false)
-    setSubs([])
-    setUser("")
-    signOut()
+    const is_ok = window.confirm("ログアウトしてよろしいですか。") 
+      
+    if (is_ok) {
+      setFlash("ログアウトしました。")
+      setIsSignedIn(false)
+      setSubs([])
+      setUser("")
+      signOut()
+      history.push("/signin")
+    }
   }
 
   return (
@@ -44,8 +51,6 @@ export default function Header(props) {
             <Button
               onClick={handleSignOut}
               size="small"
-              component={Link}
-              to="/signin"
             >
               ログアウト
             </Button>

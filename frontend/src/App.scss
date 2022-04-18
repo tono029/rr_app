@@ -24,12 +24,12 @@ header {
   align-items: center;
   justify-content: flex-end;
   .greeting {
-    margin-right: 30px;
+    margin-right: 20px;
   }
   p {
     font-size: 12px;
   }
-  a {
+  button, a{
     background-color: white !important;
     color: teal !important;
     font-weight: bold;

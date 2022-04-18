@@ -22,9 +22,6 @@ export const signOut = () => {
       uid: Cookies.get("_uid"),
     },
   });
-
-
-  <Redirect to="signin" />
 };
 
 // ログインユーザーの取得

@@ -9,6 +9,7 @@
 * Ruby on Rails
 * React
 * JavaScript
+* material-UI
 
 # 機能
 * rails APIからユーザーに紐づいたデータの取得、一覧表示
