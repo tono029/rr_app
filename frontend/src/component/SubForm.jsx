@@ -26,7 +26,6 @@ export default function SubForm(props) {
   const {register, handleSubmit, reset, formState: {errors},} = useForm({
     mode: onSubmit,
     defaultValues: {sub_name: "", fee: "", link: ""},
-
   })
 
   return (
@@ -37,11 +36,10 @@ export default function SubForm(props) {
         </div>
 
         <div className="form-body-right">
-          <h3>登録</h3>
           <Grid container spacing={1}>
             <Grid item xs={12} sm={12}>
               <TextField
-                autoFocus
+                // autoFocus
                 required
                 fullWidth
                 autoComplete="off"

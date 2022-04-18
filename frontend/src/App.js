@@ -47,10 +47,6 @@ export default function App() {
     setLoading(false)
   }
 
-  useEffect(() => {
-    handleGetCurrentUser();
-  }, [setCurrentUser]);
-
   const client = axios.create({
     // APIのURL
     baseURL: "http://localhost:3001/"
@@ -64,21 +60,15 @@ export default function App() {
         currentUid: Cookies.get("_uid")
       }
     })
-    const subsArray = []
 
-    res.data.forEach(sub => {
-      subsArray.push({
-        ...sub,
-        // !! 必要なプロパティがあれば追加
-
-      })
-    })
-
-    setSubs(subsArray)
+    setSubs(res.data)
   }
 
+  useEffect(() => {
+    handleGetCurrentUser();
+  }, [setCurrentUser]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     getSubs()
     setFlash("")
   }, [])
@@ -141,20 +131,20 @@ export default function App() {
               currentUser={currentUser}
             />
             <div className='spacer'></div>
-            {flash !== "" && <Flash flash={flash} />}
-  
-            <Switch>
-              <Route exact path="/signup">
-                <SignUp />
-              </Route>
-  
-              <Route exact path="/signin">
-                <SignIn />
-              </Route>
-  
-              <Private>
-                <Route exact path="/">
-                  <div className='main'>
+            <div className='main'>
+              {flash !== "" && <Flash flash={flash} setFlash={setFlash} />}
+    
+              <Switch>
+                <Route exact path="/signup">
+                  <SignUp />
+                </Route>
+    
+                <Route exact path="/signin">
+                  <SignIn />
+                </Route>
+    
+                <Private>
+                  <Route exact path="/">
                     {console.log("subs", subs)}
                     <SubForm 
                       client={client} 
@@ -173,11 +163,11 @@ export default function App() {
                     <Chart 
                       subs={subs}
                     />
-                  </div>
-                </Route>
-              </Private>
-              
-            </Switch>
+                  </Route>
+                </Private>
+                
+              </Switch>
+            </div>
           </SubsControl.Provider>
         </BrowserRouter>
       </AuthContext.Provider>

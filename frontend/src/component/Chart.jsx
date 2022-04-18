@@ -98,7 +98,7 @@ export default function Chart(props) {
 
     datasets: [
       { 
-        label: "料金/年",
+        label: "料金",
         data: selectData(sort, per).data,
         backgroundColor: "rgba(0, 128, 128, 0.5)",
         borderColor: "#008080",

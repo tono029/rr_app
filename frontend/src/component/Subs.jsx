@@ -32,11 +32,15 @@ export default function Subs(props) {
   const onSubmit = (data) => {
     console.log("data", data)
 
-    // rails側に送信
-    updateSub(data, open[1])
-    props.getSubs()
-    reset()
-    setOpen([false, ""])
+    if (data.link === "") {
+      setOpen([false, ""])
+    } else {
+      // rails側に送信
+      updateSub(data, open[1])
+      props.getSubs()
+      reset()
+      setOpen([false, ""])
+    }
   }
 
   const {register, handleSubmit, reset} = useForm({
