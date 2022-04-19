@@ -6,7 +6,7 @@ import { AuthContext, SubsControl } from "../App";
 import Cookies from "js-cookie";
 
 export default function SubForm(props) {
-  const {currentUser} = useContext(AuthContext)
+  const {currentUser, setFlash} = useContext(AuthContext)
   const {setSubs} = useContext(SubsControl)
 
   async function createSub(data) {
@@ -16,7 +16,11 @@ export default function SubForm(props) {
       {params: {currentUid: Cookies.get("_uid")}}
     )
 
-    setSubs(res.data)
+    if (res.status === 200) {
+      setSubs(res.data.data)
+    } else {
+      setFlash(res.data.message)
+    }
   }
 
   // フォーム送信時の処理
@@ -25,6 +29,7 @@ export default function SubForm(props) {
 
     // rails側に送信
     createSub(data)
+    setFlash("登録しました。")
     reset()
   }
 

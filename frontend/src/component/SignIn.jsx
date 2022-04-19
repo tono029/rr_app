@@ -5,6 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 import { signIn } from "../api/auth";
 import { AuthContext, SubsControl } from "../App";
 import {Button, Stack, TextField} from "@mui/material"
+import Home from "./Home";
 
 export const SignIn = () => {
   const { setIsSignedIn, setCurrentUser, currentUser, setFlash } = useContext(AuthContext);
@@ -39,7 +40,7 @@ export const SignIn = () => {
         setCurrentUser(res.data.data);
         setUser(user_name[0])
         getSubs()
-        setFlash("ログインしました")
+        setFlash("ログインしました。")
 
         history.push("/");
       }
@@ -50,50 +51,53 @@ export const SignIn = () => {
 
   // 整える
   return (
-    <div className="container sign-form">
-      <Stack
-        alignItems="center"
-      >
-        <h3>LOG IN</h3>
-
-        <form>
-          <TextField
-            required
-            fullWidth
-            label="メールアドレス"
-            size="small"
-            type="email"
-            id="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-
-          <TextField
-            fullWidth
-            required
-            label="パスワード"
-            size="small"
-            type="password"
-            id="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-
-          <Button
-            fullWidth 
-            variant="contained" 
-            type="submit" 
-            onClick={(e) => handleSignInSubmit(e)}
-          >
-            log in
-          </Button>
-        </form>
-
-      </Stack>
-      <Link to="/signup">アカウント登録ページへ</Link>
-
-    </div>
+    <>
+      <Home />
+      <div className="container sign-form">
+        <Stack
+          alignItems="center"
+        >
+          <h3>LOG IN</h3>
+  
+          <form>
+            <TextField
+              required
+              fullWidth
+              label="メールアドレス"
+              size="small"
+              type="email"
+              id="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+  
+            <TextField
+              fullWidth
+              required
+              label="パスワード"
+              size="small"
+              type="password"
+              id="password"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+  
+            <Button
+              fullWidth 
+              variant="contained" 
+              type="submit" 
+              onClick={(e) => handleSignInSubmit(e)}
+            >
+              log in
+            </Button>
+          </form>
+  
+        </Stack>
+        <Link to="/signup">アカウント登録ページへ</Link>
+  
+      </div>
+    </>
   );
 };

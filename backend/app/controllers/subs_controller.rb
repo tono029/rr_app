@@ -18,7 +18,7 @@ class SubsController < ApplicationController
     )
 
     if @sub.save
-      render json: @subs
+      render json: {status: 200, data: @subs}
     else
       render json: {status: 500, message: "登録に失敗しました"}
     end

@@ -100,7 +100,7 @@ export default function Chart(props) {
       { 
         label: "料金",
         data: selectData(sort, per).data,
-        backgroundColor: "rgba(35, 156, 123, 0.5)",
+        backgroundColor: "rgba(95, 191, 191, 0.5)",
         borderColor: "#008080",
         borderWidth: 2,
       }

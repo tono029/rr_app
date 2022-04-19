@@ -1,9 +1,14 @@
+$main-bg-color: teal;
+$base-bg-color: #279F9F;
+$accent-bg-color: #5FBFBF;
+
+
 // Header.jsx------------------------------------
 header {
   position: relative;
   display: flex;
-  height: 45px;
-  background-color: teal;
+  height: 55px;
+  background-color: $main-bg-color;
   padding: 5px 25px 0 25px;
   color: white;
   z-index: 2;
@@ -30,8 +35,8 @@ header {
     font-size: 12px;
   }
   button, a{
-    background-color: white !important;
-    color: teal !important;
+    background-color: $base-bg-color !important;
+    color: white !important;
     font-weight: bold;
     margin-left: 10px;
   }
@@ -115,7 +120,7 @@ header {
 
 
 th {
-  background-color: teal !important;
+  background-color: $main-bg-color !important;
   color: white !important;
 }
 
@@ -150,7 +155,7 @@ tr:hover {
 
 .chart-header-r {
   display: flex !important;
-  flex-direction:row;
+  flex-direction: row;
   .MuiFormControl-root { 
     min-width: 20px !important;
   } 
@@ -182,8 +187,10 @@ tr:hover {
 
 // Flash.jsx-----------------------------------------
 .MuiSnackbar-root div {
-  color:  white !important;
-  background-color: #53B982 !important;
+  color:  black !important;
+  font-weight: 600;
+  background-color: $accent-bg-color !important;
+  // background: linear-gradient(to right, #5FBFBF, #C9E1B1) !important;
   display: block;
 }
 
