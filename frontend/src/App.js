@@ -148,19 +148,21 @@ export default function App() {
     
                 <Private>
                   <Route exact path="/">
-                    <SubForm 
-                      client={client} 
-                      subs={subs} 
-                      setSubs={setSubs} 
-                      getSubs={getSubs} 
-                    />
-  
-                    <Subs 
-                      client={client} 
-                      subs={subs} 
-                      setSubs={setSubs} 
-                      getSubs={getSubs} 
-                    />
+                    <div className='main-top'>
+                      <SubForm 
+                        client={client} 
+                        subs={subs} 
+                        setSubs={setSubs} 
+                        getSubs={getSubs} 
+                      />
+    
+                      <Subs 
+                        client={client} 
+                        subs={subs} 
+                        setSubs={setSubs} 
+                        getSubs={getSubs} 
+                      />
+                    </div>
   
                     <Chart 
                       subs={subs}

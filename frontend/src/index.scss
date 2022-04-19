@@ -66,12 +66,19 @@ body::-webkit-scrollbar {
   position: relative;
   z-index: 1;
   padding: 0px 20px 20px 20px;
-  width: calc(100% - 330px);
+  width: auto;
+}
+
+.table-container {
+  padding: 0;
+  margin: auto;
+  max-width: 640px;
+
 }
 
 .spacer {
   position: sticky;
-  top: 50px;
+  top: 60px;
   background-image: url("../public/spacer.svg");
   width: 100%;
   aspect-ratio: 900/50;
@@ -83,7 +90,7 @@ body::-webkit-scrollbar {
 }
 
 // 600以下
-@media screen and(max-width: 600px) {
+@media screen and (max-width: 600px) {
   .main {
     padding: 0px 10px 20px 10px;
   }
@@ -95,13 +102,38 @@ body::-webkit-scrollbar {
 
 
 
-// 950以下
-@media screen and (max-width: 950px) {
+// 950以上
+@media screen and (min-width: 950px) {
   .main {
     width: auto;
+    padding: 0 40px 40px 40px;
   }
 
-  .link-modal {
-    left: 50% !important;
+  .main-top {
+    display: flex;
+    // align-items: center;
+    max-width: 910px;
+    margin: auto;
+
+    .container {
+      max-width: 500px !important;
+      margin: 0 auto 20px auto;
+    }
+
+    .create-form {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .chart {
+    height: auto;
+    margin: auto;
+    max-width: 850px !important;
+    canvas {
+      margin: auto;
+      width: 700px !important;
+      height: auto;
+    }
   }
 }

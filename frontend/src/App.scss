@@ -81,12 +81,7 @@ header {
 }
 
 // Subs.jsx------------------------------------------
-.table-container {
-  padding: 0;
-  margin: auto;
-  max-width: 640px;
 
-}
 
 .subs-table {
   max-height: 230px;
@@ -189,11 +184,11 @@ tr:hover {
 .MuiSnackbar-root div {
   color:  black !important;
   font-weight: 600;
-  background-color: $accent-bg-color !important;
+  background-color: white !important;
   // background: linear-gradient(to right, #5FBFBF, #C9E1B1) !important;
   display: block;
 }
 
-.MuiSnackbarContent-message {
-  text-align: center !important;
-}
+// .MuiSnackbarContent-message {
+//   text-align: center !important;
+// }

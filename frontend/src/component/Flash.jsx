@@ -29,7 +29,7 @@ export default function Flash(props) {
       onClose={handleClose}
       TransitionComponent={SlideTransition}
       autoHideDuration={3000}
-      anchorOrigin={{vertical: "top", horizontal: "right"}}
+      anchorOrigin={{vertical: "top", horizontal: "center"}}
       message={props.flash}
       key={SlideTransition.name}
     />

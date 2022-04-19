@@ -123,7 +123,7 @@ export default function Chart(props) {
   }
 
   return (
-    <div className="container">
+    <div className="container chart">
       <div className="chart-header">
         <div className="chart-header-l"><p>グラフ</p></div>
 
