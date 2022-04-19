@@ -7,7 +7,7 @@ import { AuthContext, SubsControl } from "../App";
 import {Button, Stack, TextField} from "@mui/material"
 
 export const SignIn = () => {
-  const { setIsSignedIn, setCurrentUser, currentUser } = useContext(AuthContext);
+  const { setIsSignedIn, setCurrentUser, currentUser, setFlash } = useContext(AuthContext);
   const {setUser, getSubs} = useContext(SubsControl)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -39,6 +39,7 @@ export const SignIn = () => {
         setCurrentUser(res.data.data);
         setUser(user_name[0])
         getSubs()
+        setFlash("ログインしました")
 
         history.push("/");
       }

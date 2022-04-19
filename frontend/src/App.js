@@ -26,7 +26,7 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState();
   const [user, setUser] = React.useState("")
   const [subs, setSubs] = React.useState([])
-  const [flash, setFlash] = React.useState("")
+  const [flash, setFlash] = React.useState()
 
   async function handleGetCurrentUser() {
     try {
@@ -70,7 +70,6 @@ export default function App() {
 
   useEffect(() => {
     getSubs()
-    setFlash("")
   }, [])
 
   const theme = createTheme({
@@ -103,6 +102,9 @@ export default function App() {
     }
   };
 
+  // console.log("subs", subs)
+  console.log("flash", flash)
+
   return (
     <ThemeProvider theme={theme}>
 
@@ -131,8 +133,9 @@ export default function App() {
               currentUser={currentUser}
             />
             <div className='spacer'></div>
+            <Flash flash={flash} setFlash={setFlash} />
+
             <div className='main'>
-              {flash !== "" && <Flash flash={flash} setFlash={setFlash} />}
     
               <Switch>
                 <Route exact path="/signup">
@@ -145,7 +148,6 @@ export default function App() {
     
                 <Private>
                   <Route exact path="/">
-                    {console.log("subs", subs)}
                     <SubForm 
                       client={client} 
                       subs={subs} 

@@ -23,7 +23,6 @@ export default function EditModal(props) {
 
     // rails側に更新情報を送信
     props.updateSub(data, props.sub.id)
-    props.getSubs()
     props.setEditOpen([false, ""])
     reset()
   }

@@ -2,15 +2,21 @@ import React, { useContext } from "react";
 import {Grid, TextField, Button, MenuItem, Select, FormControl, InputLabel} from '@mui/material';
 import {useForm} from "react-hook-form"
 import TotalFee from "./TotalFee";
-import { AuthContext } from "../App";
+import { AuthContext, SubsControl } from "../App";
 import Cookies from "js-cookie";
-import { getCurrentUser } from "../api/auth";
 
 export default function SubForm(props) {
   const {currentUser} = useContext(AuthContext)
+  const {setSubs} = useContext(SubsControl)
 
   async function createSub(data) {
-    await props.client.post("subs", data)
+    const res = await props.client.post(
+      "subs", 
+      data,
+      {params: {currentUid: Cookies.get("_uid")}}
+    )
+
+    setSubs(res.data)
   }
 
   // フォーム送信時の処理
@@ -19,7 +25,6 @@ export default function SubForm(props) {
 
     // rails側に送信
     createSub(data)
-    props.getSubs()
     reset()
   }
 

@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
 
+// color-rule-----
+// 6:3:1
+
 body {
   height: auto;
   margin: 0;
@@ -72,7 +75,7 @@ body::-webkit-scrollbar {
   background-image: url("../public/spacer.svg");
   width: 100%;
   aspect-ratio: 900/50;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+  filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.1));
   z-index: 2;
   background-position: center;
   background-repeat: no-repeat;

@@ -1,4 +1,3 @@
-import h3 from "js-cookie";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { signUp } from "../api/auth";

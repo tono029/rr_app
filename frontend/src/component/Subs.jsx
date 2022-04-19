@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import Cookies from "js-cookie"
 import Button from "@mui/material/Button"
 import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Modal, Box, TextField} from '@mui/material';
 import Paper from '@mui/material/Paper';
@@ -9,8 +10,11 @@ import EditIcon from '@mui/icons-material/Edit';
 import ClearIcon from '@mui/icons-material/Clear';
 import { useForm } from "react-hook-form";
 import EditModal from "./EditModal";
+import { AuthContext, SubsControl } from "../App";
 
 export default function Subs(props) {
+  const {setFlash} = useContext(AuthContext)
+  const {setSubs} = useContext(SubsControl)
   const [open, setOpen] = React.useState([false, ""])
   const [editOpen, setEditOpen] = React.useState([false, ""])
 
@@ -20,8 +24,14 @@ export default function Subs(props) {
   }
 
   async function updateSub(data, id) {
-    await props.client.patch(`subs/${id}`, data)
-    props.getSubs()
+    const res =  await props.client.patch(
+      `subs/${id}`,
+      data,
+      {params: {currentUid: Cookies.get("_uid")}},
+    )
+
+    setSubs(res.data)
+    setFlash("変更を適用しました。")
   }
 
   function handleDelete(id) {
@@ -37,7 +47,6 @@ export default function Subs(props) {
     } else {
       // rails側に送信
       updateSub(data, open[1])
-      props.getSubs()
       reset()
       setOpen([false, ""])
     }

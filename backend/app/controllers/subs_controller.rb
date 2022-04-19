@@ -1,10 +1,9 @@
 class SubsController < ApplicationController
   before_action :set_sub, only: %i[show edit update destroy ]
-
+  before_action :set_subs
 
   # GET /subs
   def index
-    @subs = Sub.where(uid: params[:currentUid])
     render json: @subs
   end
 
@@ -18,12 +17,17 @@ class SubsController < ApplicationController
       uid: params[:uid],
     )
 
-    @sub.save
+    if @sub.save
+      render json: @subs
+    else
+      render json: {status: 500, message: "登録に失敗しました"}
+    end
   end
 
   # PATCH /subs/:id
   def update
     @sub.update(sub_params)
+    render json: @subs
   end
 
   # DELETE /subs/:id
@@ -40,6 +44,10 @@ class SubsController < ApplicationController
 
     def sub_params
       params.require(:sub).permit(:sub_name, :fee, :link, :uid, :period, :session)
+    end
+
+    def set_subs
+      @subs = Sub.where(uid: params[:currentUid])
     end
   
 end

@@ -115,7 +115,7 @@ header {
 
 
 th {
-  background-color: rgba(0, 128, 128, 0.7) !important;
+  background-color: teal !important;
   color: white !important;
 }
 
@@ -178,4 +178,15 @@ tr:hover {
   .MuiFormControl-root {
     margin-bottom: 20px;
   }
+}
+
+// Flash.jsx-----------------------------------------
+.MuiSnackbar-root div {
+  color:  white !important;
+  background-color: #53B982 !important;
+  display: block;
+}
+
+.MuiSnackbarContent-message {
+  text-align: center !important;
 }
