@@ -43,6 +43,7 @@ h3 {
 th, td {
   text-align: center !important;
   font-family: 'Noto Sans JP', sans-serif !important;
+  white-space: nowrap;
 }
 
 button {
@@ -76,19 +77,6 @@ body::-webkit-scrollbar {
 
 }
 
-.spacer {
-  position: sticky;
-  top: 60px;
-  background-image: url("../public/spacer.svg");
-  width: 100%;
-  aspect-ratio: 900/50;
-  filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.1));
-  z-index: 2;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 // 600以下
 @media screen and (max-width: 600px) {
   .main {
@@ -113,7 +101,6 @@ body::-webkit-scrollbar {
     display: flex;
     // align-items: center;
     max-width: 910px;
-    margin: auto;
 
     .container {
       max-width: 500px !important;

@@ -100,7 +100,7 @@ export default function Chart(props) {
       { 
         label: "料金",
         data: selectData(sort, per).data,
-        backgroundColor: "rgba(95, 191, 191, 0.5)",
+        backgroundColor: "rgba(0, 128,128, 0.5)",
         borderColor: "#008080",
         borderWidth: 2,
       }
@@ -125,7 +125,6 @@ export default function Chart(props) {
   return (
     <div className="container chart">
       <div className="chart-header">
-        <div className="chart-header-l"><p>グラフ</p></div>
 
         <div className="chart-header-r">
           <FormControl

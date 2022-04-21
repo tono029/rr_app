@@ -53,6 +53,7 @@ header {
 // SubForm.jsx--------------------------------
 .form-body {
   display: flex;
+  align-items: center;
 }
 
 .form-body-left {
@@ -62,6 +63,7 @@ header {
   h1 {
     font-size: 2rem;
     margin: 0;
+    white-space: nowrap;
   }
   span {
     font-size: small;
@@ -85,7 +87,7 @@ header {
   max-height: 230px;
   margin: 0 auto 20px auto;
   border-radius: 10px !important;
-  box-shadow: 2px 2px 2px rgb(0, 0, 0, 0.2) !important;
+  box-shadow: 2px 1px 2px rgb(0, 0, 0, 0.2) !important;
   button {
     padding: 0;
     min-width: 35px !important;
@@ -142,13 +144,11 @@ tr:hover {
   }
 }
 
-.chart-header-l {
-  margin: 0 auto 0 30px;
-}
 
 .chart-header-r {
   display: flex !important;
   flex-direction: row;
+  margin-left: auto;
   .MuiFormControl-root { 
     min-width: 20px !important;
   } 
