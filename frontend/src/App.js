@@ -1,4 +1,5 @@
 import './App.scss';
+import "./scss/spacer.scss"
 import Chart from './component/Chart';
 import React from 'react';
 import Subs from './component/Subs';
@@ -85,9 +86,6 @@ export default function App() {
       ].join(","),
       fontSize: 12,
     },
-
-
-
   })
 
   const Private = ({ children }) => {
@@ -102,8 +100,12 @@ export default function App() {
     }
   };
 
-  // console.log("subs", subs)
-  console.log("flash", flash)
+  useEffect(() => {
+    const script = document.createElement("script")
+    script.src = "./spacer.js"
+
+    document.body.appendChild(script)
+  }, [])
 
   return (
     <ThemeProvider theme={theme}>
@@ -132,7 +134,12 @@ export default function App() {
               user={user} 
               currentUser={currentUser}
             />
-            <div className='spacer'></div>
+            {/* <div className='spacer'></div> */}
+
+            <div className='wave'>
+              <canvas id="waveCanvas"></canvas>
+            </div>
+
             <Flash flash={flash} setFlash={setFlash} />
 
             <div className='main'>
@@ -175,7 +182,6 @@ export default function App() {
           </SubsControl.Provider>
         </BrowserRouter>
       </AuthContext.Provider>
-      
     </ThemeProvider>
   );
 }

@@ -103,7 +103,7 @@ body::-webkit-scrollbar {
 
 
 // 950以上
-@media screen and (min-width: 950px) {
+@media screen and (min-width: 900px) {
   .main {
     width: auto;
     padding: 0 40px 40px 40px;
@@ -123,6 +123,11 @@ body::-webkit-scrollbar {
     .create-form {
       display: flex;
       align-items: center;
+    }
+    
+    .table-container {
+      margin-left: 40px;
+      min-width: 320px;
     }
   }
 

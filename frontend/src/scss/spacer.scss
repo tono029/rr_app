@@ -1,0 +1,16 @@
+.wave {
+  position:sticky;
+  top: 60px;
+  z-index: 5;
+  margin-bottom: 10px;
+  height:30px;/*何も表示されない場合は各波の親要素に高さを持たせましょう。*/
+  background: rgba(0,0,0, 0);/*背景を塗りつぶして重ねた波を表現したい場合は、波を描画する親要素に波と同じ背景色を設定しましょう。*/
+
+  canvas {
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 100%;
+  }
+}
+

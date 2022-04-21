@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Snackbar, Slide} from '@mui/material';
-import { AuthContext } from '../App';
+import { AuthContext, SubsControl } from '../App';
 
 function SlideTransition(props) {
   return <Slide {...props} direction="down" />;
@@ -9,6 +9,7 @@ function SlideTransition(props) {
 export default function Flash(props) {
   const [open, setOpen] = React.useState(false)
   const {setFlash} = React.useContext(AuthContext)
+  const {setSubs} = React.useContext(SubsControl)
 
   React.useEffect(() => {
     props.flash !== undefined ? setOpen(true) : setOpen(false)
