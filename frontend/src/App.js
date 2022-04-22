@@ -135,7 +135,6 @@ export default function App() {
               user={user} 
               currentUser={currentUser}
             />
-            {/* <div className='spacer'></div> */}
 
             <div className='wave'>
               <canvas id="waveCanvas"></canvas>
