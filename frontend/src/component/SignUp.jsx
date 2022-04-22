@@ -35,7 +35,6 @@ export const SignUp = () => {
     }
   };
 
-  // 整える
   return (
     <div className="container sign-form">
       <Stack
@@ -47,6 +46,7 @@ export const SignUp = () => {
           {/* !! error-message出す */}
           <TextField
             required
+            autoFocus
             label="メールアドレス"
             fullWidth
             size="small"

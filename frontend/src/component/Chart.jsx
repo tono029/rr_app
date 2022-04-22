@@ -112,15 +112,18 @@ export default function Chart(props) {
     plugins: {
       legend: {display: false},
       // title: {display: true, text: "グラフ"},
+      
       // hover時の吹き出し
       tooltip: {
         displayColors: false,
         bodyText: ""
       },
+    },
 
-
-    }
+    animation: false,
   }
+
+  
 
   return (
     <div className="container chart">

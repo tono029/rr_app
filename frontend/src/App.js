@@ -27,7 +27,7 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState();
   const [user, setUser] = React.useState("")
   const [subs, setSubs] = React.useState([])
-  const [flash, setFlash] = React.useState()
+  const [flash, setFlash] = React.useState("")
 
   async function handleGetCurrentUser() {
     try {

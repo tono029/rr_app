@@ -180,9 +180,9 @@ tr:hover {
 
 // Flash.jsx-----------------------------------------
 .MuiSnackbar-root div {
-  color:  black !important;
+  color:  #264D4D !important;
   font-weight: 600;
-  background-color: white !important;
+  background-color: $accent-bg-color !important;
   // background: linear-gradient(to right, #5FBFBF, #C9E1B1) !important;
   display: block;
 }
