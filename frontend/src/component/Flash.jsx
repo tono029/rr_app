@@ -13,10 +13,10 @@ export default function Flash(props) {
   React.useEffect(() => {
     if (props.flash !== "") {
       setOpen(true)
-      props.setChartAni(true)
+      props.setChartAni(false)
     } else {
       setOpen(false)
-      props.setChartAni(false)
+      props.setChartAni(true)
     }
   }, [props.flash])
 

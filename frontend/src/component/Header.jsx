@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import {Button } from "@mui/material"
+import { Button } from "@mui/material"
 import {signOut} from "../api/auth"
 import { Link, useHistory } from "react-router-dom";
 import { AuthContext, SubsControl } from "../App";
@@ -20,6 +20,7 @@ export default function Header(props) {
     }
   }
 
+  // window.confirm以外の機能で（dialog, modal）
   function handleSignOut() {
     const is_ok = window.confirm("ログアウトしてよろしいですか。") 
       

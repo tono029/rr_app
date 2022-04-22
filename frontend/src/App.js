@@ -141,7 +141,12 @@ export default function App() {
               <canvas id="waveCanvas"></canvas>
             </div>
 
-            <Flash flash={flash} setFlash={setFlash} setChartAni={setChartAni} />
+            <Flash 
+              flash={flash} 
+              setFlash={setFlash}
+              chartAni={chartAni}
+              setChartAni={setChartAni} 
+            />
 
             <div className='main'>
     
