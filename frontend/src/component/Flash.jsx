@@ -11,11 +11,18 @@ export default function Flash(props) {
   const {setFlash} = React.useContext(AuthContext)
 
   React.useEffect(() => {
-    props.flash !== "" ? setOpen(true) : setOpen(false)
+    if (props.flash !== "") {
+      setOpen(true)
+      props.setChartAni(true)
+    } else {
+      setOpen(false)
+      props.setChartAni(false)
+    }
   }, [props.flash])
 
   
   const handleClose = () => {
+    props.setChartAni(false)
     setOpen(false)
 
     setFlash("")

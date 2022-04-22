@@ -28,6 +28,7 @@ export default function App() {
   const [user, setUser] = React.useState("")
   const [subs, setSubs] = React.useState([])
   const [flash, setFlash] = React.useState("")
+  const [chartAni, setChartAni] = React.useState(true)
 
   async function handleGetCurrentUser() {
     try {
@@ -140,7 +141,7 @@ export default function App() {
               <canvas id="waveCanvas"></canvas>
             </div>
 
-            <Flash flash={flash} setFlash={setFlash} />
+            <Flash flash={flash} setFlash={setFlash} setChartAni={setChartAni} />
 
             <div className='main'>
     
@@ -173,6 +174,7 @@ export default function App() {
   
                     <Chart 
                       subs={subs}
+                      chartAni={chartAni}
                     />
                   </Route>
                 </Private>

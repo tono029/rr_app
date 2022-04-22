@@ -1,6 +1,6 @@
 import React from "react";
 import {Bar} from "react-chartjs-2"
-import {MenuItem, Select, InputLabel, FormControl} from "@mui/material"
+import {MenuItem, Select, InputLabel, FormControl, duration} from "@mui/material"
 import {Bar as BarJS} from "chart.js/auto"
 
 export default function Chart(props) {
@@ -112,7 +112,7 @@ export default function Chart(props) {
     plugins: {
       legend: {display: false},
       // title: {display: true, text: "グラフ"},
-      
+
       // hover時の吹き出し
       tooltip: {
         displayColors: false,
@@ -120,7 +120,7 @@ export default function Chart(props) {
       },
     },
 
-    animation: false,
+    animation: props.chartAni,
   }
 
   
