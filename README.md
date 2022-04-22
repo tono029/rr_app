@@ -5,7 +5,8 @@
 フォームから登録されたデータをテーブル化し、視覚的に確認できるようチャート化も行っています。
 
 # URL
-* [未デプロイ]()
+rails apiをHeroku, Reactをfirebaseでデプロイしました。
+* [subsc-manager](https://subsc-manager-11559.web.app/)
 
 # 使用技術
 * Ruby
