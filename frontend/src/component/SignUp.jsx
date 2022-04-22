@@ -10,7 +10,7 @@ export const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
-  const confirmSuccessUrl = "http://localhost:3000";
+  const confirmSuccessUrl = "https://subsc-manager-11559.web.app/";
 
   const generateParams = () => {
     const signUpParams = {

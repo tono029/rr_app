@@ -51,7 +51,7 @@ export default function App() {
 
   const client = axios.create({
     // APIのURL
-    baseURL: "http://localhost:3001/"
+    baseURL: "https://agile-ravine-63015.herokuapp.com/"
   })
 
 

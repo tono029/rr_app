@@ -7,7 +7,7 @@ const options = {
 
 const client = applyCaseMiddleware(
     axios.create({
-        baseURL: 'http://localhost:3001',
+        baseURL: 'https://agile-ravine-63015.herokuapp.com',
     }),
     options
 );
