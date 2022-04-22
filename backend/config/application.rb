@@ -47,10 +47,10 @@ module Backend
       allow do
         origins 'https://subsc-manager-11559.web.app', "http://localhost:3000"
         resource '*',
-                 :headers => :any,
-                 # この一文で、渡される、'access-token'、'uid'、'client'というheaders情報を用いてログイン状態を維持する。
-                 :expose => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
-                 :methods => [:get, :post, :options, :delete, :put]
+          :headers => :any,
+          # この一文で、渡される、'access-token'、'uid'、'client'というheaders情報を用いてログイン状態を維持する。
+          :expose => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+          :methods => [:get, :post, :options, :delete, :put]
       end
     end
   end
