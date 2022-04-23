@@ -50,7 +50,7 @@ export default function App() {
 
   const client = axios.create({
     // APIのURL
-    baseURL: "https://agile-ravine-63015.herokuapp.com/"
+    baseURL: "https://pure-taiga-32798.herokuapp.com/"
   })
 
 
