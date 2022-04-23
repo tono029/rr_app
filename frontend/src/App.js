@@ -1,5 +1,4 @@
 import './App.scss';
-import "./scss/spacer.scss"
 import Chart from './component/Chart';
 import React from 'react';
 import Subs from './component/Subs';
