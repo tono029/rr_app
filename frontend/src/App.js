@@ -50,7 +50,7 @@ export default function App() {
 
   const client = axios.create({
     // APIのURL
-    baseURL: "https://pure-taiga-32798.herokuapp.com/"
+    baseURL: "https://subsc-manager-api.herokuapp.com/"
   })
 
 

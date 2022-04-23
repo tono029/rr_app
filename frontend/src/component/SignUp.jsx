@@ -10,7 +10,7 @@ export const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
-  const confirmSuccessUrl = "https://subsc-manager-11559.web.app/";
+  const confirmSuccessUrl = "https://subsc-manager-api.herokuapp.com/";
 
   const generateParams = () => {
     const signUpParams = {

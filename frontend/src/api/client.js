@@ -7,7 +7,7 @@ const options = {
 
 const client = applyCaseMiddleware(
     axios.create({
-        baseURL: 'https://pure-taiga-32798.herokuapp.com',
+        baseURL: 'https://subsc-manager-api.herokuapp.com',
     }),
     options
 );
