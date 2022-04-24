@@ -6,6 +6,7 @@ import Header from './component/Header';
 import SubForm from './component/SubForm';
 import Flash from './component/Flash';
 import axios from "axios"
+import applyCaseMiddleware from 'axios-case-converter'
 import client from './api/client';
 import Cookies from "js-cookie";
 import {createTheme, ThemeProvider} from "@mui/material"
@@ -48,10 +49,16 @@ export default function App() {
     setLoading(false)
   }
 
-  const client = axios.create({
-    // APIのURL
-    baseURL: "https://subsc-manager-api.herokuapp.com/"
-  })
+  const options = {
+    ignoreHeaders: true,
+  } 
+
+  const client = applyCaseMiddleware(
+    axios.create({
+      baseURL: 'https://subsc-manager-api.herokuapp.com/',
+    }),
+    options
+  );
 
 
   async function getSubs() {
