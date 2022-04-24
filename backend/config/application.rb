@@ -50,7 +50,8 @@ module Backend
           :headers => :any,
           # この一文で、渡される、'access-token'、'uid'、'client'というheaders情報を用いてログイン状態を維持する。
           :expose => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
-          :methods => [:get, :post, :options, :delete, :put]
+          :methods => [:get, :post, :options, :delete, :put],
+          credentials: true
       end
     end
   end
