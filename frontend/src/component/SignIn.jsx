@@ -44,6 +44,7 @@ export const SignIn = () => {
         history.push("/");
       }
     } catch (e) {
+      setFlash(e.errors.full_messages)
       console.log("signinError", e);
     }
   };

@@ -5,7 +5,8 @@ import { AuthContext } from "../App";
 import {Button, TextField, Stack} from "@mui/material"
 
 export const SignUp = () => {
-  const { setIsSignedIn, setCurrentUser } = useContext(AuthContext);
+  const { setIsSignedIn, setCurrentUser, setFlash } = useContext(AuthContext);
+
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,6 +32,7 @@ export const SignUp = () => {
       
       alert("確認メールが送信されました。");
     } catch (e) {
+      setFlash(e.errors.full_messages)
       console.log("signupError", e);
     }
   };
