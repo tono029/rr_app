@@ -1,6 +1,6 @@
 import React from "react";
 import {Bar} from "react-chartjs-2"
-import {MenuItem, Select, InputLabel, FormControl, duration} from "@mui/material"
+import {MenuItem, Select, InputLabel, FormControl} from "@mui/material"
 import {Bar as BarJS} from "chart.js/auto"
 
 export default function Chart(props) {

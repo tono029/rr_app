@@ -31,7 +31,7 @@ export const SignUp = () => {
       
       alert("確認メールが送信されました。");
     } catch (e) {
-      console.log(e);
+      console.log("signupError", e);
     }
   };
 

@@ -1,4 +1,3 @@
-
 import Cookies from "js-cookie";
 import { useContext, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
@@ -45,11 +44,10 @@ export const SignIn = () => {
         history.push("/");
       }
     } catch (e) {
-      console.log(e);
+      console.log("signinError", e);
     }
   };
 
-  // 整える
   return (
     <>
       <Home />

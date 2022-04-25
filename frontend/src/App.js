@@ -43,7 +43,7 @@ export default function App() {
         console.log("no current user")
       }
     } catch (error) {
-      console.log(error)
+      console.log("currentUserError", error)
     }
 
     setLoading(false)
