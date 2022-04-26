@@ -29,6 +29,7 @@ export default function Flash(props) {
   };
 
   return (
+    // !! flashの内容によってbackgroundColorを変える。
     <Snackbar
       open={open}
       onClose={handleClose}

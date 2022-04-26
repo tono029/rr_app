@@ -7,7 +7,7 @@ import {Button, Stack, TextField} from "@mui/material"
 import Home from "./Home";
 
 export const SignIn = () => {
-  const { setIsSignedIn, setCurrentUser, currentUser, setFlash } = useContext(AuthContext);
+  const { setIsSignedIn, setCurrentUser, setFlash } = useContext(AuthContext);
   const {setUser, getSubs} = useContext(SubsControl)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -44,7 +44,7 @@ export const SignIn = () => {
         history.push("/");
       }
     } catch (e) {
-      setFlash(e.errors.full_messages)
+      setFlash("ログインに失敗しました。")
       console.log("signinError", e);
     }
   };

@@ -5,7 +5,7 @@ import { AuthContext } from "../App";
 import {Button, TextField, Stack} from "@mui/material"
 
 export const SignUp = () => {
-  const { setIsSignedIn, setCurrentUser, setFlash } = useContext(AuthContext);
+  const { setFlash } = useContext(AuthContext);
 
 
   const [email, setEmail] = useState("");
@@ -30,9 +30,9 @@ export const SignUp = () => {
       const res = await signUp(params);
       console.log(res);
       
-      alert("確認メールが送信されました。");
+      setFlash("確認メールが送信されました。");
     } catch (e) {
-      setFlash(e.errors.full_messages)
+      setFlash("登録に失敗しました。")
       console.log("signupError", e);
     }
   };
@@ -90,7 +90,6 @@ export const SignUp = () => {
             value={confirmSuccessUrl}
           />
 
-          {/* !! 確認メールが送られたことを知らせるダイアログを出す */}
           <Button 
             fullWidth
             variant="contained" 
