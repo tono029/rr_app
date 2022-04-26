@@ -81,6 +81,11 @@ export const SignIn = () => {
               name="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              onKeyDown={e => {
+                if (e.key === "Enter") {
+                  handleSignInSubmit(e)
+                }
+              }}
             />
   
             <Button

@@ -81,6 +81,11 @@ export const SignUp = () => {
             name="password_confirmation"
             value={passwordConfirmation}
             onChange={(e) => setPasswordConfirmation(e.target.value)}
+            onKeyDown={e => {
+              if (e.key === "Enter") {
+                handleSignUpSubmit(e)
+              }
+            }}
           />
 
           <input
