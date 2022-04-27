@@ -35,7 +35,7 @@ export default function SubForm(props) {
 
   const {register, handleSubmit, reset, formState: {errors},} = useForm({
     mode: onSubmit,
-    defaultValues: {sub_name: "", fee: "", link: ""},
+    defaultValues: {subName: "", fee: "", link: ""},
   })
 
   return (

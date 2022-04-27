@@ -43,7 +43,7 @@ export default function Chart(props) {
     })
 
     subData.forEach(sub => {
-      labels.push(sub.sub_name)
+      labels.push(sub.subName)
       data.push(sub.fee)
     })
 
@@ -61,7 +61,7 @@ export default function Chart(props) {
     if (sort === 0) {
       if (per === 0) {
         SubsPerMonth.forEach(subPM => {
-          labels.push(subPM.sub_name)
+          labels.push(subPM.subName)
           data.push(subPM.fee)
         })
         return {
@@ -70,7 +70,7 @@ export default function Chart(props) {
         }
       } else {
           SubsPerYear.forEach(subPY => {
-          labels.push(subPY.sub_name)
+          labels.push(subPY.subName)
           data.push(subPY.fee)
         })
         return {

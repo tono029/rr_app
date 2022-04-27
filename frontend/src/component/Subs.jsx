@@ -74,7 +74,8 @@ export default function Subs(props) {
   const subsIndex = props.subs.map(sub => {
     return (
       <TableRow key={sub.id}>
-        <TableCell colSpan={1}>{sub.sub_name}</TableCell>
+        {/* 本番環境ではaxiosの影響でパラメータ名がキャメルケースになる。 */}
+        <TableCell colSpan={1}>{sub.subName}</TableCell>
 
         <TableCell colSpan={1}>{sub.fee.toLocaleString()}<span>円</span></TableCell>
 
@@ -131,7 +132,7 @@ export default function Subs(props) {
           onClose={() => setOpen([false, ""])}
         >
           <Box className="link-modal" sx={modalStyle}>
-            <p>「{sub.sub_name}」にリンク先を追加</p>
+            <p>「{sub.subName}」にリンク先を追加</p>
             <div className="modal-form">
               <TextField
                 label="リンク"

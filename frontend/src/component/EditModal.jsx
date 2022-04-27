@@ -48,7 +48,7 @@ export default function EditModal(props) {
                 required
                 label="サービス名"
                 size="small"
-                defaultValue={props.sub.sub_name}
+                defaultValue={props.sub.subName}
                 {...register("sub_name", {
                   required: {value: true, message: "必須項目です"},
                   maxLength: {value: 40, message: "40字以内でお願いします。"},

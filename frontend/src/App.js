@@ -114,6 +114,8 @@ export default function App() {
     document.body.appendChild(script)
   }, [])
 
+  console.log("subs", subs)
+
   return (
     <ThemeProvider theme={theme}>
 
