@@ -56,6 +56,7 @@ export default function App() {
   const client = applyCaseMiddleware(
     axios.create({
       baseURL: 'https://subsc-manager-api.herokuapp.com/',
+      withCredentials: true,
     }),
     options
   );

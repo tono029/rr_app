@@ -28,8 +28,9 @@ export default function Subs(props) {
       `subs/${id}`,
       data,
       {params: {currentUid: Cookies.get("_uid")}},
+      {withCredentials: true}
     )
-
+    console.log(res.data)
     setSubs(res.data)
     setFlash("変更を適用しました。")
   }
