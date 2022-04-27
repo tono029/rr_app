@@ -6,7 +6,7 @@ import { AuthContext, SubsControl } from "../App";
 import Cookies from "js-cookie";
 
 export default function SubForm(props) {
-  const {currentUser, setFlash} = useContext(AuthContext)
+  const {setFlash} = useContext(AuthContext)
   const {setSubs} = useContext(SubsControl)
 
   async function createSub(data) {

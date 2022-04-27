@@ -47,7 +47,7 @@ class SubsController < ApplicationController
     end
 
     def set_subs
-      @subs = Sub.where(uid: params[:currentUid])
+      @subs = Sub.where(uid: params[:current_uid])
     end
   
 end
