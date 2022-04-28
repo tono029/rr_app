@@ -82,6 +82,12 @@ body::-webkit-scrollbar {
   .greeting {
     display: none;
   }
+  
+  .edit-modal, .link-modal {
+    width: auto !important;
+    min-width: 250px;
+    max-width: 300px !important;
+  }
 }
 
 

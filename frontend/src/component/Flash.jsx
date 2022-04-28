@@ -25,7 +25,7 @@ export default function Flash(props) {
     props.setChartAni(false)
     setOpen(false)
 
-    setFlash("")
+    // setFlash("")
   };
 
   return (

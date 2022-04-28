@@ -136,6 +136,7 @@ export default function Subs(props) {
             <p>「{sub.subName}」にリンク先を追加</p>
             <div className="modal-form">
               <TextField
+                fullWidth
                 label="リンク"
                 size="small"
                 autoComplete="off"
