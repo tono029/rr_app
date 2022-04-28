@@ -18,8 +18,8 @@ export default function EditModal(props) {
   }
 
   const onSubmit = (data) => {
-    console.log("data", data)
-    console.log("id", props.sub.id)
+    // console.log("data", data)
+    // console.log("id", props.sub.id)
 
     // rails側に更新情報を送信
     props.updateSub(data, props.sub.id)

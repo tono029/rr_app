@@ -74,6 +74,9 @@ header {
 .form-body-right {
   width: 60%;
   margin-left: 20px;
+  button {
+    line-height: 2 !important;
+  }
 }
 
 .error-mess {
@@ -190,7 +193,11 @@ tr:hover {
   display: block;
 }
 
+// spacer.js--------------------------------------
 .wave {
   position: sticky;
   top: 60px;
+  z-index: 5;
+  margin-bottom: 10px;
+  
 }
