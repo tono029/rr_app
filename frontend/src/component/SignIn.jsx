@@ -56,7 +56,7 @@ export const SignIn = () => {
         <Stack
           alignItems="center"
         >
-          <h3>LOG IN</h3>
+          <h3>ログイン</h3>
   
           <form>
             <TextField
@@ -94,7 +94,7 @@ export const SignIn = () => {
               type="submit" 
               onClick={(e) => handleSignInSubmit(e)}
             >
-              log in
+              ログイン
             </Button>
           </form>
   

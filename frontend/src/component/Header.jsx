@@ -64,7 +64,7 @@ export default function Header(props) {
               component={Link}
               to="/signin"
             >
-              Log in
+              ログイン
             </Button>
             
             <Button

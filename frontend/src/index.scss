@@ -79,10 +79,6 @@ body::-webkit-scrollbar {
 
 // 600以下
 @media screen and (max-width: 600px) {
-  .main {
-    padding: 0px 10px 20px 10px;
-  }
-
   .greeting {
     display: none;
   }
