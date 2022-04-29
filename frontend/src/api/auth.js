@@ -40,3 +40,10 @@ export const getCurrentUser = () => {
     },
   });
 };
+
+// ユーザー削除
+export const deleteUser = () => {
+  return client.delete("/auth")
+}
+
+// パスワードの再発行

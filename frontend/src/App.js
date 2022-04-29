@@ -5,6 +5,7 @@ import Subs from './component/Subs';
 import Header from './component/Header';
 import SubForm from './component/SubForm';
 import Flash from './component/Flash';
+import UserSetting from './component/UserSetting';
 import axios from "axios"
 import applyCaseMiddleware from 'axios-case-converter'
 import client from './api/client';
@@ -70,7 +71,11 @@ export default function App() {
       }
     })
 
-    setSubs(res.data)
+    const sortById = res.data.sort((sub, next_sub) => {
+      return sub.id > next_sub.id ? 1 : -1
+    })
+
+    setSubs(sortById)
   }
 
   useEffect(() => {
@@ -188,6 +193,13 @@ export default function App() {
                     <Chart 
                       subs={subs}
                       chartAni={chartAni}
+                    />
+                  </Route>
+
+                  <Route exact path="/setting">
+                    {/* ユーザー設定用のコンポーネント */}
+                    <UserSetting
+                      currentUser={currentUser}
                     />
                   </Route>
                 </Private>

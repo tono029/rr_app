@@ -20,7 +20,6 @@ export default function Header(props) {
     }
   }
 
-  // window.confirm以外の機能で（dialog, modal）
   function handleSignOut() {
     const is_ok = window.confirm("ログアウトしてよろしいですか。") 
       
@@ -37,7 +36,7 @@ export default function Header(props) {
   return (
     <header>
       <div className="header-left">
-        <h2>SubscManager</h2>
+        <h2 onClick={() => history.push("/")}>SubscManager</h2>
       </div>
 
       <div className="header-right">
@@ -49,13 +48,22 @@ export default function Header(props) {
 
         <div className="nav-items">
           {isSignedIn ?
-            <Button
-              onClick={handleSignOut}
-              size="small"
-            >
-              ログアウト
-            </Button>
+            <>
+              <Button
+                component={Link}
+                to="/setting"
+                size="small"
+              >
+                ユーザー設定
+              </Button>
 
+              <Button
+                onClick={handleSignOut}
+                size="small"
+              >
+                ログアウト
+              </Button>
+            </> 
           :
 
           <>

@@ -19,6 +19,6 @@ rails apiをHeroku, Reactをfirebaseでデプロイしました。
 * rails APIからユーザーに紐づいたデータの取得(axios)、テーブル化
 * データのチャート化、料金に応じたソート(chart.js)
 * ユーザー認証、サインイン、サインアウト(devise, devise_token_auth)
-* 登録確認メールの送信
+* 登録確認メールの送信(gmail)
 * ウィンドウサイズに合わせたスタイルの変更
 * フラッシュメッセージ（snackbar）

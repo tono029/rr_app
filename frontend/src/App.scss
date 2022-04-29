@@ -8,10 +8,10 @@ header {
   position: relative;
   display: flex;
   height: 55px;
-  background: linear-gradient(teal, rgba(0, 128, 128, 0.68));
-  padding: 5px 25px 0 25px;
+  background: linear-gradient(teal, rgba(0, 128, 128, 0.75));
+  padding: 5px 20px 0 20px;
   color: white;
-  z-index: 10;
+  z-index: 5;
   align-items: center;
   position: sticky;
   top: 0;
@@ -21,6 +21,7 @@ header {
   margin-right: auto;
   h2 {
     margin: auto;
+    cursor: pointer;
   }
 }
 
@@ -191,6 +192,13 @@ tr:hover {
   background-color: $accent-bg-color !important;
   // background: linear-gradient(to right, #5FBFBF, #C9E1B1) !important;
   display: block;
+}
+
+// UserSetting.jsx-----------------------------------------
+.setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 // spacer.js--------------------------------------

@@ -30,12 +30,19 @@ export default function Subs(props) {
       {params: {currentUid: Cookies.get("_uid")}},
       {withCredentials: true}
     )
+
+    const sortById = res.data.sort((sub, n_sub) => {
+      return sub.id > n_sub.id ? 1: -1
+    })
+
     console.log(res.data)
-    setSubs(res.data)
+    setSubs(sortById)
     setFlash("変更を適用しました。")
   }
 
   function handleDelete(id) {
+    // 削除確認があってもいいかも
+
     deleteSub(id)
   }
 
