@@ -43,6 +43,8 @@ export default function Subs(props) {
   function handleDelete(id) {
     // 削除確認があってもいいかも
 
+    setFlash("削除しました。")
+
     deleteSub(id)
   }
 

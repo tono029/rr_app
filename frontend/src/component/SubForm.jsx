@@ -7,7 +7,7 @@ import Cookies from "js-cookie";
 
 export default function SubForm(props) {
   const {setFlash} = useContext(AuthContext)
-  const {setSubs} = useContext(SubsControl)
+  const {subs, setSubs} = useContext(SubsControl)
 
   async function createSub(data) {
     const res = await props.client.post(
@@ -40,6 +40,10 @@ export default function SubForm(props) {
 
   return (
     <div className="container create-form">
+      {subs.length === 0 && 
+        <p className="first-text">以下のフォームに利用しているサブスクサービスの情報を入力してください。</p>
+      }
+
       <div className="form-body">
         <div className="form-body-left">
           <TotalFee subs={props.subs} />

@@ -11,21 +11,13 @@ export default function Flash(props) {
   const {setFlash} = React.useContext(AuthContext)
 
   React.useEffect(() => {
-    if (props.flash !== "") {
-      setOpen(true)
-      props.setChartAni(false)
-    } else {
-      setOpen(false)
-      props.setChartAni(true)
-    }
+    props.flash !== "" ? setOpen(true) : setOpen(false)
   }, [props.flash])
-
   
   const handleClose = () => {
-    props.setChartAni(false)
     setOpen(false)
 
-    // setFlash("")
+    setFlash("")
   };
 
   return (
@@ -34,7 +26,7 @@ export default function Flash(props) {
       open={open}
       onClose={handleClose}
       TransitionComponent={SlideTransition}
-      autoHideDuration={3000}
+      autoHideDuration={3300}
       anchorOrigin={{vertical: "top", horizontal: "center"}}
       message={props.flash}
       key={SlideTransition.name}

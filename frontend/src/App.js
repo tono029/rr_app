@@ -29,7 +29,7 @@ export default function App() {
   const [user, setUser] = React.useState("")
   const [subs, setSubs] = React.useState([])
   const [flash, setFlash] = React.useState("")
-  const [chartAni, setChartAni] = React.useState(true)
+  const [chartAni, setChartAni] = React.useState(false)
 
   async function handleGetCurrentUser() {
     try {
@@ -142,6 +142,7 @@ export default function App() {
             value={{
               setSubs,
               setUser,
+              subs, 
               getSubs,
             }}
           >

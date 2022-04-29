@@ -127,54 +127,66 @@ export default function Chart(props) {
 
   return (
     <div className="container chart">
-      <div className="chart-header">
+      
 
-        <div className="chart-header-r">
-          <FormControl
-            size="small"
-            sx={{ m: 1, minWidth: 80 }}
-          >
-            <InputLabel id="sort-select-label">期間</InputLabel>
-            <Select
-              autoWidth
-              labelId="sort-select-label"
-              id="sort-select"
-              value={per}
-              onChange={(e) => setPer(e.target.value)}
-              label="期間"
-            > 
-              <MenuItem value={0}>月換算</MenuItem>
-              <MenuItem value={1}>年換算</MenuItem>
+      {
+        props.subs.length === 0 ?
 
-            </Select>
-          </FormControl>
+        <p className="first-text">登録されたデータがここにグラフとして表示されます。</p>
+
+        :
+        <>
+          <div className="chart-header">
   
-          <FormControl
-            size="small" 
-            sx={{ m: 1, minWidth: 80 }}
-          >
-            <InputLabel id="sort-select-label">ソート</InputLabel>
-            <Select
-              autoWidth
-              labelId="sort-select-label"
-              id="sort-select"
-              value={sort}
-              onChange={(e) => setSort(e.target.value)}
-              label="ソート"
-            >
-              <MenuItem value={0}>登録順</MenuItem>
-              <MenuItem value={1}>降順</MenuItem>
-              <MenuItem value={2}>昇順</MenuItem>
-            </Select>
-          </FormControl>
-        </div>
-      </div>
-
-      <Bar
-        className="chart-body bar-chart"
-        data={graphData}
-        options={options}
-      />
+            <div className="chart-header-r">
+              <FormControl
+                size="small"
+                sx={{ m: 1, minWidth: 80 }}
+              >
+                <InputLabel id="sort-select-label">期間</InputLabel>
+                <Select
+                  autoWidth
+                  labelId="sort-select-label"
+                  id="sort-select"
+                  value={per}
+                  onChange={(e) => setPer(e.target.value)}
+                  label="期間"
+                > 
+                  <MenuItem value={0}>月換算</MenuItem>
+                  <MenuItem value={1}>年換算</MenuItem>
+  
+                </Select>
+              </FormControl>
+      
+              <FormControl
+                size="small" 
+                sx={{ m: 1, minWidth: 80 }}
+              >
+                <InputLabel id="sort-select-label">ソート</InputLabel>
+                <Select
+                  autoWidth
+                  labelId="sort-select-label"
+                  id="sort-select"
+                  value={sort}
+                  onChange={(e) => setSort(e.target.value)}
+                  label="ソート"
+                >
+                  <MenuItem value={0}>登録順</MenuItem>
+                  <MenuItem value={1}>降順</MenuItem>
+                  <MenuItem value={2}>昇順</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+          </div>
+          
+          <Bar
+            className="chart-body bar-chart"
+            data={graphData}
+            options={options}
+          />
+        </>
+      }
+      
     </div>
   )
 }
