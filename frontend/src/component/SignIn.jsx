@@ -3,7 +3,8 @@ import React, { useContext, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { signIn } from "../api/auth";
 import { AuthContext, SubsControl } from "../App";
-import {Button, Stack, TextField} from "@mui/material"
+import {Stack, TextField} from "@mui/material"
+import { LoadingButton } from '@mui/lab'
 import Home from "./Home";
 
 export const SignIn = () => {
@@ -11,6 +12,7 @@ export const SignIn = () => {
   const {setUser, getSubs} = useContext(SubsControl)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false)
 
   const history = useHistory();
 
@@ -24,6 +26,7 @@ export const SignIn = () => {
 
   const handleSignInSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true)
     const params = generateParams();
 
     try {
@@ -40,6 +43,7 @@ export const SignIn = () => {
         setUser(user_name[0])
         getSubs()
         setFlash("ログインしました。")
+        setIsLoading(false)
 
         history.push("/");
       }
@@ -88,13 +92,14 @@ export const SignIn = () => {
               onKeyDown={e => e.key === "Enter" && handleSignInSubmit(e)}
             />
   
-            <Button
+            <LoadingButton
+              loading={isLoading}
               fullWidth
               variant="contained"
               onClick={(e) => handleSignInSubmit(e)}
             >
               ログイン
-            </Button>
+            </LoadingButton>
           </form>
   
         </Stack>

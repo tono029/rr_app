@@ -56,7 +56,7 @@ function draw(canvas, color) {
   //波の重なりを描画 drawWave(canvas, color[数字（波の数を0から数えて指定）], 透過, 波の幅のzoom,波の開始位置の遅れ )
   drawWave(canvas, color[0], 0.5, 7, 0);
   drawWave(canvas, color[1], 0.8, 3, 200);
-  drawWave(canvas, color[2], 0.5, 5, 100);
+  drawWave(canvas, color[2], 0.45, 5, 100);
 }
 
 /**

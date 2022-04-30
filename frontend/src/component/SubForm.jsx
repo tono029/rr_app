@@ -38,9 +38,9 @@ export default function SubForm(props) {
     defaultValues: {subName: "", fee: "", link: ""},
   })
 
-  const fee = React.useRef(null)
-  const period = React.useRef(null)
-  const link = React.useRef(null)
+  const fee = useRef(null)
+  const period = useRef(null)
+  const link = useRef(null)
 
   function handleEnter(value, e) {
     if (e.key === "Enter") {
