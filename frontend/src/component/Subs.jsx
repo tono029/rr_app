@@ -141,7 +141,7 @@ export default function Subs(props) {
         >
           <Box className="link-modal" sx={modalStyle}>
             <p>「{sub.subName}」にリンク先を追加</p>
-            <div className="modal-form">
+            <form className="modal-form">
               <TextField
                 fullWidth
                 autoFocus
@@ -154,10 +154,11 @@ export default function Subs(props) {
               <Button
                 variant="contained"
                 onClick={handleSubmit(onSubmit)}
+                type="submit"
               >
                 追加
               </Button>
-            </div>
+            </form>
           </Box>
         </Modal>
 

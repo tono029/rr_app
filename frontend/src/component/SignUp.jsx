@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { signUp } from "../api/auth";
 import { AuthContext } from "../App";
@@ -11,7 +11,7 @@ export const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
-  const confirmSuccessUrl = "https://subsc-manager-api.herokuapp.com/";
+  const confirmSuccessUrl = "https://subsc-manager-11559.web.app/";
 
   const generateParams = () => {
     const signUpParams = {
@@ -37,6 +37,13 @@ export const SignUp = () => {
     }
   };
 
+  const passwordInput = useRef(null)
+  const passConInput = useRef(null)
+
+  function handleEnter(value, e) {
+    e.key === "Enter" && value.current.focus()
+  }
+
   return (
     <div className="container sign-form">
       <Stack
@@ -57,6 +64,7 @@ export const SignUp = () => {
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            onKeyDown={e => handleEnter(passwordInput, e)}
           />
 
           <TextField
@@ -68,7 +76,9 @@ export const SignUp = () => {
             id="password"
             name="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            inputRef={passwordInput}
+            onChange={e => setPassword(e.target.value)}
+            onKeyDown={e => handleEnter(passConInput, e)}
           />
 
           <TextField
@@ -80,7 +90,8 @@ export const SignUp = () => {
             id="password_confirmation"
             name="password_confirmation"
             value={passwordConfirmation}
-            onChange={(e) => setPasswordConfirmation(e.target.value)}
+            inputRef={passConInput}
+            onChange={e => setPasswordConfirmation(e.target.value)}
             onKeyDown={e => {
               if (e.key === "Enter") {
                 handleSignUpSubmit(e)
@@ -97,8 +108,7 @@ export const SignUp = () => {
 
           <Button 
             fullWidth
-            variant="contained" 
-            type="submit" 
+            variant="contained"
             onClick={(e) => handleSignUpSubmit(e)}
           >
             アカウント登録

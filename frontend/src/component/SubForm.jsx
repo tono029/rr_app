@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import {Grid, TextField, Button, MenuItem, Select, FormControl, InputLabel} from '@mui/material';
 import {useForm} from "react-hook-form"
 import TotalFee from "./TotalFee";
@@ -38,6 +38,16 @@ export default function SubForm(props) {
     defaultValues: {subName: "", fee: "", link: ""},
   })
 
+  const fee = React.useRef(null)
+  const period = React.useRef(null)
+  const link = React.useRef(null)
+
+  function handleEnter(value, e) {
+    if (e.key === "Enter") {
+      value.current.focus()
+    }
+  }
+
   return (
     <div className="container create-form">
       {subs.length === 0 && 
@@ -50,90 +60,105 @@ export default function SubForm(props) {
         </div>
 
         <div className="form-body-right">
-          <Grid container spacing={{md: 2, xs: 1}}>
-            <Grid item xs={12} sm={12}>
-              <TextField
-                // autoFocus
-                required
-                fullWidth
-                autoComplete="off"
-                label="サービス名"
-                size="small"
-                {...register("sub_name", {
-                  required: {value: true, message: "必須項目です"},
-                  maxLength: {value: 40, message: "40字以内でお願いします。"},
-                })}
+          <form>
+            <Grid container spacing={{md: 2, xs: 1}}>
+              <Grid item xs={12} sm={12}>
+                <TextField
+                  required
+                  fullWidth
+                  autoComplete="off"
+                  label="サービス名"
+                  size="small"
+                  {...register("sub_name", {
+                    required: {value: true, message: "必須項目です"},
+                    maxLength: {value: 40, message: "40字以内でお願いします。"},
+                  })}
+                  onKeyDown={e => handleEnter(fee, e)}
+                />
+  
+                <div className="error-mess">
+                  {errors.sub_name && errors.sub_name.type === "required" && <span>・{errors.sub_name.message}</span>}
+                  {errors.sub_name && errors.sub_name.type === "maxLength" && <span>・{errors.sub_name.message}</span>}
+                </div>
+  
+              </Grid>
+              
+              <Grid item xs={6} sm={8}>
+                <TextField
+                  fullWidth
+                  required
+                  autoComplete="off"
+                  label="料金"
+                  type="number"
+                  size="small"
+                  inputRef={fee}
+                  {...register("fee", {
+                    required: {value: true, message: "必須項目です"},
+                  })}
+                  onKeyDown={e => handleEnter(link, e)}
+                />
+  
+                <div className="error-mess">
+                  {errors.fee && errors.fee.type === "required" && <span>・{errors.fee.message}</span>}
+                </div>
+              </Grid>
+        
+              <Grid item xs={6} sm={4} className="period-select">
+                <FormControl size="small" fullWidth>
+                  <InputLabel>期間</InputLabel>
+                  <Select
+                    label="期間"
+                    defaultValue={1}
+                    inputRef={period}
+                    {...register("period")}
+                  >
+                    <MenuItem value={1}>/月</MenuItem>
+                    <MenuItem value={2}>/年</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+  
+              <Grid item xs={6} sm={8}>
+                <TextField
+                  fullWidth
+                  autoComplete="off"
+                  label="リンク（任意）"
+                  type="url" 
+                  size="small"
+                  inputRef={link}
+                  {...register("link")}
+                  // keydownでサブミットしたいがhandleSubmitが効かない
+                  onKeyDown={e => {
+                    if (e.key === "Enter") {
+                      e.preventDefault()
+                      console.log("enter")
+                      handleSubmit(onSubmit)
+                    }
+                  }}
+                />
+              </Grid>
+              
+              {/* 新しくサービスを登録する際には
+              現在のゆーざーのIDを情報に含める。 */}
+              <input 
+                type="hidden" 
+                value={Cookies.get("_uid")}
+                {...register("uid")}
               />
-
-              <div className="error-mess">
-                {errors.sub_name && errors.sub_name.type === "required" && <span>・{errors.sub_name.message}</span>}
-                {errors.sub_name && errors.sub_name.type === "maxLength" && <span>・{errors.sub_name.message}</span>}
-              </div>
-
-            </Grid>
-            
-            <Grid item xs={6} sm={8}>
-              <TextField
-                fullWidth
-                required
-                autoComplete="off"
-                label="料金"
-                type="number"
-                size="small"
-                {...register("fee", {
-                  required: {value: true, message: "必須項目です"},
-                })}
-              />
-
-              <div className="error-mess">
-                {errors.fee && errors.fee.type === "required" && <span>・{errors.fee.message}</span>}
-              </div>
-            </Grid>
-      
-            <Grid item xs={6} sm={4} className="period-select">
-              <FormControl size="small" fullWidth>
-                <InputLabel>期間</InputLabel>
-                <Select
-                  label="期間"
-                  defaultValue={1}
-                  {...register("period")}
+        
+              <Grid item xs={6} sm={4}>
+                <Button
+                  fullWidth
+                  type="button"
+                  variant="contained"
+                  onClick={handleSubmit(onSubmit)}  
                 >
-                  <MenuItem value={1}>/月</MenuItem>
-                  <MenuItem value={2}>/年</MenuItem>
-                </Select>
-              </FormControl>
+                  登録
+                </Button>
+              </Grid>
+        
             </Grid>
-
-            <Grid item xs={6} sm={8}>
-              <TextField
-                fullWidth
-                autoComplete="off"
-                label="リンク（任意）"
-                type="url" 
-                size="small"
-                {...register("link")}
-              />
-            </Grid>
-            
-            {/* 新しくサービスを登録する際には
-            現在のゆーざーのIDを情報に含める。 */}
-            <input 
-              type="hidden" 
-              value={Cookies.get("_uid")}
-              {...register("uid")}
-            />
-      
-            <Grid item xs={6} sm={4}>
-              <Button
-                fullWidth
-                variant="contained"
-                onClick={handleSubmit(onSubmit)}  
-              >
-                登録
-              </Button>
-            </Grid>
-      
-          </Grid>
+          </form>
 
           
         </div>

@@ -1,5 +1,5 @@
 import Cookies from "js-cookie";
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { signIn } from "../api/auth";
 import { AuthContext, SubsControl } from "../App";
@@ -49,6 +49,8 @@ export const SignIn = () => {
     }
   };
 
+  const inputPassword = React.useRef(null)
+
   return (
     <>
       <Home />
@@ -60,7 +62,6 @@ export const SignIn = () => {
   
           <form>
             <TextField
-              autofill
               required
               fullWidth
               label="メールアドレス"
@@ -69,11 +70,11 @@ export const SignIn = () => {
               id="email"
               name="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={e => setEmail(e.target.value)}
+              onKeyDown={e => e.key === "Enter" && inputPassword.current.focus()}
             />
   
             <TextField
-              autoComplete=""
               fullWidth
               required
               label="パスワード"
@@ -81,19 +82,15 @@ export const SignIn = () => {
               type="password"
               id="password"
               name="password"
+              inputRef={inputPassword}
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              onKeyDown={e => {
-                if (e.key === "Enter") {
-                  handleSignInSubmit(e)
-                }
-              }}
+              onChange={e => setPassword(e.target.value)}
+              onKeyDown={e => e.key === "Enter" && handleSignInSubmit(e)}
             />
   
             <Button
-              fullWidth 
-              variant="contained" 
-              type="submit" 
+              fullWidth
+              variant="contained"
               onClick={(e) => handleSignInSubmit(e)}
             >
               ログイン
