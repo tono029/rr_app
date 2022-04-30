@@ -55,7 +55,6 @@ header {
 .form-body {
   display: flex;
   align-items: center;
-  margin-top: 10px;
 }
 
 .form-body-left {
@@ -89,6 +88,7 @@ header {
 
 .first-text {
   margin: 0;
+  margin-bottom: 10px;
   font-size: 16px;
   text-align: center;
 }
@@ -202,6 +202,14 @@ tr:hover {
 }
 
 // UserSetting.jsx-----------------------------------------
+.setting-header {
+  display: flex;
+  justify-content: space-between;
+  h2 {
+    margin: 0;
+  }
+}
+
 .setting-item {
   display: flex;
   justify-content: space-between;

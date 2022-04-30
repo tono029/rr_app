@@ -144,6 +144,7 @@ export default function Subs(props) {
             <div className="modal-form">
               <TextField
                 fullWidth
+                autoFocus
                 label="リンク"
                 size="small"
                 autoComplete="off"
