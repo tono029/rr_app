@@ -14,11 +14,11 @@ export default function UserSetting(props) {
         <p>{props.currentUser.uid}</p>
       </div>
       
-      <Button
+      {/* <Button
         onClick={handleUserDelete}
       >
         ユーザー登録の削除
-      </Button>
+      </Button> */}
     </div>  
   )
 }

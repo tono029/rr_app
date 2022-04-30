@@ -19,7 +19,8 @@ export default function Subs(props) {
   const [editOpen, setEditOpen] = React.useState([false, ""])
 
   async function deleteSub(id) {
-    await props.client.delete(`subs/${id}`)
+    const res = await props.client.delete(`subs/${id}`)
+    setFlash(res.data.flash)
     props.getSubs()
   }
 
@@ -35,15 +36,12 @@ export default function Subs(props) {
       return sub.id > n_sub.id ? 1: -1
     })
 
-    console.log(res.data)
     setSubs(sortById)
     setFlash("変更を適用しました。")
   }
 
   function handleDelete(id) {
     // 削除確認があってもいいかも
-
-    setFlash("削除しました。")
 
     deleteSub(id)
   }

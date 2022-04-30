@@ -33,6 +33,7 @@ class SubsController < ApplicationController
   # DELETE /subs/:id
   def destroy
     @sub.destroy
+    render json: {flash: "削除しました。"}
   end
 
 
