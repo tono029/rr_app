@@ -2,14 +2,14 @@ import Cookies from "js-cookie";
 import React, { useContext, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { signIn } from "../api/auth";
-import { AuthContext, SubsControl } from "../App";
+import { AuthContext, GeneralControl } from "../App";
 import {Stack, TextField} from "@mui/material"
 import { LoadingButton } from '@mui/lab'
 import Home from "./Home";
 
 export const SignIn = () => {
   const { setIsSignedIn, setCurrentUser, setFlash } = useContext(AuthContext);
-  const {setUser, getSubs} = useContext(SubsControl)
+  const {setUser, getSubs} = useContext(GeneralControl)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false)
@@ -49,6 +49,7 @@ export const SignIn = () => {
       }
     } catch (e) {
       setFlash("ログインに失敗しました。")
+      setIsLoading(false)
       console.log("signinError", e);
     }
   };

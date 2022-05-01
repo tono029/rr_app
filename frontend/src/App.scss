@@ -202,10 +202,15 @@ tr:hover {
 }
 
 // UserSetting.jsx-----------------------------------------
+.setting {
+  width: 60%;
+}
+
 .setting-header {
   display: flex;
   justify-content: space-between;
-  h2 {
+  align-items: center;
+  h3 {
     margin: 0;
   }
 }
@@ -214,6 +219,10 @@ tr:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 20px;
+  p {
+    margin: 0;
+  }
 }
 
 // spacer.js--------------------------------------

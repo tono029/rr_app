@@ -2,12 +2,12 @@ import React, { useContext, useRef } from "react";
 import {Grid, TextField, Button, MenuItem, Select, FormControl, InputLabel} from '@mui/material';
 import {useForm} from "react-hook-form"
 import TotalFee from "./TotalFee";
-import { AuthContext, SubsControl } from "../App";
+import { AuthContext, GeneralControl } from "../App";
 import Cookies from "js-cookie";
 
 export default function SubForm(props) {
   const {setFlash} = useContext(AuthContext)
-  const {subs, setSubs} = useContext(SubsControl)
+  const {subs, setSubs} = useContext(GeneralControl)
 
   async function createSub(data) {
     const res = await props.client.post(

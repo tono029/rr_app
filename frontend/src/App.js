@@ -10,7 +10,7 @@ import axios from "axios"
 import applyCaseMiddleware from 'axios-case-converter'
 import client from './api/client';
 import Cookies from "js-cookie";
-import {createTheme, ThemeProvider} from "@mui/material"
+import {createTheme, ThemeProvider, Slide, Box} from "@mui/material"
 
 import { createContext, useEffect, useState } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
@@ -20,7 +20,7 @@ import { SignIn } from './component/SignIn';
 import { SignUp } from './component/SignUp';
 
 export const AuthContext = createContext();
-export const SubsControl = createContext();
+export const GeneralControl = createContext();
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -30,6 +30,7 @@ export default function App() {
   const [subs, setSubs] = React.useState([])
   const [flash, setFlash] = React.useState("")
   const [chartAni, setChartAni] = React.useState(false)
+  const [mainSlide, setMainSlide] = React.useState({dire: "right", in: true, appear: false})
 
   async function handleGetCurrentUser() {
     try {
@@ -138,12 +139,14 @@ export default function App() {
         }}
       >
         <BrowserRouter>
-          <SubsControl.Provider
+          <GeneralControl.Provider
             value={{
               setSubs,
               setUser,
               subs, 
               getSubs,
+              mainSlide,
+              setMainSlide,
             }}
           >
             <Header 
@@ -175,39 +178,52 @@ export default function App() {
     
                 <Private>
                   <Route exact path="/">
-                    <div className='main-top'>
-                      <SubForm 
-                        client={client} 
-                        subs={subs} 
-                        setSubs={setSubs} 
-                        getSubs={getSubs} 
-                      />
-    
-                      <Subs 
-                        client={client} 
-                        subs={subs} 
-                        setSubs={setSubs} 
-                        getSubs={getSubs} 
-                      />
-                    </div>
-  
-                    <Chart 
-                      subs={subs}
-                      chartAni={chartAni}
-                    />
-                  </Route>
+                    <Slide 
+                      direction={mainSlide.dire} 
+                      in={mainSlide.in}
+                      appear={mainSlide.appear}
+                      mountOnEnter 
+                      unmountOnExit 
+                    >
+                      <Box>
+                        <div className='main-top'>
+                          <SubForm 
+                            client={client} 
+                            subs={subs} 
+                            setSubs={setSubs} 
+                            getSubs={getSubs} 
+                          />
+        
+                          <Subs 
+                            client={client} 
+                            subs={subs} 
+                            setSubs={setSubs} 
+                            getSubs={getSubs} 
+                          />
+                        </div>
+      
+                        <Chart 
+                          subs={subs}
+                          chartAni={chartAni}
+                        />
+                      </Box>
+                    </Slide>
 
-                  <Route exact path="/setting">
-                    {/* ユーザー設定用のコンポーネント */}
-                    <UserSetting
-                      currentUser={currentUser}
-                    />
+                    <Slide direction="left" in={!mainSlide.in} mountOnEnter unmountOnExit>
+                      {/* ユーザー設定用のコンポーネント */}
+                      <Box>
+                        <UserSetting
+                          currentUser={currentUser}
+                          user={user}
+                        />
+                      </Box>
+                    </Slide>
                   </Route>
                 </Private>
                 
               </Switch>
             </div>
-          </SubsControl.Provider>
+          </GeneralControl.Provider>
         </BrowserRouter>
       </AuthContext.Provider>
     </ThemeProvider>

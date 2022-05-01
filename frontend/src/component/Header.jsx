@@ -2,11 +2,11 @@ import React, { useContext } from "react";
 import { Button } from "@mui/material"
 import {signOut} from "../api/auth"
 import { Link, useHistory } from "react-router-dom";
-import { AuthContext, SubsControl } from "../App";
+import { AuthContext, GeneralControl } from "../App";
  
 export default function Header(props) {
   const {isSignedIn, setIsSignedIn, setFlash} = useContext(AuthContext)
-  const {setSubs, setUser} = useContext(SubsControl)
+  const {setSubs, setUser, setMainSlide} = useContext(GeneralControl)
   const history = useHistory()
 
   function greeting() {
@@ -18,6 +18,10 @@ export default function Header(props) {
     } else {
       return "こんばんは"
     }
+  }
+
+  function toSetting() {
+    setMainSlide({dire: "left", in: false})
   }
 
   function handleSignOut() {
@@ -36,7 +40,9 @@ export default function Header(props) {
   return (
     <header>
       <div className="header-left">
-        <h2 onClick={() => history.push("/")}>SubscManager</h2>
+        <h2 onClick={() => setMainSlide({dire: "right", in: true})}>
+          SubscManager
+        </h2>
       </div>
 
       <div className="header-right">
@@ -50,8 +56,7 @@ export default function Header(props) {
           {isSignedIn ?
             <>
               <Button
-                component={Link}
-                to="/setting"
+                onClick={toSetting}
                 size="small"
               >
                 ユーザー設定

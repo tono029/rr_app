@@ -10,18 +10,18 @@ import EditIcon from '@mui/icons-material/Edit';
 import ClearIcon from '@mui/icons-material/Clear';
 import { useForm } from "react-hook-form";
 import EditModal from "./EditModal";
-import { AuthContext, SubsControl } from "../App";
+import { AuthContext, GeneralControl } from "../App";
 
 export default function Subs(props) {
-  const {setFlash} = useContext(AuthContext)
-  const {setSubs} = useContext(SubsControl)
+  const {setFlash, getSubs} = useContext(AuthContext)
+  const {setSubs} = useContext(GeneralControl)
   const [open, setOpen] = React.useState([false, ""])
   const [editOpen, setEditOpen] = React.useState([false, ""])
 
   async function deleteSub(id) {
     const res = await props.client.delete(`subs/${id}`)
     setFlash(res.data.flash)
-    props.getSubs()
+    getSubs()
   }
 
   async function updateSub(data, id) {

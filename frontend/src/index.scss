@@ -77,6 +77,12 @@ body::-webkit-scrollbar {
 
 }
 
+@media screen and (max-width: 400px) {
+  .setting-item {
+    flex-direction: column;
+  }
+}
+
 // 600以下
 @media screen and (max-width: 600px) {
   .greeting {
@@ -87,6 +93,10 @@ body::-webkit-scrollbar {
     width: auto !important;
     min-width: 250px;
     max-width: 300px !important;
+  }
+
+  .setting {
+    width: 80% !important;
   }
 }
 
