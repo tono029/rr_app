@@ -55,7 +55,6 @@ header {
 .form-body {
   display: flex;
   align-items: center;
-  margin-top: 10px;
 }
 
 .form-body-left {
@@ -89,6 +88,7 @@ header {
 
 .first-text {
   margin: 0;
+  margin-bottom: 10px;
   font-size: 16px;
   text-align: center;
 }
@@ -172,6 +172,12 @@ tr:hover {
   p {
     margin-bottom: 30px;
   }
+}
+
+.chart-text {
+  margin: 0;
+  font-size: 16px;
+  text-align: center;
 }
 
 // SignIn.jsx----------------------------------------------

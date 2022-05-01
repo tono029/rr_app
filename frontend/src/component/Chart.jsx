@@ -140,7 +140,7 @@ export default function Chart(props) {
       {
         props.subs.length === 0 ?
 
-        <p className="first-text">登録されたデータがここにグラフとして表示されます。</p>
+        <p className="chart-text">登録されたデータがここにグラフとして表示されます。</p>
 
         :
         <>
