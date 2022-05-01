@@ -18,6 +18,7 @@ export default function SubForm(props) {
 
     if (res.status === 200) {
       setSubs(res.data.data)
+      setFlash("登録しました。")
     } else {
       setFlash(res.data.message)
     }
@@ -29,7 +30,6 @@ export default function SubForm(props) {
 
     // rails側に送信
     createSub(data)
-    setFlash("登録しました。")
     reset()
   }
 

@@ -13,15 +13,15 @@ import EditModal from "./EditModal";
 import { AuthContext, GeneralControl } from "../App";
 
 export default function Subs(props) {
-  const {setFlash, getSubs} = useContext(AuthContext)
-  const {setSubs} = useContext(GeneralControl)
+  const {setFlash} = useContext(AuthContext)
+  const {setSubs, getSubs} = useContext(GeneralControl)
   const [open, setOpen] = React.useState([false, ""])
   const [editOpen, setEditOpen] = React.useState([false, ""])
 
   async function deleteSub(id) {
     const res = await props.client.delete(`subs/${id}`)
-    setFlash(res.data.flash)
     getSubs()
+    setFlash(res.data.flash)
   }
 
   async function updateSub(data, id) {

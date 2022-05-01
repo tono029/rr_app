@@ -14,6 +14,7 @@ export default function Flash(props) {
 
   React.useEffect(() => {
     if (props.flash !== "") {
+      props.setChartAni(false)
       setMainSlide({dire: "right", in: true, appear: false})
       setOpen(true)
     } else {
@@ -22,10 +23,11 @@ export default function Flash(props) {
   }, [props.flash])
   
   const handleClose = () => {
+    
     setMainSlide({dire: "right", in: true, appear: false})
-    setOpen(false)
-
+    props.setChartAni(false)
     setFlash("")
+    
   };
 
   return (

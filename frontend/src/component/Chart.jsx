@@ -123,7 +123,15 @@ export default function Chart(props) {
     animation: props.chartAni,
   }
 
-  
+  function handleSortChange(e) {
+    props.setChartAni(true)
+    setSort(e.target.value)
+  }
+
+  function handlePerChange(e) {
+    props.setChartAni(true)
+    setPer(e.target.value)
+  }
 
   return (
     <div className="container chart">
@@ -149,7 +157,7 @@ export default function Chart(props) {
                   labelId="sort-select-label"
                   id="sort-select"
                   value={per}
-                  onChange={(e) => setPer(e.target.value)}
+                  onChange={(e) => handlePerChange(e)}
                   label="期間"
                 > 
                   <MenuItem value={0}>月換算</MenuItem>
@@ -168,7 +176,7 @@ export default function Chart(props) {
                   labelId="sort-select-label"
                   id="sort-select"
                   value={sort}
-                  onChange={(e) => setSort(e.target.value)}
+                  onChange={(e) => handleSortChange(e)}
                   label="ソート"
                 >
                   <MenuItem value={0}>登録順</MenuItem>

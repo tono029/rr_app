@@ -29,7 +29,7 @@ export default function App() {
   const [user, setUser] = React.useState("")
   const [subs, setSubs] = React.useState([])
   const [flash, setFlash] = React.useState("")
-  const [chartAni, setChartAni] = React.useState(false)
+  const [chartAni, setChartAni] = React.useState(true)
   const [mainSlide, setMainSlide] = React.useState({dire: "right", in: true, appear: false})
 
   async function handleGetCurrentUser() {
@@ -83,9 +83,6 @@ export default function App() {
     handleGetCurrentUser();
   }, [setCurrentUser]);
 
-  useEffect(() => {
-    getSubs()
-  }, [])
 
   const theme = createTheme({
     palette: {
@@ -115,13 +112,13 @@ export default function App() {
   };
 
   useEffect(() => {
+    getSubs()
+
     const script = document.createElement("script")
     script.src = "./spacer.js"
 
     document.body.appendChild(script)
   }, [])
-
-  console.log("subs", subs)
 
   return (
     <ThemeProvider theme={theme}>
@@ -161,7 +158,6 @@ export default function App() {
             <Flash 
               flash={flash} 
               setFlash={setFlash}
-              chartAni={chartAni}
               setChartAni={setChartAni} 
             />
 
@@ -205,12 +201,13 @@ export default function App() {
                         <Chart 
                           subs={subs}
                           chartAni={chartAni}
+                          setChartAni={setChartAni}
                         />
                       </Box>
                     </Slide>
 
+                    {/* ユーザー設定用のコンポーネント */}
                     <Slide direction="left" in={!mainSlide.in} mountOnEnter unmountOnExit>
-                      {/* ユーザー設定用のコンポーネント */}
                       <Box>
                         <UserSetting
                           currentUser={currentUser}

@@ -40,7 +40,7 @@ export default function Header(props) {
   return (
     <header>
       <div className="header-left">
-        <h2 onClick={() => setMainSlide({dire: "right", in: true})}>
+        <h2 onClick={() => setMainSlide({dire: "right", in: true, appear: false})}>
           SubscManager
         </h2>
       </div>
