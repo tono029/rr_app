@@ -131,8 +131,6 @@ export default function App() {
           setIsSignedIn,
           currentUser,
           setCurrentUser,
-          flash,
-          setFlash,
         }}
       >
         <BrowserRouter>
@@ -144,6 +142,8 @@ export default function App() {
               getSubs,
               mainSlide,
               setMainSlide,
+              flash,
+              setFlash,
             }}
           >
             <Header 

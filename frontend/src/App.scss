@@ -95,7 +95,7 @@ header {
 
 // Subs.jsx------------------------------------------
 .subs-table {
-  max-height: 230px;
+  max-height: 280px;
   margin: 0 auto 20px auto;
   border-radius: 10px !important;
   box-shadow: 2px 1px 2px rgb(0, 0, 0, 0.2) !important;
@@ -229,6 +229,20 @@ tr:hover {
   p {
     margin: 0;
   }
+}
+
+.setting-footer {
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+}
+
+.MuiPaper-root {
+  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2) !important;
+}
+
+.delete-yes {
+  background-color: #80004C !important;
 }
 
 // spacer.js--------------------------------------

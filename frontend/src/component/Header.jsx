@@ -5,8 +5,8 @@ import { Link, useHistory } from "react-router-dom";
 import { AuthContext, GeneralControl } from "../App";
  
 export default function Header(props) {
-  const {isSignedIn, setIsSignedIn, setFlash} = useContext(AuthContext)
-  const {setSubs, setUser, setMainSlide} = useContext(GeneralControl)
+  const {isSignedIn, setIsSignedIn} = useContext(AuthContext)
+  const {setSubs, setUser, setMainSlide, setFlash} = useContext(GeneralControl)
   const history = useHistory()
 
   function greeting() {

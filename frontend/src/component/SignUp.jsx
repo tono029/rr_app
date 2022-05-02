@@ -1,11 +1,11 @@
 import { useContext, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { signUp } from "../api/auth";
-import { AuthContext } from "../App";
+import { GeneralControl } from "../App";
 import {Button, TextField, Stack} from "@mui/material"
 
 export const SignUp = () => {
-  const { setFlash } = useContext(AuthContext);
+  const { setFlash } = useContext(GeneralControl);
 
 
   const [email, setEmail] = useState("");

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Snackbar, Slide} from '@mui/material';
-import { AuthContext, GeneralControl } from '../App';
+import { GeneralControl } from '../App';
 
 function SlideTransition(props) {
   return <Slide {...props} direction="down" />;
@@ -8,8 +8,7 @@ function SlideTransition(props) {
 
 export default function Flash(props) {
   const [open, setOpen] = React.useState(false)
-  const {setFlash} = React.useContext(AuthContext)
-  const {setMainSlide} = React.useContext(GeneralControl)
+  const {setMainSlide, setFlash} = React.useContext(GeneralControl)
   
 
   React.useEffect(() => {

@@ -10,11 +10,10 @@ import EditIcon from '@mui/icons-material/Edit';
 import ClearIcon from '@mui/icons-material/Clear';
 import { useForm } from "react-hook-form";
 import EditModal from "./EditModal";
-import { AuthContext, GeneralControl } from "../App";
+import { GeneralControl } from "../App";
 
 export default function Subs(props) {
-  const {setFlash} = useContext(AuthContext)
-  const {setSubs, getSubs} = useContext(GeneralControl)
+  const {setSubs, getSubs, setFlash} = useContext(GeneralControl)
   const [open, setOpen] = React.useState([false, ""])
   const [editOpen, setEditOpen] = React.useState([false, ""])
 
@@ -175,26 +174,24 @@ export default function Subs(props) {
   })
 
   return (
-    <div className="table-container">
-      <TableContainer className="subs-table" component={Paper}>
-        <Table stickyHeader>
-          <TableHead>
-            <TableRow>
-              <TableCell colSpan={1}>サービス名</TableCell>
-              <TableCell colSpan={1}>料金</TableCell>
-              <TableCell padding="none">期間</TableCell>
-              <TableCell padding="none">リンク</TableCell>
-              <TableCell padding="none"></TableCell>
-              <TableCell padding="none"></TableCell>
-            </TableRow>
-          </TableHead>
-  
-          <TableBody>
-            {subsIndex}
-          </TableBody>
-          
-        </Table>
-      </TableContainer>
-    </div>
+    <TableContainer className="subs-table table-container" component={Paper}>
+      <Table stickyHeader>
+        <TableHead>
+          <TableRow>
+            <TableCell colSpan={1}>サービス名</TableCell>
+            <TableCell colSpan={1}>料金</TableCell>
+            <TableCell padding="none">期間</TableCell>
+            <TableCell padding="none">リンク</TableCell>
+            <TableCell padding="none"></TableCell>
+            <TableCell padding="none"></TableCell>
+          </TableRow>
+        </TableHead>
+
+        <TableBody>
+          {subsIndex}
+        </TableBody>
+        
+      </Table>
+    </TableContainer>
   )
 }

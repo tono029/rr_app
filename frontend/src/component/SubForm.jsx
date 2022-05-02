@@ -1,25 +1,29 @@
 import React, { useContext, useRef } from "react";
-import {Grid, TextField, Button, MenuItem, Select, FormControl, InputLabel} from '@mui/material';
+import {Grid, TextField, MenuItem, Select, FormControl, InputLabel} from '@mui/material';
+import {LoadingButton} from "@mui/lab"
 import {useForm} from "react-hook-form"
 import TotalFee from "./TotalFee";
-import { AuthContext, GeneralControl } from "../App";
+import { GeneralControl } from "../App";
 import Cookies from "js-cookie";
 
 export default function SubForm(props) {
-  const {setFlash} = useContext(AuthContext)
-  const {subs, setSubs} = useContext(GeneralControl)
+  const {subs, setSubs, setFlash} = useContext(GeneralControl)
+  const [isSubmitting, setIsSubmitting] = React.useState(false)
 
   async function createSub(data) {
+    setIsSubmitting(true)
     const res = await props.client.post(
       "subs", 
       data,
       {params: {currentUid: Cookies.get("_uid")}}
     )
-
+    
     if (res.status === 200) {
       setSubs(res.data.data)
       setFlash("登録しました。")
+      setIsSubmitting(false)
     } else {
+      setIsSubmitting(false)
       setFlash(res.data.message)
     }
   }
@@ -147,14 +151,15 @@ export default function SubForm(props) {
               />
         
               <Grid item xs={6} sm={4}>
-                <Button
+                <LoadingButton
                   fullWidth
+                  loading={isSubmitting}
                   type="button"
                   variant="contained"
                   onClick={handleSubmit(onSubmit)}  
                 >
                   登録
-                </Button>
+                </LoadingButton>
               </Grid>
         
             </Grid>

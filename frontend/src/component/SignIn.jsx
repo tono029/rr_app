@@ -8,8 +8,8 @@ import { LoadingButton } from '@mui/lab'
 import Home from "./Home";
 
 export const SignIn = () => {
-  const { setIsSignedIn, setCurrentUser, setFlash } = useContext(AuthContext);
-  const {setUser, getSubs} = useContext(GeneralControl)
+  const { setIsSignedIn, setCurrentUser } = useContext(AuthContext);
+  const {setUser, getSubs, setFlash} = useContext(GeneralControl)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false)

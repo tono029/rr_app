@@ -1,6 +1,6 @@
 import client from "./client";
 import Cookies from "js-cookie";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 
 // サインアップ
 export const signUp = (params) => {
@@ -43,7 +43,18 @@ export const getCurrentUser = () => {
 
 // ユーザー削除
 export const deleteUser = () => {
-  return client.delete("/auth")
+  return client.delete("/auth", {
+    headers: {
+      "access-token": Cookies.get("_access_token"),
+      client: Cookies.get("_client"),
+      uid: Cookies.get("_uid"),
+    }
+  })
+}
+
+// ユーザーと紐づいたデータ削除
+export function deleteUserResource() {
+  
 }
 
 // パスワードの再発行
