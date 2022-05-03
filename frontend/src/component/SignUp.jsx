@@ -2,15 +2,15 @@ import { useContext, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { signUp } from "../api/auth";
 import { GeneralControl } from "../App";
-import {Button, TextField, Stack} from "@mui/material"
+import {TextField, Stack} from "@mui/material"
+import { LoadingButton } from "@mui/lab";
 
 export const SignUp = () => {
   const { setFlash } = useContext(GeneralControl);
-
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [isLoading, setIsLoading] = useState(false)
   const confirmSuccessUrl = "https://subsc-manager-11559.web.app/";
 
   const generateParams = () => {
@@ -24,6 +24,7 @@ export const SignUp = () => {
   };
 
   const handleSignUpSubmit = async (e) => {
+    setIsLoading(true)
     e.preventDefault();
     const params = generateParams();
     try {
@@ -31,7 +32,9 @@ export const SignUp = () => {
       console.log(res);
       
       setFlash("確認メールが送信されました。");
+      setIsLoading(false)
     } catch (e) {
+      setIsLoading(false)
       setFlash("登録に失敗しました。")
       console.log("signupError", e);
     }
@@ -52,7 +55,6 @@ export const SignUp = () => {
         <h3>新規登録</h3>
 
         <form>
-          {/* !! error-message出す */}
           <TextField
             required
             autoFocus
@@ -106,17 +108,20 @@ export const SignUp = () => {
             value={confirmSuccessUrl}
           />
 
-          <Button 
+          <LoadingButton
+            loading={isLoading}
             fullWidth
             variant="contained"
             onClick={(e) => handleSignUpSubmit(e)}
           >
             アカウント登録
-          </Button>
+          </LoadingButton>
         </form>
       </Stack>
 
-      <Link to="/signin">ログインページへ</Link>
+      <div className="sign-form-footer">
+        <Link to="/signin">ログインページへ</Link>
+      </div>
     </div>
   );
 };

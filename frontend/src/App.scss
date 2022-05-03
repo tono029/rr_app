@@ -180,7 +180,7 @@ tr:hover {
   text-align: center;
 }
 
-// SignIn.jsx----------------------------------------------
+// SignIn.jsx, SighUp.jsx----------------------------------------------
 .sign-form {
   padding: 30px 60px;
   h3 {
@@ -189,12 +189,15 @@ tr:hover {
   form {
     margin: 20px 0 !important;
   }
-  a {
-    display: block;
-    text-align: end;
-  }
   .MuiFormControl-root {
     margin-bottom: 20px;
+  }
+}
+
+.sign-form-footer {
+  text-align: right;
+  a {
+    display: inline-block;
   }
 }
 
@@ -233,7 +236,7 @@ tr:hover {
 
 .setting-footer {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   margin-top: 20px;
 }
 

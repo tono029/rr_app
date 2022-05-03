@@ -11,13 +11,15 @@ export default function UserSetting(props) {
   const history = useHistory()
 
   function handleUserDelete(uid) {
+    setOpen(false)
+
     // 削除前にユーザーが作成したリソースを削除
     
 
     // ユーザーを削除
     deleteUser()
     setFlash("削除が完了しました。")
-    history.push("/signin")
+    history.push("/")
   }
 
   return (
@@ -58,7 +60,7 @@ export default function UserSetting(props) {
         <DialogTitle>ユーザー登録を削除してよろしいですか？</DialogTitle>
         <DialogActions>
           <Button
-            onClick={handleUserDelete(props.currentUser.uid)}
+            onClick={() => handleUserDelete(props.currentUser.uid)}
             className="delete-yes"
             variant="contained"
           >

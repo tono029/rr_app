@@ -104,8 +104,10 @@ export const SignIn = () => {
           </form>
   
         </Stack>
-        <Link to="/signup">アカウント登録ページへ</Link>
-  
+        
+        <div className="sign-form-footer">
+          <Link to="/signup">アカウント登録ページへ</Link>
+        </div>
       </div>
     </>
   );
