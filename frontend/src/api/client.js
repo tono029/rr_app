@@ -8,7 +8,7 @@ const options = {
 const client = applyCaseMiddleware(
   axios.create({
     baseURL: 'https://subsc-manager-api.herokuapp.com',
-    withCredentials: true,
+    // withCredentials: true,
   }),
 
   options

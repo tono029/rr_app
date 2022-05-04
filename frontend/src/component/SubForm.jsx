@@ -17,9 +17,13 @@ export default function SubForm(props) {
       data,
       {params: {currentUid: Cookies.get("_uid")}}
     )
+
+    const sortById = res.data.data.sort((sub, n_sub) => {
+      return sub.id > n_sub.id ? 1 : -1
+    })
     
     if (res.status === 200) {
-      setSubs(res.data.data)
+      setSubs(sortById)
       setFlash("登録しました。")
       setIsSubmitting(false)
     } else {
@@ -122,7 +126,7 @@ export default function SubForm(props) {
                 </FormControl>
               </Grid>
   
-              <Grid item xs={6} sm={8}>
+              <Grid item xs={6} sm={8} md={12}>
                 <TextField
                   fullWidth
                   autoComplete="off"
@@ -150,7 +154,7 @@ export default function SubForm(props) {
                 {...register("uid")}
               />
         
-              <Grid item xs={6} sm={4}>
+              <Grid item xs={6} sm={4} md={12}>
                 <LoadingButton
                   fullWidth
                   loading={isSubmitting}

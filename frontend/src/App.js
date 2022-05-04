@@ -58,7 +58,7 @@ export default function App() {
   const client = applyCaseMiddleware(
     axios.create({
       baseURL: 'https://subsc-manager-api.herokuapp.com/',
-      withCredentials: true,
+      // withCredentials: true,
     }),
     options
   );
@@ -119,6 +119,8 @@ export default function App() {
 
     document.body.appendChild(script)
   }, [])
+
+  console.log(subs)
 
   return (
     <ThemeProvider theme={theme}>
