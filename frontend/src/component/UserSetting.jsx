@@ -10,11 +10,11 @@ export default function UserSetting(props) {
   const [open, setOpen] = useState(false)
   const history = useHistory()
 
-  function handleUserDelete(uid) {
+  function handleUserDelete() {
     setOpen(false)
 
     // 削除前にユーザーが作成したリソースを削除
-    
+    deleteUserResource()
 
     // ユーザーを削除
     deleteUser()
@@ -60,7 +60,7 @@ export default function UserSetting(props) {
         <DialogTitle>ユーザー登録を削除してよろしいですか？</DialogTitle>
         <DialogActions>
           <Button
-            onClick={() => handleUserDelete(props.currentUser.uid)}
+            onClick={() => handleUserDelete}
             className="delete-yes"
             variant="contained"
           >

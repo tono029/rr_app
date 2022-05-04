@@ -9,5 +9,8 @@ Rails.application.routes.draw do
     resources :sessions, only: %i[index]
   end
 
+  delete "subs/destroy_all" => "subs#destroy_all"
   resources :subs
+
+  
 end

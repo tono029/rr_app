@@ -6,7 +6,8 @@
 
 # URL
 rails apiを「Heroku」, Reactを「firebase」でデプロイしました。
-* [subsc-manager](https://subsc-manager-11559.web.app/)
+
+[subsc-manager](https://subsc-manager-11559.web.app/)
 
 # 使用技術
 * Ruby
@@ -22,3 +23,6 @@ rails apiを「Heroku」, Reactを「firebase」でデプロイしました。
 * 登録確認メールの送信(gmail)
 * ウィンドウサイズに合わせたスタイル変更
 * フラッシュメッセージ（snackbar）
+
+# 投稿した関連記事
+[Rails API + React による開発ではまった点](https://qiita.com/tono029/items/f4c98d8eb0d666044f91)

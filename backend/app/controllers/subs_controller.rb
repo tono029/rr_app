@@ -36,6 +36,11 @@ class SubsController < ApplicationController
     render json: {flash: "削除しました。"}
   end
 
+  # ユーザー登録削除時に紐づいたリソース削除
+  def destroy_all
+    Sub.where(uid: params[:uid]).destroy_all
+  end
+
 
   private
 

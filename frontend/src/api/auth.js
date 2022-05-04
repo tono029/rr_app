@@ -54,7 +54,11 @@ export const deleteUser = () => {
 
 // ユーザーと紐づいたデータ削除
 export function deleteUserResource() {
-  
+  return client.delete("/subs/destroy_all", {
+    headers: {
+      uid: Cookies.get("_uid")
+    }
+  })
 }
 
 // パスワードの再発行
