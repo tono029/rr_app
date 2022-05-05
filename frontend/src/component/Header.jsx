@@ -3,7 +3,8 @@ import { Button } from "@mui/material"
 import {signOut} from "../api/auth"
 import { Link, useHistory } from "react-router-dom";
 import { AuthContext, GeneralControl } from "../App";
- 
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+
 export default function Header(props) {
   const {isSignedIn, setIsSignedIn} = useContext(AuthContext)
   const {setSubs, setUser, setMainSlide, setFlash} = useContext(GeneralControl)
@@ -55,12 +56,13 @@ export default function Header(props) {
         <div className="nav-items">
           {isSignedIn ?
             <>
-              <Button
+              <ManageAccountsIcon
+                fontSize="large"
                 onClick={toSetting}
                 size="small"
               >
                 ユーザー設定
-              </Button>
+              </ManageAccountsIcon>
 
               <Button
                 onClick={handleSignOut}
