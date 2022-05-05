@@ -1,35 +1,28 @@
 import React, { useContext } from "react";
-import Cookies from "js-cookie"
 import Button from "@mui/material/Button"
-import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Modal, Box, TextField} from '@mui/material';
-import Paper from '@mui/material/Paper';
+import {IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Modal, Box, TextField} from '@mui/material';
 import AddLinkIcon from '@mui/icons-material/AddLink';
 import LinkIcon from '@mui/icons-material/Link';
-import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
 import ClearIcon from '@mui/icons-material/Clear';
 import { useForm } from "react-hook-form";
 import EditModal from "./EditModal";
 import { GeneralControl } from "../App";
+import { updateSub, deleteSub } from "../api/sub";
 
 export default function Subs(props) {
-  const {setSubs, getSubs, setFlash} = useContext(GeneralControl)
+  const {setSubs, handleGetSubs, setFlash} = useContext(GeneralControl)
   const [open, setOpen] = React.useState([false, ""])
   const [editOpen, setEditOpen] = React.useState([false, ""])
 
-  async function deleteSub(id) {
-    const res = await props.client.delete(`subs/${id}`)
-    getSubs()
+  async function handleDeleteSub(id) {
+    const res = await deleteSub(id)
+    handleGetSubs()
     setFlash(res.data.flash)
   }
 
-  async function updateSub(data, id) {
-    const res =  await props.client.patch(
-      `subs/${id}`,
-      data,
-      {params: {currentUid: Cookies.get("_uid")}},
-      {withCredentials: true}
-    )
+  async function handleUpdateSub(data, id) {
+    const res =  await updateSub(data, id)
 
     const sortById = res.data.sort((sub, n_sub) => {
       return sub.id > n_sub.id ? 1: -1
@@ -37,12 +30,6 @@ export default function Subs(props) {
 
     setSubs(sortById)
     setFlash("変更を適用しました。")
-  }
-
-  function handleDelete(id) {
-    // 削除確認があってもいいかも
-
-    deleteSub(id)
   }
 
   // フォーム送信時の処理
@@ -53,7 +40,7 @@ export default function Subs(props) {
       setOpen([false, ""])
     } else {
       // rails側に送信
-      updateSub(data, open[1])
+      handleUpdateSub(data, open[1])
       reset()
       setOpen([false, ""])
     }
@@ -125,7 +112,7 @@ export default function Subs(props) {
         <TableCell padding="none">
           <IconButton
             className="delete-btn"
-            onClick={() => handleDelete(sub.id)}
+            onClick={() => handleDeleteSub(sub.id)}
             size="small"
           >
             <ClearIcon />
@@ -164,10 +151,7 @@ export default function Subs(props) {
         <EditModal 
           editOpen={editOpen}
           setEditOpen={setEditOpen}
-          client={props.client}
           sub={sub}
-          getSubs={props.getSubs}
-          updateSub={updateSub}
         />
       </TableRow>
     )

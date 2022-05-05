@@ -4,19 +4,16 @@ import {LoadingButton} from "@mui/lab"
 import {useForm} from "react-hook-form"
 import TotalFee from "./TotalFee";
 import { GeneralControl } from "../App";
+import { createSub } from "../api/sub";
 import Cookies from "js-cookie";
 
 export default function SubForm(props) {
   const {subs, setSubs, setFlash} = useContext(GeneralControl)
   const [isSubmitting, setIsSubmitting] = React.useState(false)
 
-  async function createSub(data) {
+  async function handleCreateSub(data) {
     setIsSubmitting(true)
-    const res = await props.client.post(
-      "subs", 
-      data,
-      {params: {currentUid: Cookies.get("_uid")}}
-    )
+    const res = await createSub(data)
 
     const sortById = res.data.data.sort((sub, n_sub) => {
       return sub.id > n_sub.id ? 1 : -1
@@ -37,7 +34,7 @@ export default function SubForm(props) {
     console.log("formData", data)
 
     // rails側に送信
-    createSub(data)
+    handleCreateSub(data)
     reset()
   }
 

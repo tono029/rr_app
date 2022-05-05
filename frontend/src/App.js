@@ -8,13 +8,12 @@ import Flash from './component/Flash';
 import UserSetting from './component/UserSetting';
 import axios from "axios"
 import applyCaseMiddleware from 'axios-case-converter'
-import client from './api/client';
-import Cookies from "js-cookie";
 import {createTheme, ThemeProvider, Slide, Box} from "@mui/material"
 
 import { createContext, useEffect, useState } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { getCurrentUser } from "./api/auth";
+import {getSubs} from "./api/sub"
 
 import { SignIn } from './component/SignIn';
 import { SignUp } from './component/SignUp';
@@ -64,13 +63,8 @@ export default function App() {
   );
 
 
-  async function getSubs() {
-    // cookiesのuidを情報として渡す。
-    const res = await client.get("subs", {
-      params: {
-        currentUid: Cookies.get("_uid")
-      }
-    })
+  async function handleGetSubs() {
+    const res = await getSubs()
 
     const sortById = res.data.sort((sub, next_sub) => {
       return sub.id > next_sub.id ? 1 : -1
@@ -112,7 +106,7 @@ export default function App() {
   };
 
   useEffect(() => {
-    getSubs()
+    handleGetSubs()
 
     const script = document.createElement("script")
     script.src = "./spacer.js"
@@ -139,7 +133,7 @@ export default function App() {
               setSubs,
               setUser,
               subs, 
-              getSubs,
+              handleGetSubs,
               mainSlide,
               setMainSlide,
               flash,
@@ -187,14 +181,12 @@ export default function App() {
                             client={client} 
                             subs={subs} 
                             setSubs={setSubs} 
-                            getSubs={getSubs} 
                           />
         
                           <Subs 
                             client={client} 
                             subs={subs} 
                             setSubs={setSubs} 
-                            getSubs={getSubs} 
                           />
                         </div>
       

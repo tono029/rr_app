@@ -1,8 +1,12 @@
 import React from "react";
 import {Modal, Box, Button, TextField, Grid, FormControl, InputLabel, Select, MenuItem} from "@mui/material"
 import {useForm} from "react-hook-form"
+import { useContext } from "react";
+import { GeneralControl } from "../App";
 
 export default function EditModal(props) {
+  const {handleUpdateSub} = useContext(GeneralControl)
+
   const editModalStyle = {
     position: "absolute",
     top: "50%",
@@ -22,7 +26,7 @@ export default function EditModal(props) {
     // console.log("id", props.sub.id)
 
     // rails側に更新情報を送信
-    props.updateSub(data, props.sub.id)
+    handleUpdateSub(data, props.sub.id)
     props.setEditOpen([false, ""])
     reset()
   }
