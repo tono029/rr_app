@@ -9,7 +9,7 @@ import Home from "./Home";
 
 export const SignIn = () => {
   const { setIsSignedIn, setCurrentUser } = useContext(AuthContext);
-  const {setUser, getSubs, setFlash} = useContext(GeneralControl)
+  const {setUser, handleGetSubs, setFlash} = useContext(GeneralControl)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false)
@@ -41,7 +41,7 @@ export const SignIn = () => {
         setIsSignedIn(true);
         setCurrentUser(res.data.data);
         setUser(user_name[0])
-        getSubs()
+        handleGetSubs()
         setFlash("ログインしました。")
         setIsLoading(false)
 
