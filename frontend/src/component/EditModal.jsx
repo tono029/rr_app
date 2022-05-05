@@ -5,7 +5,6 @@ import { useContext } from "react";
 import { GeneralControl } from "../App";
 
 export default function EditModal(props) {
-  const {handleUpdateSub} = useContext(GeneralControl)
 
   const editModalStyle = {
     position: "absolute",
@@ -26,7 +25,7 @@ export default function EditModal(props) {
     // console.log("id", props.sub.id)
 
     // rails側に更新情報を送信
-    handleUpdateSub(data, props.sub.id)
+    props.handleUpdateSub(data, props.sub.id)
     props.setEditOpen([false, ""])
     reset()
   }

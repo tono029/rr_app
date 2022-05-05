@@ -152,6 +152,7 @@ export default function Subs(props) {
           editOpen={editOpen}
           setEditOpen={setEditOpen}
           sub={sub}
+          handleUpdateSub={handleUpdateSub}
         />
       </TableRow>
     )

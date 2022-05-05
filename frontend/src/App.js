@@ -6,8 +6,6 @@ import Header from './component/Header';
 import SubForm from './component/SubForm';
 import Flash from './component/Flash';
 import UserSetting from './component/UserSetting';
-import axios from "axios"
-import applyCaseMiddleware from 'axios-case-converter'
 import {createTheme, ThemeProvider, Slide, Box} from "@mui/material"
 
 import { createContext, useEffect, useState } from "react";
@@ -49,19 +47,6 @@ export default function App() {
 
     setLoading(false)
   }
-
-  const options = {
-    ignoreHeaders: true,
-  } 
-
-  const client = applyCaseMiddleware(
-    axios.create({
-      baseURL: 'https://subsc-manager-api.herokuapp.com/',
-      // withCredentials: true,
-    }),
-    options
-  );
-
 
   async function handleGetSubs() {
     const res = await getSubs()
@@ -178,13 +163,11 @@ export default function App() {
                       <Box>
                         <div className='main-top'>
                           <SubForm 
-                            client={client} 
                             subs={subs} 
                             setSubs={setSubs} 
                           />
         
                           <Subs 
-                            client={client} 
                             subs={subs} 
                             setSubs={setSubs} 
                           />
