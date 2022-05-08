@@ -1,8 +1,6 @@
 import React from "react";
 import {Modal, Box, Button, TextField, Grid, FormControl, InputLabel, Select, MenuItem} from "@mui/material"
 import {useForm} from "react-hook-form"
-import { useContext } from "react";
-import { GeneralControl } from "../App";
 
 export default function EditModal(props) {
 
