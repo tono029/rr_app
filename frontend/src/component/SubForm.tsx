@@ -39,8 +39,8 @@ export default function SubForm(props) {
   }
 
   const {register, handleSubmit, reset, formState: {errors},} = useForm({
-    mode: onSubmit,
-    defaultValues: {subName: "", fee: "", link: ""},
+    mode: "onSubmit",
+    // defaultValues: {subName: "", fee: "", link: "", period: 0, uid: ""},
   })
 
   const fee = useRef(null)
@@ -74,7 +74,7 @@ export default function SubForm(props) {
                   autoComplete="off"
                   label="サービス名"
                   size="small"
-                  {...register("sub_name", {
+                  {...register("subName", {
                     required: {value: true, message: "必須項目です"},
                     maxLength: {value: 40, message: "40字以内でお願いします。"},
                   })}
@@ -82,8 +82,8 @@ export default function SubForm(props) {
                 />
   
                 <div className="error-mess">
-                  {errors.sub_name && errors.sub_name.type === "required" && <span>・{errors.sub_name.message}</span>}
-                  {errors.sub_name && errors.sub_name.type === "maxLength" && <span>・{errors.sub_name.message}</span>}
+                  {errors.subName && errors.subName.type === "required" && <span>・{errors.subName.message}</span>}
+                  {errors.subName && errors.subName.type === "maxLength" && <span>・{errors.subName.message}</span>}
                 </div>
   
               </Grid>
@@ -132,7 +132,6 @@ export default function SubForm(props) {
                   size="small"
                   inputRef={link}
                   {...register("link")}
-                  // keydownでサブミットしたいがhandleSubmitが効かない
                   onKeyDown={e => {
                     if (e.key === "Enter") {
                       e.preventDefault()

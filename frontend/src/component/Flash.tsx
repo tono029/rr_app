@@ -6,7 +6,7 @@ function SlideTransition(props) {
   return <Slide {...props} direction="down" />;
 }
 
-export default function Flash(props) {
+export default function Flash(props: {flash: string, setChartAni: React.Dispatch<React.SetStateAction<boolean>>}) {
   const [open, setOpen] = React.useState(false)
   const {setMainSlide, setFlash} = React.useContext(GeneralControl)
   
@@ -16,17 +16,16 @@ export default function Flash(props) {
       props.setChartAni(false)
       setMainSlide({dire: "right", in: true, appear: false})
       setOpen(true)
-    } else {
-      setOpen(false)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.flash])
   
   const handleClose = () => {
     
     setMainSlide({dire: "right", in: true, appear: false})
     props.setChartAni(false)
+    setOpen(false)
     setFlash("")
-    
   };
 
   return (

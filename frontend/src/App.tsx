@@ -1,6 +1,6 @@
 import './App.scss';
-import Chart from './component/Chart';
-import React from 'react';
+import BarChart from './component/BarChart';
+import React, { createContext, useEffect, useState } from 'react';
 import Subs from './component/Subs';
 import Header from './component/Header';
 import SubForm from './component/SubForm';
@@ -8,7 +8,6 @@ import Flash from './component/Flash';
 import UserSetting from './component/UserSetting';
 import {createTheme, ThemeProvider, Slide, Box} from "@mui/material"
 
-import { createContext, useEffect, useState } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { getCurrentUser } from "./api/auth";
 import {getSubs} from "./api/sub"
@@ -17,17 +16,29 @@ import { SignIn } from './component/SignIn';
 import { SignUp } from './component/SignUp';
 
 type AuthContextType = {
-
+  loading: boolean
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>
+  isSignedIn: boolean
+  setIsSignedIn: React.Dispatch<React.SetStateAction<boolean>>
+  currentUser: any[]
+  setCurrentUser: React.Dispatch<React.SetStateAction<[]>>
 }
 
 type GeneralControlType = {
-
+  mainSlide: MainSlideType
+  setMainSlide: React.Dispatch<React.SetStateAction<MainSlideType>>
+  flash: string
+  setFlash: React.Dispatch<React.SetStateAction<string>>
+  subs: any[]
+  setSubs: React.Dispatch<React.SetStateAction<[]>>
+  setUser: React.Dispatch<React.SetStateAction<string>>
+  handleGetSubs: () => void
 }
 
 type MainSlideType = {
-  dire: "right" | "left" | "down" | "up";
-  in: boolean;
-  appear: boolean;
+  dire: "right" | "left" | "down" | "up"
+  in: boolean
+  appear?: boolean
 }
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -51,7 +62,7 @@ export default function App() {
         setIsSignedIn(true)
         setCurrentUser(res?.data.data);
         setUser(res.data.data.uid.split("@")[0])
-        console.log("currentUserData", res?.data);
+        console.log("currentUser", res?.data.data);
       } else {
         console.log("no current user")
       }
@@ -141,7 +152,6 @@ export default function App() {
           >
             <Header 
               user={user} 
-              currentUser={currentUser}
             />
 
             <div className='wave'>
@@ -150,7 +160,6 @@ export default function App() {
 
             <Flash 
               flash={flash} 
-              setFlash={setFlash}
               setChartAni={setChartAni} 
             />
 
@@ -187,7 +196,7 @@ export default function App() {
                           />
                         </div>
       
-                        <Chart 
+                        <BarChart 
                           subs={subs}
                           chartAni={chartAni}
                           setChartAni={setChartAni}

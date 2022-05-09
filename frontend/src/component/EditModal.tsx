@@ -1,8 +1,22 @@
-import React from "react";
 import {Modal, Box, Button, TextField, Grid, FormControl, InputLabel, Select, MenuItem} from "@mui/material"
+import React from "react"
 import {useForm} from "react-hook-form"
 
-export default function EditModal(props) {
+type Props = {
+  // eslint-disable-next-line no-empty-pattern
+  handleUpdateSub: ({}, number) => void
+  editOpen: (boolean | string)[]
+  setEditOpen: React.Dispatch<React.SetStateAction<[boolean, string]>>
+  sub: {
+    id: number, 
+    fee: number, 
+    period: number, 
+    subName: string, 
+    link: string
+  }
+}
+
+export default function EditModal(props: Props) {
 
   const editModalStyle = {
     position: "absolute",
@@ -18,9 +32,8 @@ export default function EditModal(props) {
     padding: "0px 30px 20px 30px",
   }
 
-  const onSubmit = (data) => {
-    // console.log("data", data)
-    // console.log("id", props.sub.id)
+  const onSubmit = (data: {}) => {
+    console.log("data", data)
 
     // rails側に更新情報を送信
     props.handleUpdateSub(data, props.sub.id)
@@ -28,13 +41,13 @@ export default function EditModal(props) {
     reset()
   }
 
-  const {register, handleSubmit, reset, formState: {errors},} = useForm({
-    mode: onSubmit,
+  const {register, handleSubmit, reset, formState: {errors}} = useForm({
+    mode: "onSubmit",
   })
 
   return (
     <Modal
-      open={props.editOpen[0] && props.editOpen[1] === props.sub.id}
+      open={props.editOpen.includes(true) && Number(props.editOpen[1]) === props.sub.id}
       onClose={() => props.setEditOpen([false, ""])}
     >
       <Box className="edit-modal" sx={editModalStyle}>

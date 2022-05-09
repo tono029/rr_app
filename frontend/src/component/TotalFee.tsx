@@ -1,6 +1,4 @@
-import React from "react";
-
-export default function TotalFee(props) {
+export default function TotalFee(props: {subs: any[]}) {
 
   const feeArray = []
   props.subs.forEach(sub => {

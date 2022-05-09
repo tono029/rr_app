@@ -1,9 +1,11 @@
 import React from "react";
 import {Bar} from "react-chartjs-2"
 import {MenuItem, Select, InputLabel, FormControl} from "@mui/material"
-import {Bar as BarJS} from "chart.js/auto"
+import {Chart, registerables} from 'chart.js'
 
-export default function Chart(props) {
+Chart.register(...registerables)
+
+export default function BarChart(props) {
   const [sort, setSort] = React.useState(0)
   const [per, setPer] = React.useState(0)
 
@@ -34,6 +36,7 @@ export default function Chart(props) {
   function sortData(subData, sort) {
     const labels = []
     const data = []
+    // eslint-disable-next-line array-callback-return
     subData.sort((sub, next_sub) => {
       if (sort === 1) {
         return sub.fee > next_sub.fee ? -1 : 1

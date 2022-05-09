@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { Button } from "@mui/material"
 import {signOut} from "../api/auth"
 import { Link, useHistory } from "react-router-dom";
 import { AuthContext, GeneralControl } from "../App";
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 
-export default function Header(props) {
+export default function Header(props: {user: string}) {
   const {isSignedIn, setIsSignedIn} = useContext(AuthContext)
   const {setSubs, setUser, setMainSlide, setFlash} = useContext(GeneralControl)
   const history = useHistory()
@@ -59,7 +59,6 @@ export default function Header(props) {
               <ManageAccountsIcon
                 fontSize="large"
                 onClick={toSetting}
-                size="small"
               >
                 ユーザー設定
               </ManageAccountsIcon>

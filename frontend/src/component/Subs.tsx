@@ -33,7 +33,7 @@ export default function Subs(props) {
   }
 
   // フォーム送信時の処理
-  const onSubmit = (data) => {
+  const onSubmit = (data: { link: string; }) => {
     console.log("data", data)
 
     if (data.link === "") {
@@ -47,7 +47,7 @@ export default function Subs(props) {
   }
 
   const {register, handleSubmit, reset} = useForm({
-    mode: onSubmit,
+    mode: "onSubmit",
     defaultValues: {link: ""},
   })
 
@@ -65,7 +65,7 @@ export default function Subs(props) {
     padding: "0px 30px 20px 30px",
   }
 
-  const subsIndex = props.subs.map(sub => {
+  const subsIndex = props.subs.map((sub) => {
     return (
       <TableRow key={sub.id}>
         {/* 本番環境ではaxiosの影響でパラメータ名がキャメルケースになる。 */}

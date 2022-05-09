@@ -14,7 +14,6 @@ export const updateSub = (data, id) => {
     `/subs/${id}`,
     data,
     {params: {currentUid: Cookies.get("_uid")}},
-    {withCredentials: true}
   )
 }
 

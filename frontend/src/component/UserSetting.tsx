@@ -1,11 +1,11 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { IconButton, Button, Dialog, DialogTitle, DialogActions } from "@mui/material";
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import { deleteUser, deleteUserResource } from "../api/auth";
 import { GeneralControl } from "../App";
 import { useHistory } from "react-router-dom";
 
-export default function UserSetting(props) {
+export default function UserSetting(props: {user: string, currentUser: {uid: string}}) {
   const {setMainSlide, setFlash} = useContext(GeneralControl)
   const [open, setOpen] = useState(false)
   const history = useHistory()
