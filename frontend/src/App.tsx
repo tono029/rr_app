@@ -16,8 +16,22 @@ import {getSubs} from "./api/sub"
 import { SignIn } from './component/SignIn';
 import { SignUp } from './component/SignUp';
 
-export const AuthContext = createContext();
-export const GeneralControl = createContext();
+type AuthContextType = {
+
+}
+
+type GeneralControlType = {
+
+}
+
+type MainSlideType = {
+  dire: "right" | "left" | "down" | "up";
+  in: boolean;
+  appear: boolean;
+}
+
+export const AuthContext = createContext<AuthContextType | undefined>(undefined);
+export const GeneralControl = createContext<GeneralControlType | undefined>(undefined);
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -27,7 +41,7 @@ export default function App() {
   const [subs, setSubs] = React.useState([])
   const [flash, setFlash] = React.useState("")
   const [chartAni, setChartAni] = React.useState(true)
-  const [mainSlide, setMainSlide] = React.useState({dire: "right", in: true, appear: false})
+  const [mainSlide, setMainSlide] = React.useState<MainSlideType>({dire: "right", in: true, appear: false})
 
   async function handleGetCurrentUser() {
     try {
