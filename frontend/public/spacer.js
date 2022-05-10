@@ -1,7 +1,7 @@
 var unit = 20,
     canvasList, // キャンバスの配列
     info = {}, // 全キャンバス共通の描画情報
-    colorList; // 各キャンバスの色情報
+    colorList, // 各キャンバスの色情報
     canvas = document.getElementById("waveCanvas")
 
 /**
@@ -92,7 +92,7 @@ function drawSine(canvas, t, zoom, delay) {
     context.moveTo(yAxis, unit*y+xAxis); //スタート位置にパスを置く
 
     // Loop to draw segments (横幅の分、波を描画)
-    for (i = yAxis; i <= canvas.width + 10; i += 10) {
+    for (let i = yAxis; i <= canvas.width + 10; i += 10) {
         x = t+(-yAxis+i)/unit/zoom;
         y = Math.sin(x - delay)/3;
         context.lineTo(i, unit*y+xAxis);

@@ -2,24 +2,30 @@ import { useContext, useState } from "react";
 import { IconButton, Button, Dialog, DialogTitle, DialogActions } from "@mui/material";
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import { deleteUser, deleteUserResource } from "../api/auth";
-import { GeneralControl } from "../App";
+import { AuthContext, GeneralControl } from "../App";
 import { useHistory } from "react-router-dom";
 
 export default function UserSetting(props: {user: string, currentUser: {uid: string}}) {
+  const {setIsSignedIn} = useContext(AuthContext)
   const {setMainSlide, setFlash} = useContext(GeneralControl)
   const [open, setOpen] = useState(false)
   const history = useHistory()
 
   function handleUserDelete() {
+    console.log("delete user")
     setOpen(false)
 
     // 削除前にユーザーが作成したリソースを削除
     deleteUserResource()
 
+    // ログイン状態を解除
+    setIsSignedIn(false)
+
     // ユーザーを削除
     deleteUser()
+
     setFlash("削除が完了しました。")
-    history.push("/")
+    history.push("/signin")
   }
 
   return (
@@ -60,7 +66,7 @@ export default function UserSetting(props: {user: string, currentUser: {uid: str
         <DialogTitle>ユーザー登録を削除してよろしいですか？</DialogTitle>
         <DialogActions>
           <Button
-            onClick={() => handleUserDelete}
+            onClick={handleUserDelete}
             className="delete-yes"
             variant="contained"
           >

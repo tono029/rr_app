@@ -45,9 +45,15 @@ header {
 
 .nav-items {
   display: flex;
+  :hover {
+    color: #bebebe;
+  }
   a {
     text-decoration: none;
     color: white;
+  }
+  a:hover, button:hover {
+    background-color: $main-bg-color !important; 
   }
   svg {
     cursor: pointer;

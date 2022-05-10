@@ -14,6 +14,7 @@ rails apiを「Heroku」, Reactを「firebase」でデプロイしました。
 * Ruby on Rails
 * React
 * JavaScript
+* TypeScript
 * material-UI
 
 # 機能

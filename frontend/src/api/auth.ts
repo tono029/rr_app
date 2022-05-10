@@ -55,7 +55,7 @@ export const deleteUser = () => {
 // ユーザーと紐づいたデータ削除
 export function deleteUserResource() {
   return client.delete("/subs/destroy_all", {
-    headers: {
+    params: {
       uid: Cookies.get("_uid")
     }
   })

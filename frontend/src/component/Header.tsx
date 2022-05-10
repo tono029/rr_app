@@ -70,25 +70,26 @@ export default function Header(props: {user: string}) {
                 ログアウト
               </Button>
             </> 
+
           :
 
-          <>
-            <Button
-              size="small"
-              component={Link}
-              to="/signin"
-            >
-              ログイン
-            </Button>
-            
-            <Button
-              size="small"
-              component={Link}
-              to="/signup"
-            >
-              新規登録
-            </Button>
-          </>
+            <>
+              <Button
+                size="small"
+                component={Link}
+                to="/signin"
+              >
+                ログイン
+              </Button>
+              
+              <Button
+                size="small"
+                component={Link}
+                to="/signup"
+              >
+                新規登録
+              </Button>
+            </>
           }
           
         </div>
