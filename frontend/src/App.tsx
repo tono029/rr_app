@@ -105,10 +105,13 @@ export default function App() {
 
   const Private = ({ children }) => {
     if (!loading) {
+      // APIが起動するまで、load表示
+      
+
       if (isSignedIn) {
         return children;
       } else {
-        return <Redirect to="signin" />;
+        return <Redirect to="signup" />;
       }
     } else {
       return <></>;

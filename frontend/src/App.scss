@@ -3,7 +3,7 @@ $base-bg-color: #279F9F;
 $accent-bg-color: #5FBFBF;
 
 
-// Header.jsx------------------------------------
+// Header.tsx------------------------------------
 header {
   position: relative;
   display: flex;
@@ -60,7 +60,7 @@ header {
   }
 }
 
-// SubForm.jsx--------------------------------
+// SubForm.tsx--------------------------------
 .form-body {
   display: flex;
   align-items: center;
@@ -102,7 +102,7 @@ header {
   text-align: center;
 }
 
-// Subs.jsx------------------------------------------
+// Subs.tsx------------------------------------------
 .subs-table {
   max-height: 280px;
   margin-bottom: 20px;
@@ -158,7 +158,7 @@ tr:hover {
   }
 }
 
-// Chart.jsx-------------------------------------------
+// Chart.tsx-------------------------------------------
 .chart-header {
   display: flex;
   align-items: center;
@@ -190,8 +190,39 @@ tr:hover {
   text-align: center;
 }
 
-// SignIn.jsx, SighUp.jsx----------------------------------------------
+// Home.tsx-------------------------------------------------
+.home-container {
+  width: auto !important;
+  margin: 0 auto 20px auto !important;
+  max-width: 600px;
+  text-align: center;
+}
+
+.home-text {
+  margin-bottom: 20px;
+}
+
+.home-img {
+  border: #264D4D solid 3px;
+  border-radius: 5px;
+}
+
+@media screen and (min-width: 900px) {
+  .home-container {
+    min-width: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .home-text {
+    margin-bottom: 0;
+  }
+}
+
+// SignIn.tsx, SighUp.tsx----------------------------------------------
 .sign-form {
+  max-width: 480px !important;
   padding: 30px 60px;
   h3 {
     margin: 0;
@@ -211,7 +242,7 @@ tr:hover {
   }
 }
 
-// Flash.jsx-----------------------------------------
+// Flash.tsx-----------------------------------------
 .MuiSnackbar-root div {
   color:  #264D4D !important;
   font-weight: 600;
@@ -220,7 +251,7 @@ tr:hover {
   display: block;
 }
 
-// UserSetting.jsx-----------------------------------------
+// UserSetting.tsx-----------------------------------------
 .setting {
   width: 60%;
 }

@@ -5,7 +5,6 @@ import { signIn } from "../api/auth";
 import { AuthContext, GeneralControl } from "../App";
 import {Stack, TextField} from "@mui/material"
 import { LoadingButton } from '@mui/lab'
-import Home from "./Home";
 
 export const SignIn = () => {
   const { setIsSignedIn, setCurrentUser } = useContext(AuthContext);
@@ -57,58 +56,55 @@ export const SignIn = () => {
   const inputPassword = React.useRef(null)
 
   return (
-    <>
-      <Home />
-      <div className="container sign-form">
-        <Stack
-          alignItems="center"
-        >
-          <h3>ログイン</h3>
-  
-          <form>
-            <TextField
-              required
-              fullWidth
-              label="メールアドレス"
-              size="small"
-              type="email"
-              id="email"
-              name="email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              onKeyDown={e => e.key === "Enter" && inputPassword.current.focus()}
-            />
-  
-            <TextField
-              fullWidth
-              required
-              label="パスワード"
-              size="small"
-              type="password"
-              id="password"
-              name="password"
-              inputRef={inputPassword}
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              onKeyDown={e => e.key === "Enter" && handleSignInSubmit(e)}
-            />
-  
-            <LoadingButton
-              loading={isLoading}
-              fullWidth
-              variant="contained"
-              onClick={(e) => handleSignInSubmit(e)}
-            >
-              ログイン
-            </LoadingButton>
-          </form>
-  
-        </Stack>
-        
-        <div className="sign-form-footer">
-          <Link to="/signup">アカウント登録ページへ</Link>
-        </div>
+    <div className="container sign-form">
+      <Stack
+        alignItems="center"
+      >
+        <h3>ログイン</h3>
+
+        <form>
+          <TextField
+            required
+            fullWidth
+            label="メールアドレス"
+            size="small"
+            type="email"
+            id="email"
+            name="email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            onKeyDown={e => e.key === "Enter" && inputPassword.current.focus()}
+          />
+
+          <TextField
+            fullWidth
+            required
+            label="パスワード"
+            size="small"
+            type="password"
+            id="password"
+            name="password"
+            inputRef={inputPassword}
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            onKeyDown={e => e.key === "Enter" && handleSignInSubmit(e)}
+          />
+
+          <LoadingButton
+            loading={isLoading}
+            fullWidth
+            variant="contained"
+            onClick={(e) => handleSignInSubmit(e)}
+          >
+            ログイン
+          </LoadingButton>
+        </form>
+
+      </Stack>
+      
+      <div className="sign-form-footer">
+        <Link to="/signup">アカウント登録ページへ</Link>
       </div>
-    </>
+    </div>
   );
 };

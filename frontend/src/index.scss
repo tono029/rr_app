@@ -77,9 +77,14 @@ body::-webkit-scrollbar {
 
 }
 
+// 500以下
 @media screen and (max-width: 500px) {
   .setting-item {
     flex-direction: column;
+  }
+  .home-container {
+    display: flex;
+    flex-direction: column !important;
   }
 }
 
