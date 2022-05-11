@@ -2,13 +2,25 @@ import client from "./client";
 import Cookies from "js-cookie";
 // import { Redirect } from "react-router-dom";
 
+type SignupType = {
+  email: string
+  password: string
+  passwordConfirmation: string
+  confirmSuccessUrl: string
+}
+
+type SigninType ={ 
+  email: string
+  password: string
+}
+
 // サインアップ
-export const signUp = (params) => {
+export const signUp = (params: SignupType) => {
   return client.post("/auth", params);
 };
 
 // サインイン
-export const signIn = (params) => {
+export const signIn = (params: SigninType) => {
   return client.post("/auth/sign_in", params);
 };
 

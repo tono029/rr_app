@@ -15,23 +15,25 @@ import {getSubs} from "./api/sub"
 import { SignIn } from './component/SignIn';
 import { SignUp } from './component/SignUp';
 
+export type SetStateType<T> = React.Dispatch<React.SetStateAction<T>>
+
 type AuthContextType = {
   loading: boolean
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>
+  setLoading: SetStateType<boolean>
   isSignedIn: boolean
-  setIsSignedIn: React.Dispatch<React.SetStateAction<boolean>>
+  setIsSignedIn: SetStateType<boolean>
   currentUser: any[]
-  setCurrentUser: React.Dispatch<React.SetStateAction<[]>>
+  setCurrentUser: SetStateType<[]>
 }
 
 type GeneralControlType = {
   mainSlide: MainSlideType
-  setMainSlide: React.Dispatch<React.SetStateAction<MainSlideType>>
+  setMainSlide: SetStateType<MainSlideType>
   flash: string
-  setFlash: React.Dispatch<React.SetStateAction<string>>
+  setFlash: SetStateType<string>
   subs: any[]
-  setSubs: React.Dispatch<React.SetStateAction<[]>>
-  setUser: React.Dispatch<React.SetStateAction<string>>
+  setSubs: SetStateType<[]>
+  setUser: SetStateType<string>
   handleGetSubs: () => void
 }
 
@@ -195,7 +197,6 @@ export default function App() {
         
                           <Subs 
                             subs={subs} 
-                            setSubs={setSubs} 
                           />
                         </div>
       

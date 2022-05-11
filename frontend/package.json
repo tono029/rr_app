@@ -53,6 +53,7 @@
     ]
   },
   "devDependencies": {
+    "@types/js-cookie": "^3.0.2",
     "@types/react-router-dom": "^5.3.3",
     "chart.js": "^3.7.1",
     "react-chartjs-2": "^4.0.1"

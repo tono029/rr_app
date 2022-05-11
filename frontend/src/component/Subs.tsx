@@ -10,7 +10,7 @@ import EditModal from "./EditModal";
 import { GeneralControl } from "../App";
 import { updateSub, deleteSub } from "../api/sub";
 
-export default function Subs(props) {
+export default function Subs(props: { subs: any[]; }) {
   const {setSubs, handleGetSubs, setFlash} = useContext(GeneralControl)
   const [open, setOpen] = React.useState([false, ""])
   const [editOpen, setEditOpen] = React.useState([false, ""])
@@ -21,10 +21,10 @@ export default function Subs(props) {
     setFlash(res.data.flash)
   }
 
-  async function handleUpdateSub(data, id) {
+  async function handleUpdateSub(data: { link: string; }, id: string | boolean) {
     const res =  await updateSub(data, id)
 
-    const sortById = res.data.sort((sub, n_sub) => {
+    const sortById = res.data.sort((sub: { id: number; }, n_sub: { id: number; }) => {
       return sub.id > n_sub.id ? 1: -1
     })
 
@@ -65,7 +65,7 @@ export default function Subs(props) {
     padding: "0px 30px 20px 30px",
   }
 
-  const subsIndex = props.subs.map((sub) => {
+  const subsIndex = props.subs.map((sub: { id: any; subName: any; fee: any; period: any; link: any; }) => {
     return (
       <TableRow key={sub.id}>
         {/* 本番環境ではaxiosの影響でパラメータ名がキャメルケースになる。 */}
