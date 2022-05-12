@@ -1,11 +1,12 @@
 import React from "react";
 import {Bar} from "react-chartjs-2"
-import {MenuItem, Select, InputLabel, FormControl} from "@mui/material"
+import {MenuItem, Select, InputLabel, FormControl, SelectChangeEvent} from "@mui/material"
 import {Chart, registerables} from 'chart.js'
+import {SubType} from "../App"
 
 Chart.register(...registerables)
 
-export default function BarChart(props) {
+export default function BarChart(props: { subs: any[]; chartAni: any; setChartAni: (arg0: boolean) => void; }) {
   const [sort, setSort] = React.useState(0)
   const [per, setPer] = React.useState(0)
 
@@ -33,11 +34,11 @@ export default function BarChart(props) {
 
 
   // コピーしたデータをsortに基づいてソートしてやる。
-  function sortData(subData, sort) {
-    const labels = []
-    const data = []
+  function sortData(subData, sort: number) {
+    const labels: string[] = []
+    const data: number[] = []
     // eslint-disable-next-line array-callback-return
-    subData.sort((sub, next_sub) => {
+    subData.sort((sub: SubType, next_sub: SubType) => {
       if (sort === 1) {
         return sub.fee > next_sub.fee ? -1 : 1
       } else if (sort === 2) {
@@ -45,7 +46,7 @@ export default function BarChart(props) {
       }
     })
 
-    subData.forEach(sub => {
+    subData.forEach((sub: SubType) => {
       labels.push(sub.subName)
       data.push(sub.fee)
     })
@@ -57,9 +58,9 @@ export default function BarChart(props) {
   }
 
   
-  function selectData(sort, per) {
-    const labels = []
-    const data = []
+  function selectData(sort: number, per: number) {
+    const labels: string[] = []
+    const data: number[] = []
     // 登録順で表示するとき
     if (sort === 0) {
       if (per === 0) {
@@ -83,7 +84,7 @@ export default function BarChart(props) {
       }
       
     // 降順もしくは昇順の時
-    } else if (sort === 1 || sort === 2) {
+    } else {
       const copiedDataPM = SubsPerMonth.slice()
       const copiedDataPY = SubsPerYear.slice()
 
@@ -92,7 +93,6 @@ export default function BarChart(props) {
       } else {
         return sortData(copiedDataPY, sort)
       }
-      
     }
   }
 
@@ -126,14 +126,14 @@ export default function BarChart(props) {
     animation: props.chartAni,
   }
 
-  function handleSortChange(e) {
+  function handleSortChange(e: SelectChangeEvent<number>) {
     props.setChartAni(true)
-    setSort(e.target.value)
+    setSort(Number(e.target.value))
   }
 
-  function handlePerChange(e) {
+  function handlePerChange(e: SelectChangeEvent<number>) {
     props.setChartAni(true)
-    setPer(e.target.value)
+    setPer(Number(e.target.value))
   }
 
   return (

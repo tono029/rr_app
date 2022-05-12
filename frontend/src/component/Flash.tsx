@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Snackbar, Slide} from '@mui/material';
+import { Snackbar, Slide, SlideProps} from '@mui/material';
 import { GeneralControl } from '../App';
 import { SetStateType } from '../App';
 
-function SlideTransition(props) {
+function SlideTransition(props: SlideProps) {
   return <Slide {...props} direction="down" />;
 }
 

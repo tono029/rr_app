@@ -24,7 +24,7 @@ export const SignUp = () => {
     return signUpParams;
   };
 
-  const handleSignUpSubmit = async (e) => {
+  const handleSignUpSubmit = async (e: React.KeyboardEvent<HTMLDivElement> | React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     setIsLoading(true)
     e.preventDefault();
     const params = generateParams();
@@ -41,12 +41,8 @@ export const SignUp = () => {
     }
   };
 
-  const passwordInput = useRef(null)
-  const passConInput = useRef(null)
-
-  function handleEnter(value, e) {
-    e.key === "Enter" && value.current.focus()
-  }
+  const passwordInput = useRef<HTMLDivElement>(null)
+  const passConInput = useRef<HTMLDivElement>(null)
 
   return (
     <>
@@ -69,7 +65,7 @@ export const SignUp = () => {
               name="email"
               value={email}
               onChange={e => setEmail(e.target.value)}
-              onKeyDown={e => handleEnter(passwordInput, e)}
+              // onKeyDown={e => handleEnter(passwordInput, e)}
             />
   
             <TextField
@@ -83,7 +79,7 @@ export const SignUp = () => {
               value={password}
               inputRef={passwordInput}
               onChange={e => setPassword(e.target.value)}
-              onKeyDown={e => handleEnter(passConInput, e)}
+              // onKeyDown={e => handleEnter(passConInput, e)}
             />
   
             <TextField
@@ -97,11 +93,11 @@ export const SignUp = () => {
               value={passwordConfirmation}
               inputRef={passConInput}
               onChange={e => setPasswordConfirmation(e.target.value)}
-              onKeyDown={e => {
-                if (e.key === "Enter") {
-                  handleSignUpSubmit(e)
-                }
-              }}
+              // onKeyDown={e => {
+              //   if (e.key === "Enter") {
+              //     handleSignUpSubmit(e)
+              //   }
+              // }}
             />
   
             <input

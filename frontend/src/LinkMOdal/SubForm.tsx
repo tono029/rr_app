@@ -2,7 +2,7 @@ import React, { useContext, useRef } from "react";
 import {Grid, TextField, MenuItem, Select, FormControl, InputLabel} from '@mui/material';
 import {LoadingButton} from "@mui/lab"
 import {useForm} from "react-hook-form"
-import TotalFee from "./TotalFee";
+import TotalFee from "../component/TotalFee";
 import { GeneralControl } from "../App";
 import { createSub } from "../api/sub";
 import Cookies from "js-cookie";

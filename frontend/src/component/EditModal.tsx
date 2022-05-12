@@ -1,12 +1,13 @@
 import {Modal, Box, Button, TextField, Grid, FormControl, InputLabel, Select, MenuItem} from "@mui/material"
 import {useForm} from "react-hook-form"
 import { SetStateType } from "../App"
+import {FormDataType} from "../api/sub"
 
 type Props = {
   // eslint-disable-next-line no-empty-pattern
-  handleUpdateSub: ({}, number) => void
+  handleUpdateSub: (data: FormDataType, id: string) => void
   editOpen: (boolean | string)[]
-  setEditOpen: SetStateType<[boolean, string]>
+  setEditOpen: SetStateType<(boolean | string)[]>
   sub: {
     id: number, 
     fee: number, 
@@ -32,11 +33,11 @@ export default function EditModal(props: Props) {
     padding: "0px 30px 20px 30px",
   }
 
-  const onSubmit = (data: {}) => {
+  const onSubmit = (data: {link: string}) => {
     console.log("data", data)
 
     // rails側に更新情報を送信
-    props.handleUpdateSub(data, props.sub.id)
+    props.handleUpdateSub(data, String(props.sub.id))
     props.setEditOpen([false, ""])
     reset()
   }

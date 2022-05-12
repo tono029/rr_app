@@ -27,11 +27,11 @@ type AuthContextType = {
 }
 
 type GeneralControlType = {
-  mainSlide: MainSlideType
-  setMainSlide: SetStateType<MainSlideType>
-  flash: string
-  setFlash: SetStateType<string>
-  subs: any[]
+  mainSlide: MainSlideType;
+  setMainSlide: SetStateType<MainSlideType>;
+  flash: string;
+  setFlash: SetStateType<string>;
+  subs: any[];
   setSubs: SetStateType<[]>
   setUser: SetStateType<string>
   handleGetSubs: () => void
@@ -41,6 +41,17 @@ type MainSlideType = {
   dire: "right" | "left" | "down" | "up"
   in: boolean
   appear?: boolean
+}
+
+export type SubType = {
+  createdAt?: string
+  fee: number
+  id: number
+  link: string
+  period: number
+  subName: string
+  uid?: string
+  updatedAt?: string
 }
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -78,7 +89,7 @@ export default function App() {
   async function handleGetSubs() {
     const res = await getSubs()
 
-    const sortById = res.data.sort((sub, next_sub) => {
+    const sortById = res.data.sort((sub: SubType, next_sub: SubType) => {
       return sub.id > next_sub.id ? 1 : -1
     })
 
@@ -128,6 +139,8 @@ export default function App() {
 
     document.body.appendChild(script)
   }, [])
+
+  console.log(subs)
 
   return (
     <ThemeProvider theme={theme}>
@@ -192,7 +205,6 @@ export default function App() {
                         <div className='main-top'>
                           <SubForm 
                             subs={subs} 
-                            setSubs={setSubs} 
                           />
         
                           <Subs 

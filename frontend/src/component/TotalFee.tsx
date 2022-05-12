@@ -1,6 +1,6 @@
 export default function TotalFee(props: {subs: any[]}) {
 
-  const feeArray = []
+  const feeArray: number[] = []
   props.subs.forEach(sub => {
     if (sub.period === 1) {
       feeArray.push(sub.fee)

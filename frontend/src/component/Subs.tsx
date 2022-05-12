@@ -1,27 +1,26 @@
 import React, { useContext } from "react";
-import Button from "@mui/material/Button"
-import {IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Modal, Box, TextField} from '@mui/material';
+import {IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from '@mui/material';
 import AddLinkIcon from '@mui/icons-material/AddLink';
 import LinkIcon from '@mui/icons-material/Link';
 import EditIcon from '@mui/icons-material/Edit';
 import ClearIcon from '@mui/icons-material/Clear';
-import { useForm } from "react-hook-form";
+import { LinkModal } from "./LinkModal";
 import EditModal from "./EditModal";
 import { GeneralControl } from "../App";
-import { updateSub, deleteSub } from "../api/sub";
+import { updateSub, deleteSub, FormDataType } from "../api/sub";
 
 export default function Subs(props: { subs: any[]; }) {
   const {setSubs, handleGetSubs, setFlash} = useContext(GeneralControl)
   const [open, setOpen] = React.useState([false, ""])
   const [editOpen, setEditOpen] = React.useState([false, ""])
 
-  async function handleDeleteSub(id) {
+  async function handleDeleteSub(id: string) {
     const res = await deleteSub(id)
     handleGetSubs()
     setFlash(res.data.flash)
   }
 
-  async function handleUpdateSub(data: { link: string; }, id: string | boolean) {
+  async function handleUpdateSub(data: FormDataType, id: string) {
     const res =  await updateSub(data, id)
 
     const sortById = res.data.sort((sub: { id: number; }, n_sub: { id: number; }) => {
@@ -30,39 +29,6 @@ export default function Subs(props: { subs: any[]; }) {
 
     setSubs(sortById)
     setFlash("変更を適用しました。")
-  }
-
-  // フォーム送信時の処理
-  const onSubmit = (data: { link: string; }) => {
-    console.log("data", data)
-
-    if (data.link === "") {
-      setOpen([false, ""])
-    } else {
-      // rails側に送信
-      handleUpdateSub(data, open[1])
-      reset()
-      setOpen([false, ""])
-    }
-  }
-
-  const {register, handleSubmit, reset} = useForm({
-    mode: "onSubmit",
-    defaultValues: {link: ""},
-  })
-
-  const modalStyle = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'white',
-    border: "none",
-    borderRadius: "10px",
-    boxShadow: "0px 5px 15px rgba(0,0,0,0.3)",
-    p: 4,
-    padding: "0px 30px 20px 30px",
   }
 
   const subsIndex = props.subs.map((sub: { id: any; subName: any; fee: any; period: any; link: any; }) => {
@@ -119,34 +85,12 @@ export default function Subs(props: { subs: any[]; }) {
           </IconButton>
         </TableCell>
         
-        {/* link追加用のModal */}
-        <Modal
-          // openがtrueかつ、idが一致するモーダルを開く。
-          open={open[0] && open[1] === sub.id}
-          onClose={() => setOpen([false, ""])}
-        >
-          <Box className="link-modal" sx={modalStyle}>
-            <p>「{sub.subName}」にリンク先を追加</p>
-            <form className="modal-form">
-              <TextField
-                fullWidth
-                autoFocus
-                label="リンク"
-                size="small"
-                autoComplete="off"
-                {...register("link")}
-              />
-              
-              <Button
-                variant="contained"
-                onClick={handleSubmit(onSubmit)}
-                type="submit"
-              >
-                追加
-              </Button>
-            </form>
-          </Box>
-        </Modal>
+        <LinkModal 
+          open={open}
+          setOpen={setOpen}
+          sub={sub}
+          handleUpdateSub={handleUpdateSub}
+        />
 
         <EditModal 
           editOpen={editOpen}
