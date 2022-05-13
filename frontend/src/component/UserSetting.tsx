@@ -5,7 +5,7 @@ import { deleteUser, deleteUserResource } from "../api/auth";
 import { AuthContext, GeneralControl } from "../App";
 import { useHistory } from "react-router-dom";
 
-export default function UserSetting(props: {user: string, currentUser: {uid: string}}) {
+export default function UserSetting(props: {user: string, currentUser: any[] | undefined}) {
   const {setIsSignedIn} = useContext(AuthContext)
   const {setMainSlide, setFlash} = useContext(GeneralControl)
   const [open, setOpen] = useState(false)
@@ -25,7 +25,7 @@ export default function UserSetting(props: {user: string, currentUser: {uid: str
     deleteUser()
 
     setFlash("削除が完了しました。")
-    history.push("/signin")
+    history.push("/signup")
   }
 
   return (
@@ -44,7 +44,7 @@ export default function UserSetting(props: {user: string, currentUser: {uid: str
         </div>
         <div className="setting-item">
           <p>メールアドレス: </p>
-          <p>{props.currentUser.uid}</p>
+          <p>{props.currentUser && props.currentUser}</p>
         </div>
         
         <div className="setting-footer">

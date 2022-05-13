@@ -23,7 +23,7 @@ export const SignIn = () => {
     return signInParams;
   };
 
-  const handleSignInSubmit = async (e) => {
+  const handleSignInSubmit = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent> | React.KeyboardEvent<HTMLDivElement>) => {
     e.preventDefault();
     setIsLoading(true)
     const params = generateParams();
@@ -73,7 +73,7 @@ export const SignIn = () => {
             name="email"
             value={email}
             onChange={e => setEmail(e.target.value)}
-            onKeyDown={e => e.key === "Enter" && inputPassword.current.focus()}
+            // onKeyDown={e => e.key === "Enter" && inputPassword.current.focus()}
           />
 
           <TextField
@@ -87,7 +87,7 @@ export const SignIn = () => {
             inputRef={inputPassword}
             value={password}
             onChange={e => setPassword(e.target.value)}
-            onKeyDown={e => e.key === "Enter" && handleSignInSubmit(e)}
+            // onKeyDown={e => e.key === "Enter" && handleSignInSubmit(e)}
           />
 
           <LoadingButton

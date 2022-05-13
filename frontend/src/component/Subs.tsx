@@ -23,7 +23,7 @@ export default function Subs(props: { subs: any[]; }) {
   async function handleUpdateSub(data: FormDataType, id: string) {
     const res =  await updateSub(data, id)
 
-    const sortById = res.data.sort((sub: { id: number; }, n_sub: { id: number; }) => {
+    const sortById: [] = res.data.sort((sub: { id: number; }, n_sub: { id: number; }) => {
       return sub.id > n_sub.id ? 1: -1
     })
 

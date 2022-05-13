@@ -33,7 +33,7 @@ export default function EditModal(props: Props) {
     padding: "0px 30px 20px 30px",
   }
 
-  const onSubmit = (data: {link: string}) => {
+  const onSubmit = (data: FormDataType) => {
     console.log("data", data)
 
     // rails側に更新情報を送信

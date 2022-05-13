@@ -22,8 +22,8 @@ type AuthContextType = {
   setLoading: SetStateType<boolean>
   isSignedIn: boolean
   setIsSignedIn: SetStateType<boolean>
-  currentUser: any[]
-  setCurrentUser: SetStateType<[]>
+  currentUser: any[] | undefined
+  setCurrentUser: SetStateType<any[] | undefined>
 }
 
 type GeneralControlType = {
@@ -31,8 +31,8 @@ type GeneralControlType = {
   setMainSlide: SetStateType<MainSlideType>;
   flash: string;
   setFlash: SetStateType<string>;
-  subs: any[];
-  setSubs: SetStateType<[]>
+  subs: SubType[];
+  setSubs: SetStateType<SubType[]>
   setUser: SetStateType<string>
   handleGetSubs: () => void
 }
@@ -54,15 +54,17 @@ export type SubType = {
   updatedAt?: string
 }
 
-export const AuthContext = createContext<AuthContextType | undefined>(undefined);
-export const GeneralControl = createContext<GeneralControlType | undefined>(undefined);
+export type SubsType = SubType[]
+
+export const AuthContext = createContext({} as AuthContextType)
+export const GeneralControl = createContext({} as GeneralControlType)
 
 export default function App() {
   const [loading, setLoading] = useState(true);
   const [isSignedIn, setIsSignedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState();
+  const [currentUser, setCurrentUser] = useState<any[] | undefined>(undefined);
   const [user, setUser] = React.useState("")
-  const [subs, setSubs] = React.useState([])
+  const [subs, setSubs] = React.useState<SubType[]>([])
   const [flash, setFlash] = React.useState("")
   const [chartAni, setChartAni] = React.useState(true)
   const [mainSlide, setMainSlide] = React.useState<MainSlideType>({dire: "right", in: true, appear: false})
@@ -116,13 +118,13 @@ export default function App() {
     },
   })
 
-  const Private = ({ children }) => {
+  const Private = ({ children }: {children: JSX.Element}) => {
     if (!loading) {
       // APIが起動するまで、load表示
       
 
       if (isSignedIn) {
-        return children;
+        return children
       } else {
         return <Redirect to="signup" />;
       }

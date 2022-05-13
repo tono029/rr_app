@@ -2,7 +2,7 @@ import React from "react";
 import {Bar} from "react-chartjs-2"
 import {MenuItem, Select, InputLabel, FormControl, SelectChangeEvent} from "@mui/material"
 import {Chart, registerables} from 'chart.js'
-import {SubType} from "../App"
+import {SubType, SubsType} from "../App"
 
 Chart.register(...registerables)
 
@@ -34,14 +34,14 @@ export default function BarChart(props: { subs: any[]; chartAni: any; setChartAn
 
 
   // コピーしたデータをsortに基づいてソートしてやる。
-  function sortData(subData, sort: number) {
+  function sortData(subData: SubsType, sort: number) {
     const labels: string[] = []
     const data: number[] = []
     // eslint-disable-next-line array-callback-return
     subData.sort((sub: SubType, next_sub: SubType) => {
       if (sort === 1) {
         return sub.fee > next_sub.fee ? -1 : 1
-      } else if (sort === 2) {
+      } else {
         return sub.fee < next_sub.fee ? -1 : 1
       }
     })

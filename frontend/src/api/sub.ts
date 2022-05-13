@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 
 export declare type FormDataType = {
   fee?: string
-  link: string
+  link?: string
   period?: string
   subName?: string
   uid?: string

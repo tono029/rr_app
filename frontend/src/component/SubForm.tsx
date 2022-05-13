@@ -6,16 +6,17 @@ import TotalFee from "./TotalFee";
 import { GeneralControl } from "../App";
 import { createSub } from "../api/sub";
 import Cookies from "js-cookie";
+import { FormDataType } from "../api/sub";
 
 export default function SubForm(props: { subs: any[]; }) {
   const {subs, setSubs, setFlash} = useContext(GeneralControl)
   const [isSubmitting, setIsSubmitting] = React.useState(false)
 
-  async function handleCreateSub(data: { fee: string; link: string; period: string; subName: string; uid: string; }) {
+  async function handleCreateSub(data: FormDataType) {
     setIsSubmitting(true)
     const res = await createSub(data)
 
-    const sortById = res.data.data.sort((sub: { id: number; }, n_sub: { id: number; }) => {
+    const sortById: [] = res.data.data.sort((sub: { id: number; }, n_sub: { id: number; }) => {
       return sub.id > n_sub.id ? 1 : -1
     })
     
@@ -40,7 +41,6 @@ export default function SubForm(props: { subs: any[]; }) {
 
   const {register, handleSubmit, reset, formState: {errors},} = useForm({
     mode: "onSubmit",
-    // defaultValues: {subName: "", fee: "", link: "", period: 0, uid: ""},
   })
 
   const fee = useRef(null)
