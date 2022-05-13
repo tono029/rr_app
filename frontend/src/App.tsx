@@ -22,8 +22,8 @@ type AuthContextType = {
   setLoading: SetStateType<boolean>
   isSignedIn: boolean
   setIsSignedIn: SetStateType<boolean>
-  currentUser: any[] | undefined
-  setCurrentUser: SetStateType<any[] | undefined>
+  currentUser: CurrentUserType | undefined
+  setCurrentUser: SetStateType<CurrentUserType | undefined>
 }
 
 type GeneralControlType = {
@@ -56,13 +56,26 @@ export type SubType = {
 
 export type SubsType = SubType[]
 
+export type CurrentUserType = {
+  allowPasswordChange: boolean
+  createdAt: string
+  email: string
+  id: number
+  image: null
+  name: null
+  nickname: null
+  provider: string
+  uid: "tonoyama0229@gmail.com"
+  updatedAt: string
+}
+
 export const AuthContext = createContext({} as AuthContextType)
 export const GeneralControl = createContext({} as GeneralControlType)
 
 export default function App() {
   const [loading, setLoading] = useState(true);
   const [isSignedIn, setIsSignedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState<any[] | undefined>(undefined);
+  const [currentUser, setCurrentUser] = useState<CurrentUserType | undefined>(undefined);
   const [user, setUser] = React.useState("")
   const [subs, setSubs] = React.useState<SubType[]>([])
   const [flash, setFlash] = React.useState("")
@@ -94,7 +107,6 @@ export default function App() {
     const sortById = res.data.sort((sub: SubType, next_sub: SubType) => {
       return sub.id > next_sub.id ? 1 : -1
     })
-
     setSubs(sortById)
   }
 

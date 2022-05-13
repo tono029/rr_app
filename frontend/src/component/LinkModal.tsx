@@ -47,7 +47,7 @@ export const LinkModal = (props: Props) => {
   return (
     <Modal
       // openがtrueかつ、idが一致するモーダルを開く。
-      open={props.open[0] && props.open[1] === String(props.sub.id)}
+      open={props.open.includes(true) && Number(props.open[1]) === props.sub.id}
       onClose={() => props.setOpen([false, ""])}
     >
       <Box className="link-modal" sx={modalStyle}>
