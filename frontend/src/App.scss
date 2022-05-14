@@ -194,18 +194,35 @@ tr:hover {
 // Home.tsx-------------------------------------------------
 .home-container {
   width: auto !important;
-  margin: 0 auto 20px auto !important;
+  margin: 20px auto 60px auto  !important;
   max-width: 600px;
-  text-align: center;
 }
 
 .home-text {
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  h2 {
+    text-align: center;
+    margin: 0;
+    font-size: 20px;
+  }
+
+  p {
+    margin: 16px 40px;
+  }
 }
 
-.home-img {
-  border: #264D4D solid 3px;
-  border-radius: 5px;
+.img-container {
+  text-align: center;
+  width: auto;
+  img {
+    border: $main-bg-color solid thick;
+    border-radius: 10px;
+    height: auto;
+    max-width: 100%;
+  }
 }
 
 @media screen and (min-width: 900px) {
@@ -218,6 +235,7 @@ tr:hover {
 
   .home-text {
     margin-bottom: 0;
+    margin-right: 20px;
   }
 }
 

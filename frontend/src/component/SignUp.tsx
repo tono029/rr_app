@@ -56,7 +56,6 @@ export const SignUp = () => {
           <form>
             <TextField
               required
-              autoFocus
               label="メールアドレス"
               fullWidth
               size="small"

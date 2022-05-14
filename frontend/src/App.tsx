@@ -84,7 +84,7 @@ export default function App() {
       if (isSignedIn) {
         return children
       } else {
-        return <Redirect to="signup" />;
+        return <Redirect to="/signup" />;
       }
     } else {
       return <></>;

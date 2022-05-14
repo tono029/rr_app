@@ -51,3 +51,8 @@ declare type CurrentUserType = {
   uid: string
   updatedAt: string
 }
+
+declare module "*.png" {
+  const value: any;
+  export default value;
+}
