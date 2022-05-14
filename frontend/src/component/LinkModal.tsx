@@ -1,7 +1,6 @@
 import { Modal, Box, Button, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { FormDataType } from "../api/sub";
-import { SetStateType, SubType } from "../App";
 
 type Props = {
   sub: SubType

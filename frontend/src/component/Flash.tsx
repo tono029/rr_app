@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Snackbar, Slide, SlideProps} from '@mui/material';
 import { GeneralControl } from '../App';
-import { SetStateType } from '../App';
 
 function SlideTransition(props: SlideProps) {
   return <Slide {...props} direction="down" />;
@@ -34,7 +33,7 @@ export default function Flash(props: {flash: string, setChartAni: SetStateType<b
       open={open}
       onClose={handleClose}
       TransitionComponent={SlideTransition}
-      autoHideDuration={3300}
+      autoHideDuration={3500}
       anchorOrigin={{vertical: "top", horizontal: "center"}}
       message={props.flash}
       key={SlideTransition.name}

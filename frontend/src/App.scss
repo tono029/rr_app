@@ -138,6 +138,7 @@ header {
 th {
   background-color: $main-bg-color !important;
   color: white !important;
+  overflow: hidden;
 }
 
 tr:hover {

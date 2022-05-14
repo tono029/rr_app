@@ -1,6 +1,5 @@
 import {Modal, Box, Button, TextField, Grid, FormControl, InputLabel, Select, MenuItem} from "@mui/material"
 import {useForm} from "react-hook-form"
-import { SetStateType } from "../App"
 import {FormDataType} from "../api/sub"
 
 type Props = {

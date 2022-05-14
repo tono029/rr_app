@@ -2,7 +2,6 @@ import React from "react";
 import {Bar} from "react-chartjs-2"
 import {MenuItem, Select, InputLabel, FormControl, SelectChangeEvent} from "@mui/material"
 import {Chart, registerables} from 'chart.js'
-import {SubType, SubsType} from "../App"
 
 Chart.register(...registerables)
 

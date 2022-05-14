@@ -15,60 +15,6 @@ import {getSubs} from "./api/sub"
 import { SignIn } from './component/SignIn';
 import { SignUp } from './component/SignUp';
 
-export type SetStateType<T> = React.Dispatch<React.SetStateAction<T>>
-
-type AuthContextType = {
-  loading: boolean
-  setLoading: SetStateType<boolean>
-  isSignedIn: boolean
-  setIsSignedIn: SetStateType<boolean>
-  currentUser: CurrentUserType | undefined
-  setCurrentUser: SetStateType<CurrentUserType | undefined>
-}
-
-type GeneralControlType = {
-  mainSlide: MainSlideType;
-  setMainSlide: SetStateType<MainSlideType>;
-  flash: string;
-  setFlash: SetStateType<string>;
-  subs: SubType[];
-  setSubs: SetStateType<SubType[]>
-  setUser: SetStateType<string>
-  handleGetSubs: () => void
-}
-
-type MainSlideType = {
-  dire: "right" | "left" | "down" | "up"
-  in: boolean
-  appear?: boolean
-}
-
-export type SubType = {
-  createdAt?: string
-  fee: number
-  id: number
-  link: string
-  period: number
-  subName: string
-  uid?: string
-  updatedAt?: string
-}
-
-export type SubsType = SubType[]
-
-export type CurrentUserType = {
-  allowPasswordChange: boolean
-  createdAt: string
-  email: string
-  id: number
-  image: null
-  name: null
-  nickname: null
-  provider: string
-  uid: "tonoyama0229@gmail.com"
-  updatedAt: string
-}
-
 export const AuthContext = createContext({} as AuthContextType)
 export const GeneralControl = createContext({} as GeneralControlType)
 
