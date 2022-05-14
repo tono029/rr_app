@@ -195,47 +195,59 @@ tr:hover {
 .home-container {
   width: auto !important;
   margin: 20px auto 60px auto  !important;
-  max-width: 600px;
 }
 
 .home-text {
-  margin-bottom: 20px;
+  margin: 0 auto 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
   h2 {
     text-align: center;
     margin: 0;
-    font-size: 20px;
+    font-size: 30px;
+    margin-bottom: 40px;
+    color: $accent-bg-color;
   }
 
   p {
-    margin: 16px 40px;
+    width: 80%;
+    margin: 16px auto;
+    font-size: 16px;
+  }
+
+  span {
+    font-size: 20px;
+    color: black;
   }
 }
 
 .img-container {
+  display: block;
+  margin: 0 auto;
   text-align: center;
   width: auto;
-  img {
-    border: $main-bg-color solid thick;
-    border-radius: 10px;
-    height: auto;
-    max-width: 100%;
-  }
+  border: $accent-bg-color solid thick;
+  border-radius: 10px;
+  height: auto;
+  max-width: 100%;
 }
 
-@media screen and (min-width: 900px) {
+// 1200以上
+@media screen and (min-width: 1200px) {
   .home-container {
     min-width: 800px;
     display: flex;
     align-items: center;
-    justify-content: space-around;
   }
 
   .home-text {
     margin-bottom: 0;
     margin-right: 20px;
+    width: 55%;
+    p {
+      margin: 60px 20px;
+    }
   }
 }
 
