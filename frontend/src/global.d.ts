@@ -48,6 +48,6 @@ declare type CurrentUserType = {
   name: null
   nickname: null
   provider: string
-  uid: "tonoyama0229@gmail.com"
+  uid: string
   updatedAt: string
 }

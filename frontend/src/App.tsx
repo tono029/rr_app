@@ -100,7 +100,6 @@ export default function App() {
     document.body.appendChild(script)
   }, [])
 
-  console.log(subs)
 
   return (
     <ThemeProvider theme={theme}>
@@ -137,7 +136,8 @@ export default function App() {
             </div>
 
             <Flash 
-              flash={flash} 
+              flash={flash}
+              chartAni={chartAni}
               setChartAni={setChartAni} 
             />
 

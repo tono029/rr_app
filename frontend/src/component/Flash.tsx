@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import * as React from 'react';
 import { Snackbar, Slide, SlideProps} from '@mui/material';
 import { GeneralControl } from '../App';
@@ -6,7 +7,7 @@ function SlideTransition(props: SlideProps) {
   return <Slide {...props} direction="down" />;
 }
 
-export default function Flash(props: {flash: string, setChartAni: SetStateType<boolean>}) {
+export default function Flash(props: {flash: string, setChartAni: SetStateType<boolean>, chartAni: boolean}) {
   const [open, setOpen] = React.useState(false)
   const {setMainSlide, setFlash} = React.useContext(GeneralControl)
   
@@ -17,12 +18,15 @@ export default function Flash(props: {flash: string, setChartAni: SetStateType<b
       setMainSlide({dire: "right", in: true, appear: false})
       setOpen(true)
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.flash])
+
+  React.useEffect(() => {
+    open ? props.setChartAni(false) : props.setChartAni(true)
+  }, [open])
   
   const handleClose = () => {
     setMainSlide({dire: "right", in: true, appear: false})
-    props.setChartAni(false)
+    props.setChartAni(true)
     setOpen(false)
     setFlash("")
   };
