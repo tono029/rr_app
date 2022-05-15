@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { IconButton, Button, Dialog, DialogTitle, DialogActions } from "@mui/material";
+import { IconButton, Button, Dialog, DialogTitle, DialogActions, DialogContent } from "@mui/material";
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import { deleteUser, deleteUserResource } from "../api/auth";
 import { AuthContext, GeneralControl } from "../App";
@@ -64,6 +64,7 @@ export default function UserSetting(props: {user: string, currentUser: {uid: str
         onClose={() => setOpen(false)}
       >
         <DialogTitle>ユーザー登録を削除してよろしいですか？</DialogTitle>
+        <DialogContent>利用されていたサービスの登録情報も同時に削除されます。</DialogContent>
         <DialogActions>
           <Button
             onClick={handleUserDelete}

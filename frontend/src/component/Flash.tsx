@@ -21,14 +21,18 @@ export default function Flash(props: {flash: string, setChartAni: SetStateType<b
   }, [props.flash])
 
   React.useEffect(() => {
-    open ? props.setChartAni(false) : props.setChartAni(true)
+    if (open) {
+      props.setChartAni(false)
+    } else {
+      props.setChartAni(true)
+      setFlash("")
+    }
   }, [open])
   
   const handleClose = () => {
     setMainSlide({dire: "right", in: true, appear: false})
     props.setChartAni(true)
     setOpen(false)
-    setFlash("")
   };
 
   return (
@@ -37,7 +41,7 @@ export default function Flash(props: {flash: string, setChartAni: SetStateType<b
       open={open}
       onClose={handleClose}
       TransitionComponent={SlideTransition}
-      autoHideDuration={3500}
+      autoHideDuration={3400}
       anchorOrigin={{vertical: "top", horizontal: "center"}}
       message={props.flash}
       key={SlideTransition.name}
