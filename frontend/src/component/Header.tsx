@@ -34,7 +34,7 @@ export default function Header(props: {user: string}) {
       setSubs([])
       setUser("")
       signOut()
-      history.push("/signin")
+      history.push("/")
     }
   }
 

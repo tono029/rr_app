@@ -84,7 +84,7 @@ export default function App() {
       if (isSignedIn) {
         return children
       } else {
-        return <Redirect to="/signup" />;
+        return <Redirect to="/" />;
       }
     } else {
       return <></>;
@@ -144,7 +144,7 @@ export default function App() {
             <div className='main'>
     
               <Switch>
-                <Route exact path="/signup">
+                <Route exact path="/">
                   <SignUp />
                 </Route>
     
@@ -153,7 +153,7 @@ export default function App() {
                 </Route>
     
                 <Private>
-                  <Route exact path="/">
+                  <Route exact path="/main">
                     <Slide 
                       direction={mainSlide.dire} 
                       in={mainSlide.in}

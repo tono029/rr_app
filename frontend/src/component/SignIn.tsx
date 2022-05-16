@@ -44,7 +44,7 @@ export const SignIn = () => {
         setFlash("ログインしました。")
         setIsLoading(false)
 
-        history.push("/");
+        history.push("/main");
       }
     } catch (e) {
       setFlash("ログインに失敗しました。")

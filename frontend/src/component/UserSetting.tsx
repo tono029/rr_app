@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { IconButton, Button, Dialog, DialogTitle, DialogActions, DialogContent } from "@mui/material";
+import { IconButton, Button, Dialog, DialogActions, DialogContent } from "@mui/material";
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import { deleteUser, deleteUserResource } from "../api/auth";
 import { AuthContext, GeneralControl } from "../App";
@@ -25,7 +25,7 @@ export default function UserSetting(props: {user: string, currentUser: {uid: str
     deleteUser()
 
     setFlash("削除が完了しました。")
-    history.push("/signup")
+    history.push("/")
   }
 
   return (
@@ -63,8 +63,11 @@ export default function UserSetting(props: {user: string, currentUser: {uid: str
         open={open} 
         onClose={() => setOpen(false)}
       >
-        <DialogTitle>ユーザー登録を削除してよろしいですか？</DialogTitle>
-        <DialogContent>利用されていたサービスの登録情報も同時に削除されます。</DialogContent>
+        <DialogContent>
+          <p>ユーザー登録を削除してよろしいですか？</p>
+          <p>利用されていたサービスの登録情報も同時に削除されます。</p>
+        </DialogContent>
+
         <DialogActions>
           <Button
             onClick={handleUserDelete}
@@ -73,6 +76,7 @@ export default function UserSetting(props: {user: string, currentUser: {uid: str
           >
             はい
           </Button>
+
           <Button onClick={() => setOpen(false)}>
             キャンセル
           </Button>
