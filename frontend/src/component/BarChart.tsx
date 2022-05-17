@@ -5,9 +5,10 @@ import {Chart, registerables} from 'chart.js'
 
 Chart.register(...registerables)
 
-export default function BarChart(props: { subs: any[]; chartAni: any; setChartAni: (arg0: boolean) => void; }) {
+export default function BarChart(props: { subs: SubsType; chartAni: any; setChartAni: (arg0: boolean) => void; }) {
   const [sort, setSort] = React.useState(0)
   const [per, setPer] = React.useState(0)
+  const [total, setTotal] = React.useState(0)
 
   const SubsPerMonth = props.subs.map(sub => {
     if (sub.period === 1) {
@@ -126,38 +127,51 @@ export default function BarChart(props: { subs: any[]; chartAni: any; setChartAn
   }
 
   function handleSortChange(e: SelectChangeEvent<number>) {
-    props.setChartAni(true)
     setSort(Number(e.target.value))
   }
 
   function handlePerChange(e: SelectChangeEvent<number>) {
-    props.setChartAni(true)
     setPer(Number(e.target.value))
   }
 
   return (
     <div className="container chart">
-      
-
       {
         props.subs.length === 0 ?
 
         <p className="chart-text">登録されたデータがここにグラフとして表示されます。</p>
 
         :
+
         <>
           <div className="chart-header">
-  
+            <FormControl
+              size="small"
+              sx={{ m: 1, minWidth: 80 }}
+            >
+              <InputLabel>集計</InputLabel>
+              <Select
+                autoWidth
+                value={total}
+                onChange={(e) => setTotal(Number(e.target.value))}
+                label="集計"
+              > 
+                <MenuItem value={0}>個別</MenuItem>
+                <MenuItem value={1}>分類別</MenuItem>
+              </Select>
+            </FormControl>
+
             <div className="chart-header-r">
               <FormControl
                 size="small"
                 sx={{ m: 1, minWidth: 80 }}
               >
-                <InputLabel id="sort-select-label">期間</InputLabel>
+                <InputLabel id="period-select-label">期間</InputLabel>
                 <Select
                   autoWidth
-                  labelId="sort-select-label"
-                  id="sort-select"
+                  disabled={total === 1}
+                  labelId="period-select-label"
+                  id="period-select"
                   value={per}
                   onChange={(e) => handlePerChange(e)}
                   label="期間"
@@ -175,6 +189,7 @@ export default function BarChart(props: { subs: any[]; chartAni: any; setChartAn
                 <InputLabel id="sort-select-label">ソート</InputLabel>
                 <Select
                   autoWidth
+                  disabled={total === 1}
                   labelId="sort-select-label"
                   id="sort-select"
                   value={sort}

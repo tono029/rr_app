@@ -30,22 +30,20 @@ header {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  .greeting {
-    margin-right: 20px;
-  }
   p {
     font-size: 12px;
   }
   button, a{
     background-color: $base-bg-color !important;
     color: white !important;
-    font-weight: bold;
+    font-weight: 400;
     margin-left: 10px;
   }
 }
 
 .nav-items {
   display: flex;
+  align-items: center;
   :hover {
     color: $background-color;
   }
@@ -58,6 +56,7 @@ header {
   }
   svg {
     cursor: pointer;
+    margin-left: 10px;
   }
 }
 
@@ -173,6 +172,7 @@ tr:hover {
 .chart-header {
   display: flex;
   align-items: center;
+  margin-bottom: 20px;
   h3 {
     font-weight: 400;
     margin: 0;

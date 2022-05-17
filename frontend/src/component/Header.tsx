@@ -38,30 +38,33 @@ export default function Header(props: {user: string}) {
     }
   }
 
+  const handleLogoClick = () => {
+    history.push("/")
+    setMainSlide({dire: "right", in: true, appear: false})
+  }
+
   return (
     <header>
       <div className="header-left">
-        <h2 onClick={() => setMainSlide({dire: "right", in: true, appear: false})}>
+        <h2 onClick={handleLogoClick}>
           SubscManager
         </h2>
       </div>
 
       <div className="header-right">
-        {isSignedIn && 
-          <div className="greeting">
-            <p>{greeting()}, {props.user}さん</p>
-          </div>
-        }
-
         <div className="nav-items">
           {isSignedIn ?
             <>
-              <ManageAccountsIcon
-                fontSize="large"
-                onClick={toSetting}
+              <div className="greeting">
+                <p>{greeting()}, {props.user}さん</p>
+              </div>
+
+              <Button
+                onClick={() => history.push("/main")}
+                size="small"
               >
-                ユーザー設定
-              </ManageAccountsIcon>
+                管理
+              </Button>
 
               <Button
                 onClick={handleSignOut}
@@ -69,6 +72,12 @@ export default function Header(props: {user: string}) {
               >
                 ログアウト
               </Button>
+
+              <ManageAccountsIcon
+                fontSize="large"
+                onClick={toSetting}
+              >
+              </ManageAccountsIcon>
             </> 
 
           :
