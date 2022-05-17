@@ -72,7 +72,7 @@ export default function App() {
       fontFamily: [
         "sans-serif"
       ].join(","),
-      fontSize: 12,
+      fontSize: 14,
     },
   })
 

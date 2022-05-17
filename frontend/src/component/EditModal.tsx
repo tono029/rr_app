@@ -6,13 +6,7 @@ type Props = {
   handleUpdateSub: (data: FormDataType, id: string) => void
   editOpen: (boolean | string)[]
   setEditOpen: SetStateType<(boolean | string)[]>
-  sub: {
-    id: number, 
-    fee: number, 
-    period: number, 
-    subName: string, 
-    link: string
-  }
+  sub: SubType
 }
 
 export default function EditModal(props: Props) {
@@ -54,7 +48,7 @@ export default function EditModal(props: Props) {
         <div className="edit-modal-body">
 
         <Grid container spacing={2}>
-            <Grid item xs={12} sm={12}>
+            <Grid item xs={6} sm={8}>
               <TextField
                 autoComplete="off"
                 fullWidth
@@ -72,8 +66,25 @@ export default function EditModal(props: Props) {
                 {errors.sub_name && errors.sub_name.type === "required" && <span>・{errors.sub_name.message}</span>}
                 {errors.sub_name && errors.sub_name.type === "maxLength" && <span>・{errors.sub_name.message}</span>}
               </div>
-
             </Grid>
+
+            <Grid item xs={6} sm={4}>
+                <FormControl size="small" fullWidth>
+                  <InputLabel>分類</InputLabel>
+                  <Select
+                    label="分類"
+                    defaultValue={props.sub.division}
+                    {...register("division")}
+                  >
+                    <MenuItem value={"no division"}>未分類</MenuItem>
+                    <MenuItem value={"hobby"}>娯楽</MenuItem>
+                    <MenuItem value={"food"}>食事</MenuItem>
+                    <MenuItem value={"music"}>音楽</MenuItem>
+                    <MenuItem value={"game"}>ゲーム</MenuItem>
+                    <MenuItem value={"other"}>その他</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
             
             <Grid item xs={6} sm={8}>
               <TextField

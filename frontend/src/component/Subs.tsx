@@ -4,6 +4,10 @@ import AddLinkIcon from '@mui/icons-material/AddLink';
 import LinkIcon from '@mui/icons-material/Link';
 import EditIcon from '@mui/icons-material/Edit';
 import ClearIcon from '@mui/icons-material/Clear';
+import MusicNoteIcon from '@mui/icons-material/MusicNote';
+import LocalDiningIcon from '@mui/icons-material/LocalDining';
+import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
+import SailingIcon from '@mui/icons-material/Sailing';
 import { LinkModal } from "./LinkModal";
 import EditModal from "./EditModal";
 import { GeneralControl } from "../App";
@@ -31,17 +35,35 @@ export default function Subs() {
     setFlash("変更を適用しました。")
   }
 
-  console.log(subs)
+  const division = (div: string | null) => {
+    if (div === "no division") {
+      return <></>
+    } else if (div === "hobby") {
+      return <SailingIcon />
+    } else if (div === "food") {
+      return <LocalDiningIcon />
+    } else if (div === "music") {
+      return <MusicNoteIcon />
+    } else if (div === "game") {
+      return <SportsEsportsIcon />
+    } else {
+      return <></>
+    }
+  }
 
   const subsIndex = subs.map((sub: SubType) => {
+    const period = sub.period === 1 ? "/月" : "/年"
+
     return (
       <TableRow key={sub.id}>
         {/* axiosの影響でパラメータ名がキャメルケースになる。 */}
-        <TableCell colSpan={1}>{sub.subName}</TableCell>
+        <TableCell className="division-icon" colSpan={1}>
+          {division(sub.division)}
+        </TableCell>
 
-        <TableCell colSpan={1}>{sub.fee.toLocaleString()}<span>円</span></TableCell>
+        <TableCell className="name-cell" colSpan={1}>{sub.subName}</TableCell>
 
-        <TableCell>{sub.period === 1 ? "/月" : "/年"}</TableCell>
+        <TableCell className="fee-cell" colSpan={1}>{sub.fee.toLocaleString()}<span>円{period}</span></TableCell>
 
         {/* リンク */}
         {
@@ -77,11 +99,10 @@ export default function Subs() {
 
         {/* deleteボタン */}
         {/* hover時にのみ表示 */}
-        <TableCell padding="none">
+        <TableCell padding="none" align="right">
           <IconButton
             className="delete-btn"
             onClick={() => handleDeleteSub(String(sub.id))}
-            size="small"
           >
             <ClearIcon />
           </IconButton>
@@ -104,17 +125,18 @@ export default function Subs() {
     )
   })
 
+
   return (
     <TableContainer className="subs-table table-container" component={Paper}>
       <Table stickyHeader>
         <TableHead>
           <TableRow>
-            <TableCell colSpan={1}>サービス名</TableCell>
-            <TableCell colSpan={1}>料金</TableCell>
-            <TableCell padding="none">期間</TableCell>
-            <TableCell padding="none">リンク</TableCell>
-            <TableCell padding="none"></TableCell>
-            <TableCell padding="none"></TableCell>
+            <TableCell></TableCell>
+            <TableCell className="name-cell">サービス名</TableCell>
+            <TableCell align="right" className="fee-cell" colSpan={1}>料金</TableCell>
+            <TableCell align="right" padding="none">リンク</TableCell>
+            <TableCell align="right" padding="none"></TableCell>
+            <TableCell align="right" padding="none"></TableCell>
           </TableRow>
         </TableHead>
 

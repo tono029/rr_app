@@ -57,7 +57,7 @@ export default function SubForm() {
           <form>
             <Grid container spacing={{md: 2, xs: 1.5}}>
               {/* サービス名 */}
-              <Grid item xs={7} sm={8}>
+              <Grid item xs={7} sm={7}>
                 <TextField
                   required
                   fullWidth
@@ -78,7 +78,7 @@ export default function SubForm() {
               </Grid>
               
               {/* 分類 */}
-              <Grid item xs={5} sm={4}>
+              <Grid item xs={5} sm={5}>
                 <FormControl size="small" fullWidth>
                   <InputLabel>分類</InputLabel>
                   <Select
@@ -89,13 +89,15 @@ export default function SubForm() {
                     <MenuItem value={"no division"}>未分類</MenuItem>
                     <MenuItem value={"hobby"}>娯楽</MenuItem>
                     <MenuItem value={"food"}>食事</MenuItem>
+                    <MenuItem value={"music"}>音楽</MenuItem>
+                    <MenuItem value={"game"}>ゲーム</MenuItem>
                     <MenuItem value={"other"}>その他</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
               
               {/* 料金 */}
-              <Grid item xs={7} sm={8}>
+              <Grid item xs={7}>
                 <TextField
                   fullWidth
                   required
@@ -114,7 +116,7 @@ export default function SubForm() {
               </Grid>
               
               {/* 期間 */}
-              <Grid item xs={5} sm={4} className="period-select">
+              <Grid item xs={5} className="period-select">
                 <FormControl size="small" fullWidth>
                   <InputLabel>期間</InputLabel>
                   <Select

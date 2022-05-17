@@ -118,7 +118,7 @@ body::-webkit-scrollbar {
     display: flex;
     align-items: center;
     max-width: 910px;
-    margin: auto;
+    margin: 0 auto 50px;
 
     .container {
       max-width: 500px !important;
@@ -132,7 +132,7 @@ body::-webkit-scrollbar {
     
     .table-container {
       margin-left: 40px;
-      min-width: 320px;
+      min-width: 400px;
     }
   }
 

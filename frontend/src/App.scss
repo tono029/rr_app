@@ -47,7 +47,7 @@ header {
 .nav-items {
   display: flex;
   :hover {
-    color: #bebebe;
+    color: $background-color;
   }
   a {
     text-decoration: none;
@@ -123,6 +123,15 @@ header {
   display: none;
 }
 
+.division-icon {
+  color: $main-bg-color !important;
+  padding: 0 10px !important;
+  svg {
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
 .link-btn, .edit-btn, .delete-btn {
   border-radius: 10px !important;
 }
@@ -183,6 +192,9 @@ tr:hover {
 .edit-modal {
   p {
     margin-bottom: 30px;
+  }
+  button {
+    line-height: 2 !important;
   }
 }
 
