@@ -1,6 +1,5 @@
 import {Modal, Box, Button, TextField, Grid, FormControl, InputLabel, Select, MenuItem} from "@mui/material"
 import {useForm} from "react-hook-form"
-import {FormDataType} from "../api/sub"
 
 type Props = {
   // eslint-disable-next-line no-empty-pattern

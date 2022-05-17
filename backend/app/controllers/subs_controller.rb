@@ -15,6 +15,7 @@ class SubsController < ApplicationController
       period: params[:period],
       link: params[:link],
       uid: params[:uid],
+      division: params[:division],
     )
 
     if @sub.save
@@ -49,7 +50,7 @@ class SubsController < ApplicationController
     end
 
     def sub_params
-      params.require(:sub).permit(:sub_name, :fee, :link, :uid, :period, :session)
+      params.require(:sub).permit(:sub_name, :fee, :link, :uid, :period, :session, :division)
     end
 
     def set_subs

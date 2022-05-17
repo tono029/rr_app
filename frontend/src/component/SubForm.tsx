@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext } from "react";
 import {Grid, TextField, MenuItem, Select, FormControl, InputLabel} from '@mui/material';
 import {LoadingButton} from "@mui/lab"
 import {useForm} from "react-hook-form"
@@ -6,9 +6,8 @@ import TotalFee from "./TotalFee";
 import { GeneralControl } from "../App";
 import { createSub } from "../api/sub";
 import Cookies from "js-cookie";
-import { FormDataType } from "../api/sub";
 
-export default function SubForm(props: { subs: any[]; }) {
+export default function SubForm() {
   const {subs, setSubs, setFlash} = useContext(GeneralControl)
   const [isSubmitting, setIsSubmitting] = React.useState(false)
 
@@ -43,16 +42,6 @@ export default function SubForm(props: { subs: any[]; }) {
     mode: "onSubmit",
   })
 
-  const fee = useRef(null)
-  const period = useRef(null)
-  const link = useRef(null)
-
-  // function handleEnter(value: React.MutableRefObject<null>, e: React.KeyboardEvent<HTMLDivElement>) {
-  //   if (e.key === "Enter") {
-  //     value.current.focus()
-  //   }
-  // }
-
   return (
     <div className="container create-form">
       {subs.length === 0 && 
@@ -61,13 +50,14 @@ export default function SubForm(props: { subs: any[]; }) {
 
       <div className="form-body">
         <div className="form-body-left">
-          <TotalFee subs={props.subs} />
+          <TotalFee subs={subs} />
         </div>
 
         <div className="form-body-right">
           <form>
-            <Grid container spacing={{md: 2, xs: 1}}>
-              <Grid item xs={12} sm={12}>
+            <Grid container spacing={{md: 2, xs: 1.5}}>
+              {/* サービス名 */}
+              <Grid item xs={7} sm={8}>
                 <TextField
                   required
                   fullWidth
@@ -87,7 +77,25 @@ export default function SubForm(props: { subs: any[]; }) {
   
               </Grid>
               
-              <Grid item xs={6} sm={8}>
+              {/* 分類 */}
+              <Grid item xs={5} sm={4}>
+                <FormControl size="small" fullWidth>
+                  <InputLabel>分類</InputLabel>
+                  <Select
+                    label="分類"
+                    defaultValue={"no division"}
+                    {...register("division")}
+                  >
+                    <MenuItem value={"no division"}>未分類</MenuItem>
+                    <MenuItem value={"hobby"}>娯楽</MenuItem>
+                    <MenuItem value={"food"}>食事</MenuItem>
+                    <MenuItem value={"other"}>その他</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              
+              {/* 料金 */}
+              <Grid item xs={7} sm={8}>
                 <TextField
                   fullWidth
                   required
@@ -95,7 +103,6 @@ export default function SubForm(props: { subs: any[]; }) {
                   label="料金"
                   type="number"
                   size="small"
-                  inputRef={fee}
                   {...register("fee", {
                     required: {value: true, message: "必須項目です"},
                   })}
@@ -105,14 +112,14 @@ export default function SubForm(props: { subs: any[]; }) {
                   {errors.fee && errors.fee.type === "required" && <span>・{errors.fee.message}</span>}
                 </div>
               </Grid>
-        
-              <Grid item xs={6} sm={4} className="period-select">
+              
+              {/* 期間 */}
+              <Grid item xs={5} sm={4} className="period-select">
                 <FormControl size="small" fullWidth>
                   <InputLabel>期間</InputLabel>
                   <Select
                     label="期間"
                     defaultValue={1}
-                    inputRef={period}
                     {...register("period")}
                   >
                     <MenuItem value={1}>/月</MenuItem>
@@ -121,6 +128,7 @@ export default function SubForm(props: { subs: any[]; }) {
                 </FormControl>
               </Grid>
   
+              {/* リンク */}
               <Grid item xs={6} sm={8} md={12}>
                 <TextField
                   fullWidth
@@ -128,7 +136,6 @@ export default function SubForm(props: { subs: any[]; }) {
                   label="リンク（任意）"
                   type="url" 
                   size="small"
-                  inputRef={link}
                   {...register("link")}
                 />
               </Grid>

@@ -7,10 +7,10 @@ import ClearIcon from '@mui/icons-material/Clear';
 import { LinkModal } from "./LinkModal";
 import EditModal from "./EditModal";
 import { GeneralControl } from "../App";
-import { updateSub, deleteSub, FormDataType } from "../api/sub";
+import { updateSub, deleteSub } from "../api/sub";
 
-export default function Subs(props: { subs: any[]; }) {
-  const {setSubs, handleGetSubs, setFlash} = useContext(GeneralControl)
+export default function Subs() {
+  const {subs, setSubs, handleGetSubs, setFlash} = useContext(GeneralControl)
   const [open, setOpen] = React.useState([false, ""])
   const [editOpen, setEditOpen] = React.useState([false, ""])
 
@@ -31,10 +31,12 @@ export default function Subs(props: { subs: any[]; }) {
     setFlash("変更を適用しました。")
   }
 
-  const subsIndex = props.subs.map((sub: { id: any; subName: any; fee: any; period: any; link: any; }) => {
+  console.log(subs)
+
+  const subsIndex = subs.map((sub: SubType) => {
     return (
       <TableRow key={sub.id}>
-        {/* 本番環境ではaxiosの影響でパラメータ名がキャメルケースになる。 */}
+        {/* axiosの影響でパラメータ名がキャメルケースになる。 */}
         <TableCell colSpan={1}>{sub.subName}</TableCell>
 
         <TableCell colSpan={1}>{sub.fee.toLocaleString()}<span>円</span></TableCell>
@@ -56,7 +58,7 @@ export default function Subs(props: { subs: any[]; }) {
           <TableCell padding="none">
             <IconButton 
               className="link-btn"
-              onClick={() => setOpen([true, sub.id])}
+              onClick={() => setOpen([true, String(sub.id)])}
             >
               <AddLinkIcon />
             </IconButton>
@@ -67,7 +69,7 @@ export default function Subs(props: { subs: any[]; }) {
         <TableCell padding="none">
           <IconButton
             className="edit-btn"
-            onClick={() => setEditOpen([true, sub.id])}
+            onClick={() => setEditOpen([true, String(sub.id)])}
           >
             <EditIcon />
           </IconButton>
@@ -78,7 +80,7 @@ export default function Subs(props: { subs: any[]; }) {
         <TableCell padding="none">
           <IconButton
             className="delete-btn"
-            onClick={() => handleDeleteSub(sub.id)}
+            onClick={() => handleDeleteSub(String(sub.id))}
             size="small"
           >
             <ClearIcon />

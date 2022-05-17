@@ -163,13 +163,9 @@ export default function App() {
                     >
                       <Box>
                         <div className='main-top'>
-                          <SubForm 
-                            subs={subs} 
-                          />
+                          <SubForm />
         
-                          <Subs 
-                            subs={subs} 
-                          />
+                          <Subs />
                         </div>
       
                         <BarChart 

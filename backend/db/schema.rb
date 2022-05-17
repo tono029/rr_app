@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_14_100241) do
+ActiveRecord::Schema.define(version: 2022_05_17_015444) do
 
   create_table "subs", force: :cascade do |t|
     t.text "sub_name"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2022_04_14_100241) do
     t.integer "period"
     t.text "link"
     t.string "uid"
+    t.string "division"
   end
 
   create_table "users", force: :cascade do |t|

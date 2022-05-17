@@ -33,6 +33,7 @@ declare type SubType = {
   link: string
   period: number
   subName: string
+  division: string | null
   uid?: string
   updatedAt?: string
 }
@@ -50,6 +51,15 @@ declare type CurrentUserType = {
   provider: string
   uid: string
   updatedAt: string
+}
+
+declare type FormDataType = {
+  fee?: string
+  link?: string
+  period?: string
+  subName?: string
+  uid?: string
+  division?: string | null
 }
 
 declare module "*.png" {
