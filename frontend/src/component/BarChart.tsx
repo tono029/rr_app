@@ -6,9 +6,9 @@ import {Chart, registerables} from 'chart.js'
 Chart.register(...registerables)
 
 export default function BarChart(props: { subs: SubsType; chartAni: any; setChartAni: (arg0: boolean) => void; }) {
-  const [sort, setSort] = React.useState(0)
   const [per, setPer] = React.useState(0)
   const [total, setTotal] = React.useState(0)
+  const [sort, setSort] = React.useState(0)
   const divisions = ["no division", "hobby", "food", "music", "game", "other"]
 
   const SubsPerMonth: SubsType = props.subs.map(sub => {
@@ -66,8 +66,29 @@ export default function BarChart(props: { subs: SubsType; chartAni: any; setChar
     }
   })
 
-  console.log(totaledData)
+  const transLabel = (labels: string[]) => {
+    const dist = {
+      "no division": "未分類", 
+      "hobby": "娯楽", 
+      "food": "食事", 
+      "music": "音楽", 
+      "game": "ゲーム", 
+      "other": "その他",
+    }
+    const newLabel: string[] = []
+    
+    labels.forEach(label => {
+      Object.entries(dist).forEach(array => {
+        if (label === array[0]) {
+          newLabel.push(array[1]) 
+        }
+      })
+    })
 
+    return newLabel
+  }
+
+  console.log(totaledData)
   
   function selectData(sort: number, per: number, total:number) {
     const labels: string[] = []
@@ -111,15 +132,38 @@ export default function BarChart(props: { subs: SubsType; chartAni: any; setChar
 
       // 分類別の時
     } else {
-      totaledData.forEach(total => {
-        labels.push(total.division)
-        data.push(total.fee)
-      })
+      if (sort === 0) {
+        totaledData.forEach(total => {
+          labels.push(total.division)
+          data.push(total.fee)
+        })
+  
+        return {
+          labels: transLabel(labels),
+          data: data
+        }
+      } else {
+        const copiedTotal = totaledData.slice()
 
-      return {
-        labels: labels,
-        data: data
+        copiedTotal.sort((i, j) => {
+          if (sort === 1) {
+            return i.fee > j.fee ? -1 : 1
+          } else {
+            return i.fee < j.fee ? -1 : 1
+          }
+        })
+
+        copiedTotal.forEach(total => {
+          labels.push(total.division)
+          data.push(total.fee)
+        })
+
+        return {
+          labels: transLabel(labels),
+          data: data
+        }
       }
+      
     }
     
   }
@@ -131,6 +175,7 @@ export default function BarChart(props: { subs: SubsType; chartAni: any; setChar
       { 
         label: "料金",
         data: selectData(sort, per, total).data,
+        // グラフの色を分類によって変える？
         backgroundColor: "rgba(0, 128,128, 0.5)",
         borderColor: "#008080",
         borderWidth: 2,
@@ -217,7 +262,6 @@ export default function BarChart(props: { subs: SubsType; chartAni: any; setChar
                 <InputLabel id="sort-select-label">ソート</InputLabel>
                 <Select
                   autoWidth
-                  disabled={total === 1}
                   labelId="sort-select-label"
                   id="sort-select"
                   value={sort}
