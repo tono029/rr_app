@@ -4,10 +4,10 @@ import AddLinkIcon from '@mui/icons-material/AddLink';
 import LinkIcon from '@mui/icons-material/Link';
 import EditIcon from '@mui/icons-material/Edit';
 import ClearIcon from '@mui/icons-material/Clear';
-import MusicNoteIcon from '@mui/icons-material/MusicNote';
 import LocalDiningIcon from '@mui/icons-material/LocalDining';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import SailingIcon from '@mui/icons-material/Sailing';
+import HeadphonesIcon from '@mui/icons-material/Headphones';
 import { LinkModal } from "./LinkModal";
 import EditModal from "./EditModal";
 import { GeneralControl } from "../App";
@@ -43,7 +43,7 @@ export default function Subs() {
     } else if (div === "food") {
       return <LocalDiningIcon />
     } else if (div === "music") {
-      return <MusicNoteIcon />
+      return <HeadphonesIcon />
     } else if (div === "game") {
       return <SportsEsportsIcon />
     } else {

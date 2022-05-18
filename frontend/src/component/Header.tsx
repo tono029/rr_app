@@ -22,6 +22,7 @@ export default function Header(props: {user: string}) {
   }
 
   function toSetting() {
+    history.push("/main")
     setMainSlide({dire: "left", in: false})
   }
 
