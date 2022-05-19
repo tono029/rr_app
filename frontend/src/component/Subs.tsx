@@ -8,6 +8,8 @@ import LocalDiningIcon from '@mui/icons-material/LocalDining';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import SailingIcon from '@mui/icons-material/Sailing';
 import HeadphonesIcon from '@mui/icons-material/Headphones';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import { orange, purple, indigo, lightGreen, lightBlue } from "@mui/material/colors";
 import { LinkModal } from "./LinkModal";
 import EditModal from "./EditModal";
 import { GeneralControl } from "../App";
@@ -39,15 +41,15 @@ export default function Subs() {
     if (div === "no division") {
       return <></>
     } else if (div === "hobby") {
-      return <SailingIcon />
+      return <SailingIcon sx={{color: orange[500]}} />
     } else if (div === "food") {
-      return <LocalDiningIcon />
+      return <LocalDiningIcon sx={{color: purple[500]}} />
     } else if (div === "music") {
-      return <HeadphonesIcon />
+      return <HeadphonesIcon sx={{color: indigo[500]}} />
     } else if (div === "game") {
-      return <SportsEsportsIcon />
+      return <SportsEsportsIcon sx={{color: lightGreen[500]}} />
     } else {
-      return <></>
+      return <MoreHorizIcon sx={{color: lightBlue[500]}} />
     }
   }
 
@@ -56,7 +58,6 @@ export default function Subs() {
 
     return (
       <TableRow key={sub.id}>
-        {/* axiosの影響でパラメータ名がキャメルケースになる。 */}
         <TableCell className="division-icon" colSpan={1}>
           {division(sub.division)}
         </TableCell>

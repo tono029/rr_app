@@ -4,10 +4,11 @@ import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import { deleteUser, deleteUserResource } from "../api/auth";
 import { AuthContext, GeneralControl } from "../App";
 import { useHistory } from "react-router-dom";
+import {signOut} from "../api/auth"
 
 export default function UserSetting(props: {user: string, currentUser: {uid: string} | undefined}) {
   const {setIsSignedIn} = useContext(AuthContext)
-  const {setMainSlide, setFlash} = useContext(GeneralControl)
+  const {setMainSlide, setFlash, setSubs, setUser} = useContext(GeneralControl)
   const [open, setOpen] = useState(false)
   const history = useHistory()
 
@@ -28,6 +29,19 @@ export default function UserSetting(props: {user: string, currentUser: {uid: str
     history.push("/")
   }
 
+  function handleSignOut() {
+    const is_ok = window.confirm("ログアウトしてよろしいですか。") 
+      
+    if (is_ok) {
+      setFlash("ログアウトしました。")
+      setIsSignedIn(false)
+      setSubs([])
+      setUser("")
+      signOut()
+      history.push("/")
+    }
+  }
+
   return (
     <>
       <div className="container setting">
@@ -41,13 +55,20 @@ export default function UserSetting(props: {user: string, currentUser: {uid: str
         <div className="setting-item">
           <p>ユーザー名: </p>
           <p>{props.user}</p>
-        </div>
+        </div><hr />
         <div className="setting-item">
           <p>メールアドレス: </p>
           <p>{props.currentUser && props.currentUser.uid}</p>
-        </div>
+        </div><hr />
         
         <div className="setting-footer">
+          <Button
+            onClick={handleSignOut}
+            size="small"
+          >
+            ログアウト
+          </Button>
+
           <Button
             onClick={() => setOpen(true)}
           >
@@ -58,7 +79,6 @@ export default function UserSetting(props: {user: string, currentUser: {uid: str
 
       {/* ユーザー削除のダイアログ */}
       <Dialog
-        // fullWidth
         className="user-delete-dialog"
         open={open} 
         onClose={() => setOpen(false)}

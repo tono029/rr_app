@@ -1,13 +1,12 @@
 import { useContext } from "react";
 import { Button } from "@mui/material"
-import {signOut} from "../api/auth"
 import { Link, useHistory } from "react-router-dom";
 import { AuthContext, GeneralControl } from "../App";
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 
 export default function Header(props: {user: string}) {
-  const {isSignedIn, setIsSignedIn} = useContext(AuthContext)
-  const {setSubs, setUser, setMainSlide, setFlash} = useContext(GeneralControl)
+  const {isSignedIn} = useContext(AuthContext)
+  const {setMainSlide} = useContext(GeneralControl)
   const history = useHistory()
 
   function greeting() {
@@ -24,19 +23,6 @@ export default function Header(props: {user: string}) {
   function toSetting() {
     history.push("/main")
     setMainSlide({dire: "left", in: false})
-  }
-
-  function handleSignOut() {
-    const is_ok = window.confirm("ログアウトしてよろしいですか。") 
-      
-    if (is_ok) {
-      setFlash("ログアウトしました。")
-      setIsSignedIn(false)
-      setSubs([])
-      setUser("")
-      signOut()
-      history.push("/")
-    }
   }
 
   const handleLogoClick = () => {
@@ -65,13 +51,6 @@ export default function Header(props: {user: string}) {
                 size="small"
               >
                 管理
-              </Button>
-
-              <Button
-                onClick={handleSignOut}
-                size="small"
-              >
-                ログアウト
               </Button>
 
               <ManageAccountsIcon

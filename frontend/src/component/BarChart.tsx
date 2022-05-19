@@ -168,6 +168,9 @@ export default function BarChart(props: { subs: SubsType; chartAni: any; setChar
     
   }
 
+  const [BGColor, setBGColor] = React.useState<string[]>(["rgba(0, 128,128, 0.5)"])
+  const [borderColor, setBorderColor] = React.useState<string[]>(["#008080"])
+
   const graphData = {
     labels: selectData(sort, per, total).labels,
 
@@ -175,9 +178,9 @@ export default function BarChart(props: { subs: SubsType; chartAni: any; setChar
       { 
         label: "料金",
         data: selectData(sort, per, total).data,
-        // グラフの色を分類によって変える？
-        backgroundColor: "rgba(0, 128,128, 0.5)",
-        borderColor: "#008080",
+        // グラフの色を分類によって変える
+        backgroundColor: BGColor,
+        borderColor: borderColor,
         borderWidth: 2,
       }
     ]
@@ -197,6 +200,18 @@ export default function BarChart(props: { subs: SubsType; chartAni: any; setChar
     },
 
     animation: props.chartAni,
+  }
+
+  const handleTotalChange = (e: SelectChangeEvent<number>) => {
+    setTotal(Number(e.target.value))
+
+    if (e.target.value === 0) {
+      setBGColor(["rgba(0, 128,128, 0.5)"])
+      setBorderColor(["#008080"])
+    } else {
+      setBGColor(["rgba(0, 128,128, .5)", "rgba(255, 152, 0, .5)","rgba(156, 39, 176, .5)","rgba(63, 81, 181, .5)","rgba(139, 195, 74, .5)","rgba(3, 169, 244, .5)",])
+      setBorderColor(["#008080", "#ff9800", "#9c27b0", "#3f51b5", "#8bc34a", "#03a9f4"])
+    }
   }
 
   function handleSortChange(e: SelectChangeEvent<number>) {
@@ -226,7 +241,7 @@ export default function BarChart(props: { subs: SubsType; chartAni: any; setChar
               <Select
                 autoWidth
                 value={total}
-                onChange={(e) => setTotal(Number(e.target.value))}
+                onChange={(e) => handleTotalChange(e)}
                 label="集計"
               > 
                 <MenuItem value={0}>個別</MenuItem>
@@ -262,6 +277,7 @@ export default function BarChart(props: { subs: SubsType; chartAni: any; setChar
                 <InputLabel id="sort-select-label">ソート</InputLabel>
                 <Select
                   autoWidth
+                  disabled={total === 1}
                   labelId="sort-select-label"
                   id="sort-select"
                   value={sort}
