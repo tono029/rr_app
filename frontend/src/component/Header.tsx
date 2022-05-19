@@ -25,15 +25,15 @@ export default function Header(props: {user: string}) {
     setMainSlide({dire: "left", in: false})
   }
 
-  const handleLogoClick = () => {
-    history.push("/")
+  const handleManageClick = () => {
+    history.push("/main")
     setMainSlide({dire: "right", in: true, appear: false})
   }
 
   return (
     <header>
       <div className="header-left">
-        <h2 onClick={handleLogoClick}>
+        <h2 onClick={() => history.push("/")}>
           SubscManager
         </h2>
       </div>
@@ -47,7 +47,7 @@ export default function Header(props: {user: string}) {
               </div>
 
               <Button
-                onClick={() => history.push("/main")}
+                onClick={handleManageClick}
                 size="small"
               >
                 管理

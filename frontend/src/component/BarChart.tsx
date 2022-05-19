@@ -88,8 +88,6 @@ export default function BarChart(props: { subs: SubsType; chartAni: any; setChar
     return newLabel
   }
 
-  console.log(totaledData)
-  
   function selectData(sort: number, per: number, total:number) {
     const labels: string[] = []
     const data: number[] = []

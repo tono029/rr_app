@@ -100,12 +100,19 @@ header {
 }
 
 // Subs.tsx------------------------------------------
+.MuiPaper-root {
+  overflow: auto;
+
+}
+
 .subs-table {
-  max-height: 280px;
+  max-height: 350px;
   margin-bottom: 20px;
   margin: 0 auto 20px auto;
-  border-radius: 5px !important;
+  border-radius: 10px !important;
   box-shadow: 2px 1px 2px rgb(0, 0, 0, 0.2) !important;
+  overscroll-behavior: none;
+
   button {
     padding: 0;
     min-width: 35px !important;
@@ -358,10 +365,6 @@ tr:hover {
   button {
     margin-top: 10px;
   }
-}
-
-.MuiPaper-root {
-  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2) !important;
 }
 
 .delete-yes {

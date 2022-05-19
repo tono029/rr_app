@@ -53,6 +53,7 @@
     ]
   },
   "devDependencies": {
+    "@types/jquery": "^3.5.14",
     "@types/js-cookie": "^3.0.2",
     "@types/react-router-dom": "^5.3.3",
     "chart.js": "^3.7.1",
