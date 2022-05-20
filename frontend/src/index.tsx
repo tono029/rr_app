@@ -3,11 +3,6 @@ import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-$(() => {
-  document.addEventListener("touchmove", function(event){
-    event.preventDefault()
-  }, {passive: false})
-})
 
 ReactDOM.render(
   <App />,

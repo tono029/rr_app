@@ -6,7 +6,6 @@ $background-color: #e0f2f1;
 
 // Header.tsx------------------------------------
 header {
-  position: relative;
   display: flex;
   height: 55px;
   background: linear-gradient(teal, rgba(0, 128, 128, 0.75));
@@ -111,7 +110,6 @@ header {
   margin: 0 auto 20px auto;
   border-radius: 10px !important;
   box-shadow: 2px 1px 2px rgb(0, 0, 0, 0.2) !important;
-  overscroll-behavior: none;
 
   button {
     padding: 0;
@@ -329,7 +327,7 @@ tr:hover {
   color:  #264D4D !important;
   font-weight: 600;
   background-color: $accent-bg-color !important;
-  // background: linear-gradient(to right, #5FBFBF, #C9E1B1) !important;
+  // background: linear-gradient(to left, $accent-bg-color, #8edede) !important;
   display: block;
 }
 
@@ -374,8 +372,7 @@ tr:hover {
 // spacer.js--------------------------------------
 .wave {
   position: sticky;
-  top: 60px;
   z-index: 5;
   margin-bottom: 10px;
-  
+  top: 0;
 }

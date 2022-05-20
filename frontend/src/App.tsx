@@ -131,9 +131,6 @@ export default function App() {
               user={user} 
             />
 
-            <div className='wave'>
-              <canvas id="waveCanvas"></canvas>
-            </div>
 
             <Flash 
               flash={flash}
@@ -142,53 +139,58 @@ export default function App() {
             />
 
             <div className='main'>
+              <div className='wave'>
+                <canvas id="waveCanvas"></canvas>
+              </div>
     
-              <Switch>
-                <Route exact path="/">
-                  <SignUp />
-                </Route>
-    
-                <Route exact path="/signin">
-                  <SignIn />
-                </Route>
-    
-                <Private>
-                  <Route exact path="/main">
-                    <Slide 
-                      direction={mainSlide.dire} 
-                      in={mainSlide.in}
-                      appear={mainSlide.appear}
-                      mountOnEnter 
-                      unmountOnExit 
-                    >
-                      <Box>
-                        <div className='main-top'>
-                          <SubForm />
-        
-                          <Subs />
-                        </div>
-      
-                        <BarChart 
-                          subs={subs}
-                          chartAni={chartAni}
-                          setChartAni={setChartAni}
-                        />
-                      </Box>
-                    </Slide>
-
-                    {/* ユーザー設定用のコンポーネント */}
-                    <Slide direction="left" in={!mainSlide.in} mountOnEnter unmountOnExit>
-                      <Box>
-                        <UserSetting
-                          currentUser={currentUser}
-                          user={user}
-                        />
-                      </Box>
-                    </Slide>
+              <div className='contents'>
+                <Switch>
+                  <Route exact path="/">
+                    <SignUp />
                   </Route>
-                </Private>
-                
-              </Switch>
+      
+                  <Route exact path="/signin">
+                    <SignIn />
+                  </Route>
+      
+                  <Private>
+                    <Route exact path="/main">
+                      <Slide 
+                        direction={mainSlide.dire} 
+                        in={mainSlide.in}
+                        appear={mainSlide.appear}
+                        mountOnEnter 
+                        unmountOnExit 
+                      >
+                        <Box>
+                          <div className='main-top'>
+                            <SubForm />
+          
+                            <Subs />
+                          </div>
+        
+                          <BarChart 
+                            subs={subs}
+                            chartAni={chartAni}
+                            setChartAni={setChartAni}
+                          />
+                        </Box>
+                      </Slide>
+  
+                      {/* ユーザー設定用のコンポーネント */}
+                      <Slide direction="left" in={!mainSlide.in} mountOnEnter unmountOnExit>
+                        <Box>
+                          <UserSetting
+                            currentUser={currentUser}
+                            user={user}
+                          />
+                        </Box>
+                      </Slide>
+                    </Route>
+                  </Private>
+                  
+                </Switch>
+              </div>
             </div>
           </GeneralControl.Provider>
         </BrowserRouter>

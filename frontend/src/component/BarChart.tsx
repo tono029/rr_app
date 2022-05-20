@@ -231,23 +231,23 @@ export default function BarChart(props: { subs: SubsType; chartAni: any; setChar
 
         <>
           <div className="chart-header">
-            <FormControl
-              size="small"
-              sx={{ m: 1, minWidth: 80 }}
-            >
-              <InputLabel>集計</InputLabel>
-              <Select
-                autoWidth
-                value={total}
-                onChange={(e) => handleTotalChange(e)}
-                label="集計"
-              > 
-                <MenuItem value={0}>個別</MenuItem>
-                <MenuItem value={1}>分類別</MenuItem>
-              </Select>
-            </FormControl>
-
             <div className="chart-header-r">
+              <FormControl
+                size="small"
+                sx={{ m: 1, minWidth: 80 }}
+              >
+                <InputLabel>集計</InputLabel>
+                <Select
+                  autoWidth
+                  value={total}
+                  onChange={(e) => handleTotalChange(e)}
+                  label="集計"
+                > 
+                  <MenuItem value={0}>個別</MenuItem>
+                  <MenuItem value={1}>分類別</MenuItem>
+                </Select>
+              </FormControl>
+              
               <FormControl
                 size="small"
                 sx={{ m: 1, minWidth: 80 }}

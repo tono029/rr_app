@@ -1,16 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
 
-// color-rule-----
-// 6:3:1
+html {
+  height: 100%;
+  overflow: hidden;
+}
 
 body {
-  height: auto;
+  height: 100%;
+  overflow: hidden;
+
   margin: 0;
   background-color: #e0f2f1;
   font-family: 'Noto Sans JP', sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overscroll-behavior-y: none;
+  // overscroll-behavior-y: none;
 }
 
 code {
@@ -23,7 +27,16 @@ label {
 }
 
 #root {
+  display: flex;
+  flex-direction: column;
+
   height: 100%;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  overflow: hidden;
 }
 
 hr {
@@ -66,10 +79,18 @@ body::-webkit-scrollbar {
 }
 
 .main {
-  position: relative;
+  height: 100%;
+  overflow: auto;
   z-index: 1;
-  padding: 0px 30px 50px;
   width: auto;
+}
+
+.main::-webkit-scrollbar {
+  display: none;
+}
+
+.contents {
+  padding: 0 30px;
 }
 
 .table-container {
@@ -113,7 +134,6 @@ body::-webkit-scrollbar {
 @media screen and (min-width: 900px) {
   .main {
     width: auto;
-    padding: 0 40px 40px 40px;
   }
 
   .main-top {
@@ -136,6 +156,10 @@ body::-webkit-scrollbar {
       margin-left: 40px;
       min-width: 400px;
     }
+  }
+
+  .contents {
+    padding: 0 40px 40px 40px;
   }
 
   .chart {
