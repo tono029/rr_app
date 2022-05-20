@@ -55,11 +55,11 @@ export default function UserSetting(props: {user: string, currentUser: {uid: str
         <div className="setting-item">
           <p>ユーザー名: </p>
           <p>{props.user}</p>
-        </div><hr />
+        </div>
         <div className="setting-item">
           <p>メールアドレス: </p>
           <p>{props.currentUser && props.currentUser.uid}</p>
-        </div><hr />
+        </div>
         
         <div className="setting-footer">
           <Button

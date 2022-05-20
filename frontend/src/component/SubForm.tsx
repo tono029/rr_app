@@ -72,7 +72,6 @@ export default function SubForm() {
   
                 <div className="error-mess">
                   {errors.subName && errors.subName.type === "required" && <span>・{errors.subName.message}</span>}
-                  {errors.subName && errors.subName.type === "maxLength" && <span>・{errors.subName.message}</span>}
                 </div>
   
               </Grid>
@@ -142,8 +141,7 @@ export default function SubForm() {
                 />
               </Grid>
               
-              {/* 新しくサービスを登録する際には
-              現在のゆーざーのIDを情報に含める。 */}
+              {/* 新しくサービスを登録する際には現在のゆーざーのIDを情報に含める。 */}
               <input 
                 type="hidden" 
                 value={Cookies.get("_uid")}

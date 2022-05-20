@@ -5,6 +5,7 @@ import Subs from './component/Subs';
 import Header from './component/Header';
 import SubForm from './component/SubForm';
 import Flash from './component/Flash';
+import {jaJP} from "@mui/material/locale"
 import UserSetting from './component/UserSetting';
 import {createTheme, ThemeProvider, Slide, Box} from "@mui/material"
 
@@ -74,7 +75,7 @@ export default function App() {
       ].join(","),
       fontSize: 14,
     },
-  })
+  }, jaJP)
 
   const Private = ({ children }: {children: JSX.Element}) => {
     if (!loading) {

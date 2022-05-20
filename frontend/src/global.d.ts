@@ -66,3 +66,13 @@ declare module "*.png" {
   const value: any;
   export default value;
 }
+
+declare interface TablePaginationActionsProps {
+  count: number;
+  page: number;
+  rowsPerPage: number;
+  onPageChange: (
+    event: React.MouseEvent<HTMLButtonElement>,
+    newPage: number,
+  ) => void;
+}

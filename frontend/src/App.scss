@@ -101,15 +101,15 @@ header {
 // Subs.tsx------------------------------------------
 .MuiPaper-root {
   overflow: auto;
-
+  box-shadow: none !important;
 }
 
 .subs-table {
-  max-height: 350px;
+  max-height: 400px;
   margin-bottom: 20px;
   margin: 0 auto 20px auto;
   border-radius: 10px !important;
-  box-shadow: 2px 1px 2px rgb(0, 0, 0, 0.2) !important;
+  // box-shadow: 2px 1px 2px rgb(0, 0, 0, 0.2) !important;
 
   button {
     padding: 0;
@@ -364,6 +364,8 @@ tr:hover {
   justify-content: space-between;
   align-items: center;
   margin-top: 20px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(0,0,0,.12);
   p {
     margin: 0;
   }

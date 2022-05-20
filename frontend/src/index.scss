@@ -74,7 +74,7 @@ body::-webkit-scrollbar {
   margin: 0 auto 20px auto;
   background-color: white;
   padding: 20px;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+  // box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
 }
 
@@ -141,7 +141,7 @@ body::-webkit-scrollbar {
 
     .container {
       max-width: 500px !important;
-      margin: 0 auto 20px auto;
+      margin: 0 auto;
     }
 
     .create-form {

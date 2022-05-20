@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
-import {IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from '@mui/material';
+import {Box, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableFooter, TableRow, TablePagination, useTheme} from '@mui/material';
+import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import AddLinkIcon from '@mui/icons-material/AddLink';
 import LinkIcon from '@mui/icons-material/Link';
 import EditIcon from '@mui/icons-material/Edit';
@@ -15,14 +17,59 @@ import EditModal from "./EditModal";
 import { GeneralControl } from "../App";
 import { updateSub, deleteSub } from "../api/sub";
 
+function TablePaginationActions(props: TablePaginationActionsProps) {
+  const theme = useTheme();
+  const { count, page, rowsPerPage, onPageChange } = props;
+
+  const handleBackButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    onPageChange(event, page - 1);
+  };
+
+  const handleNextButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    onPageChange(event, page + 1);
+  };
+
+
+  return (
+    <Box sx={{ flexShrink: 0, ml: 2.5 }}>
+      <IconButton
+        onClick={handleBackButtonClick}
+        disabled={page === 0}
+        aria-label="previous page"
+      >
+        {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+      </IconButton>
+      <IconButton
+        onClick={handleNextButtonClick}
+        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+        aria-label="next page"
+      >
+        {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+      </IconButton>
+    </Box>
+  );
+}
+
+
 export default function Subs() {
   const {subs, setSubs, handleGetSubs, setFlash} = useContext(GeneralControl)
   const [open, setOpen] = React.useState([false, ""])
   const [editOpen, setEditOpen] = React.useState([false, ""])
+  const [page, setPage] = React.useState(0)
+  const [rowsPerPage] = React.useState(5)
+
+
+  const handleChangePage = (
+    event: React.MouseEvent<HTMLButtonElement> | null,
+    newPage: number,
+  ) => {
+    setPage(newPage);
+  };
 
   async function handleDeleteSub(id: string) {
     const res = await deleteSub(id)
     handleGetSubs()
+    
     setFlash(res.data.flash)
   }
 
@@ -53,7 +100,7 @@ export default function Subs() {
     }
   }
 
-  const subsIndex = subs.map((sub: SubType) => {
+  const subsIndex = subs.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((sub: SubType) => {
     const period = sub.period === 1 ? "/月" : "/年"
 
     return (
@@ -126,10 +173,11 @@ export default function Subs() {
     )
   })
 
+  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - subs.length) : 0;
 
   return (
     <TableContainer className="subs-table table-container" component={Paper}>
-      <Table stickyHeader>
+      <Table>
         <TableHead>
           <TableRow>
             <TableCell></TableCell>
@@ -143,7 +191,27 @@ export default function Subs() {
 
         <TableBody>
           {subsIndex}
+
+          {emptyRows > 0 && (
+            <TableRow style={{ height: 53 * emptyRows }}>
+              <TableCell colSpan={6} />
+            </TableRow>
+          )}
         </TableBody>
+
+        <TableFooter>
+          <TableRow>
+            <TablePagination
+            rowsPerPageOptions={[5]}
+              count={subs.length}
+              rowsPerPage={rowsPerPage}
+              labelRowsPerPage=""
+              page={page}
+              onPageChange={handleChangePage}
+              ActionsComponent={TablePaginationActions}
+            />
+          </TableRow>
+        </TableFooter>
         
       </Table>
     </TableContainer>
