@@ -232,7 +232,7 @@ tr:hover {
 
   p {
     width: 80%;
-    margin: 30px auto 16px;
+    margin: 10px auto ;
     font-size: 16px;
   }
 
@@ -259,7 +259,7 @@ tr:hover {
   margin: 0 auto;
   text-align: center;
   width: auto;
-  border: $accent-bg-color solid thick;
+  border: $main-bg-color solid thick;
   border-radius: 10px;
   height: auto;
   max-width: 100%;
@@ -282,6 +282,14 @@ tr:hover {
 
 // 1230以上
 @media screen and (min-width: 1230px) {
+  .main {
+    width: auto;
+    background-image: url("./img/background.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
   .home-container {
     max-width: 1400px;
     min-width: 800px;
@@ -289,12 +297,18 @@ tr:hover {
     align-items: center;
   }
 
+  .title-background {
+    background-image: none;
+  }
+
   .home-text {
     margin-bottom: 0;
     margin-right: 20px;
     h2 {
+      color: $background-color;
+      margin-top: 0;
       width: 60%;
-      padding: 135px 100px;
+      padding: 100px 50px;
     }
   }
 }

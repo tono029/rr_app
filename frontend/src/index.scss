@@ -83,6 +83,7 @@ body::-webkit-scrollbar {
   overflow: auto;
   z-index: 1;
   width: auto;
+  overscroll-behavior: none;
 }
 
 .main::-webkit-scrollbar {
@@ -130,12 +131,8 @@ body::-webkit-scrollbar {
 
 
 
-// 950以上
+// 900以上
 @media screen and (min-width: 900px) {
-  .main {
-    width: auto;
-  }
-
   .main-top {
     display: flex;
     align-items: center;
@@ -160,6 +157,7 @@ body::-webkit-scrollbar {
 
   .contents {
     padding: 0 40px 40px 40px;
+    
   }
 
   .chart {
