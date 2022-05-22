@@ -21,7 +21,11 @@ export default function Home() {
         </p>
       </div>
 
-        <img src={sample} alt="" className="img-container"/>
+        <img 
+          src={sample} 
+          alt="サブスク管理画面"
+          className="img-container"
+        />
     </div>
   )
 }
