@@ -44,13 +44,17 @@ export default function SubForm() {
 
   return (
     <div className="container create-form">
-      {subs.length === 0 && 
-        <p className="first-text">以下のフォームに利用しているサブスクサービスの情報を入力してください。</p>
-      }
-
+      
       <div className="form-body">
         <div className="form-body-left">
-          <TotalFee subs={subs} />
+          {subs.length === 0 ?
+          
+            <p className="first-text">フォームに利用しているサブスクサービスの情報を入力してください。</p>
+
+            :
+
+            <TotalFee subs={subs} />
+          }
         </div>
 
         <div className="form-body-right">
